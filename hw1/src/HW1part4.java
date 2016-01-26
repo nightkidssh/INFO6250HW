@@ -12,7 +12,7 @@ import java.util.*;
  *
  * @author kym-1992
  */
-public class HW1part6 extends HttpServlet{
+public class HW1part4 extends HttpServlet{
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException{
@@ -28,7 +28,7 @@ public class HW1part6 extends HttpServlet{
             "</head>\n" +
             "<body>\n" +
             "<div>\n" +
-            "  <form action=\"hw1part6\" method=\"post\">\n" +
+            "  <form action=\"hw1part4\" method=\"post\">\n" +
             "  <div class=\"default\">\n" +
             "    <table style=\"float:center\" border=\"0\">\n" +
             "      <tr>\n" +
@@ -228,50 +228,52 @@ public class HW1part6 extends HttpServlet{
         PrintWriter out = response.getWriter();
         out.println("<!doctype html><HTML>");
         out.println("<head>");
-        out.println("<title>Part6 Report</title>");
+        out.println("<title>Part4 Report</title>");
         out.println("</head>");
         out.println("<body bgcolor='pink'>");
         
         out.println("<UL>");        
         
-        out.println("<LI>Officeuse: " + request.getParameter("officeuse") + "</LI>");
-        String [] addresschanged = request.getParameterValues("addresschanged");
+        Map<String,String[]> map = request.getParameterMap();
+        
+        out.println("<LI>Officeuse: " + map.get("officeuse")[0] + "</LI>");
+        String [] addresschanged = map.get("addresschanged");
         out.println("<LI>Check here if this is a new address: " + addresschanged[0] + "</LI>");
-        out.println("<LI>Name: " + request.getParameter("name") + "</LI>");
-        out.println("<LI>Address: " + request.getParameter("address") + "</LI>");
-        out.println("<LI>City/State/Zip: " + request.getParameter("CityStateZip") + "</LI>");
-        out.println("<LI>Phone: " + request.getParameter("phone") + "</LI>");
-        out.println("<LI>Email: " + request.getParameter("Email") + "</LI>");
-        out.println("<LI>Account Number: " + request.getParameter("AccountNumber") + "</LI>");
-        out.println("<LI>Pet Name: " + request.getParameter("petName") + "</LI>");        
-        out.println("<LI>Breed: " + request.getParameter("Breed") + "</LI>");
-        out.println("<LI>Age: " + request.getParameter("age") + "</LI>"); 
-        out.println("<LI>Gender: " + request.getParameter("Gender") + "</LI>");    
-        out.println("<LI>Occurrence/Diagnosis: " + request.getParameter("Occurrence/Diagnosis") + "</LI>");
-        String [] Related = request.getParameterValues("Related");
+        out.println("<LI>Name: " + map.get("name")[0] + "</LI>");
+        out.println("<LI>Address: " + map.get("address")[0] + "</LI>");
+        out.println("<LI>City/State/Zip: " + map.get("CityStateZip")[0] + "</LI>");
+        out.println("<LI>Phone: " + map.get("phone")[0] + "</LI>");
+        out.println("<LI>Email: " + map.get("Email")[0] + "</LI>");
+        out.println("<LI>Account Number: " + map.get("AccountNumber")[0] + "</LI>");
+        out.println("<LI>Pet Name: " + map.get("petName")[0] + "</LI>");        
+        out.println("<LI>Breed: " + map.get("Breed")[0] + "</LI>");
+        out.println("<LI>Age: " + map.get("age")[0] + "</LI>"); 
+        out.println("<LI>Gender: " + map.get("Gender")[0] + "</LI>");    
+        out.println("<LI>Occurrence/Diagnosis: " + map.get("Occurrence/Diagnosis")[0] + "</LI>");
+        String [] Related = map.get("Related");
         for(String s: Related){
             out.println("<LI>This claim is related to: " + s + "</LI>");
         }
-        String [] future = request.getParameterValues("future");
+        String [] future = map.get("future");
         out.println("<LI>Is this claim an estimate for future treatment?" + future[0] + "</LI>");        
-        out.println("<LI>TotalAmount: " + request.getParameter("totalAmount") + "</LI>");
-        out.println("<LI>FirstDate: " + request.getParameter("firstDate") + "</LI>");
-        String [] payment = request.getParameterValues("payment");
+        out.println("<LI>TotalAmount: " + map.get("totalAmount")[0] + "</LI>");
+        out.println("<LI>FirstDate: " + map.get("firstDate")[0] + "</LI>");
+        String [] payment = map.get("payment");
         out.println("<LI>Send payment to:" + payment[0] + "</LI>");  
-        out.println("<LI>Veterinarian: " + request.getParameter("Veterinarian") + "</LI>");
-        out.println("<LI>Clinic Name: " + request.getParameter("ClinicName") + "</LI>");    
-        out.println("<LI>Clinic Phone: " + request.getParameter("clinicPhone") + "</LI>");
-        out.println("<LI>Clinic Fax: " + request.getParameter("ClinicFax") + "</LI>"); 
-        String [] otherVeterinarian = request.getParameterValues("otherVeterinarian");
+        out.println("<LI>Veterinarian: " + map.get("Veterinarian")[0] + "</LI>");
+        out.println("<LI>Clinic Name: " + map.get("ClinicName")[0] + "</LI>");    
+        out.println("<LI>Clinic Phone: " + map.get("clinicPhone")[0] + "</LI>");
+        out.println("<LI>Clinic Fax: " + map.get("ClinicFax")[0] + "</LI>"); 
+        String [] otherVeterinarian = map.get("otherVeterinarian");
         out.println("<LI>Did any other veterinarian treat your pet?" + otherVeterinarian[0] + "</LI>");          
-        String [] newCondition = request.getParameterValues("newCondition");
+        String [] newCondition = map.get("newCondition");
         out.println("<LI>Is this a new condition?" + newCondition[0] + "</LI>");          
-        out.println("<LI>Signature of Pet Owner: " + request.getParameter("signature") + "</LI>");
-        out.println("<LI>Signature Date: " + request.getParameter("signatureDate") + "</LI>");
+        out.println("<LI>Signature of Pet Owner: " + map.get("signature")[0] + "</LI>");
+        out.println("<LI>Signature Date: " + map.get("signatureDate")[0] + "</LI>");
         out.println("</UL>");
         out.println("</body><html>");
         out.close();           
         
         out.close();
-    }    
+    }        
 }

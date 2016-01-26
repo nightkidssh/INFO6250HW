@@ -8,6 +8,9 @@
 
         <servlet-name>HW1part6</servlet-name>
         <servlet-class>HW1part6</servlet-class>
+
+        <servlet-name>HW1part4</servlet-name>
+        <servlet-class>HW1part4</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -20,6 +23,9 @@
 
         <servlet-name>HW1part6</servlet-name>
         <url-pattern>/hw1part6</url-pattern>
+
+        <servlet-name>HW1part4</servlet-name>
+        <url-pattern>/hw1part4</url-pattern>        
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>hw1part6</welcome-file>
