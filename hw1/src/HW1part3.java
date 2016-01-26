@@ -38,7 +38,9 @@ public class HW1part3 extends HttpServlet{
         
         out.println("<LI>Officeuse: " + request.getParameter("officeuse") + "</LI>");
         String [] addresschanged = request.getParameterValues("addresschanged");
-        out.println("<LI>Check here if this is a new address: " + addresschanged[0] + "</LI>");
+        if(addresschanged!=null){
+            out.println("<LI>Check here if this is a new address: " + addresschanged[0] + "</LI>");
+        }
         out.println("<LI>Name: " + request.getParameter("name") + "</LI>");
         out.println("<LI>Address: " + request.getParameter("address") + "</LI>");
         out.println("<LI>City/State/Zip: " + request.getParameter("CityStateZip") + "</LI>");
@@ -51,29 +53,37 @@ public class HW1part3 extends HttpServlet{
         out.println("<LI>Gender: " + request.getParameter("Gender") + "</LI>");    
         out.println("<LI>Occurrence/Diagnosis: " + request.getParameter("Occurrence/Diagnosis") + "</LI>");
         String [] Related = request.getParameterValues("Related");
-        for(String s: Related){
-            out.println("<LI>This claim is related to: " + s + "</LI>");
+        if(Related!=null){
+            for(String s: Related){
+                out.println("<LI>This claim is related to: " + s + "</LI>");
+            }
         }
         String [] future = request.getParameterValues("future");
-        out.println("<LI>Is this claim an estimate for future treatment?" + future[0] + "</LI>");        
+        if(future!=null){    
+            out.println("<LI>Is this claim an estimate for future treatment?" + future[0] + "</LI>"); 
+        }
         out.println("<LI>TotalAmount: " + request.getParameter("totalAmount") + "</LI>");
         out.println("<LI>FirstDate: " + request.getParameter("firstDate") + "</LI>");
         String [] payment = request.getParameterValues("payment");
-        out.println("<LI>Send payment to:" + payment[0] + "</LI>");  
+        if(payment!=null){
+            out.println("<LI>Send payment to:" + payment[0] + "</LI>");  
+        }
         out.println("<LI>Veterinarian: " + request.getParameter("Veterinarian") + "</LI>");
         out.println("<LI>Clinic Name: " + request.getParameter("ClinicName") + "</LI>");    
         out.println("<LI>Clinic Phone: " + request.getParameter("clinicPhone") + "</LI>");
         out.println("<LI>Clinic Fax: " + request.getParameter("ClinicFax") + "</LI>"); 
         String [] otherVeterinarian = request.getParameterValues("otherVeterinarian");
-        out.println("<LI>Did any other veterinarian treat your pet?" + otherVeterinarian[0] + "</LI>");          
+        if(otherVeterinarian!=null){
+            out.println("<LI>Did any other veterinarian treat your pet?" + otherVeterinarian[0] + "</LI>");  
+        }
         String [] newCondition = request.getParameterValues("newCondition");
-        out.println("<LI>Is this a new condition?" + newCondition[0] + "</LI>");          
+        if(newCondition!=null){
+            out.println("<LI>Is this a new condition?" + newCondition[0] + "</LI>");   
+        }
         out.println("<LI>Signature of Pet Owner: " + request.getParameter("signature") + "</LI>");
         out.println("<LI>Signature Date: " + request.getParameter("signatureDate") + "</LI>");
         out.println("</UL>");
         out.println("</body><html>");
-        out.close();           
-        
-        out.close();
+        out.close();  
     }
 }
