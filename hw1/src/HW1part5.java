@@ -239,7 +239,17 @@ public class HW1part5 extends HttpServlet{
         while(elementNames.hasMoreElements()){
             String element = elementNames.nextElement();
             if(element!=null){
-                out.println("<LI>" + element + " : " +request.getHeader(element) + "</LI>");
+                if(element.equalsIgnoreCase("Related")){
+                    String [] Related = request.getParameterValues("Related");
+                    if(Related!=null){
+                        for(String s: Related){
+                            out.println("<LI>This claim is related to: " + s + "</LI>");
+                        }
+                    }                    
+                }
+                else{
+                    out.println("<LI>" + element + " : " +request.getParameter(element) + "</LI>");
+                }
             }
         }
         
