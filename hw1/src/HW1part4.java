@@ -238,7 +238,9 @@ public class HW1part4 extends HttpServlet{
         
         out.println("<LI>Officeuse: " + map.get("officeuse")[0] + "</LI>");
         String [] addresschanged = map.get("addresschanged");
-        out.println("<LI>Check here if this is a new address: " + addresschanged[0] + "</LI>");
+        if(addresschanged!=null){
+            out.println("<LI>Check here if this is a new address: " + addresschanged[0] + "</LI>");
+        }
         out.println("<LI>Name: " + map.get("name")[0] + "</LI>");
         out.println("<LI>Address: " + map.get("address")[0] + "</LI>");
         out.println("<LI>City/State/Zip: " + map.get("CityStateZip")[0] + "</LI>");
@@ -251,23 +253,33 @@ public class HW1part4 extends HttpServlet{
         out.println("<LI>Gender: " + map.get("Gender")[0] + "</LI>");    
         out.println("<LI>Occurrence/Diagnosis: " + map.get("Occurrence/Diagnosis")[0] + "</LI>");
         String [] Related = map.get("Related");
-        for(String s: Related){
-            out.println("<LI>This claim is related to: " + s + "</LI>");
+        if(Related!=null){
+            for(String s: Related){
+                out.println("<LI>This claim is related to: " + s + "</LI>");
+            }
         }
         String [] future = map.get("future");
-        out.println("<LI>Is this claim an estimate for future treatment?" + future[0] + "</LI>");        
+        if(future!=null){
+            out.println("<LI>Is this claim an estimate for future treatment?" + future[0] + "</LI>");     
+        }
         out.println("<LI>TotalAmount: " + map.get("totalAmount")[0] + "</LI>");
         out.println("<LI>FirstDate: " + map.get("firstDate")[0] + "</LI>");
         String [] payment = map.get("payment");
-        out.println("<LI>Send payment to:" + payment[0] + "</LI>");  
+        if(payment!=null){
+            out.println("<LI>Send payment to:" + payment[0] + "</LI>");  
+        }
         out.println("<LI>Veterinarian: " + map.get("Veterinarian")[0] + "</LI>");
         out.println("<LI>Clinic Name: " + map.get("ClinicName")[0] + "</LI>");    
         out.println("<LI>Clinic Phone: " + map.get("clinicPhone")[0] + "</LI>");
         out.println("<LI>Clinic Fax: " + map.get("ClinicFax")[0] + "</LI>"); 
         String [] otherVeterinarian = map.get("otherVeterinarian");
-        out.println("<LI>Did any other veterinarian treat your pet?" + otherVeterinarian[0] + "</LI>");          
+        if(otherVeterinarian!=null){
+            out.println("<LI>Did any other veterinarian treat your pet?" + otherVeterinarian[0] + "</LI>");  
+        }
         String [] newCondition = map.get("newCondition");
-        out.println("<LI>Is this a new condition?" + newCondition[0] + "</LI>");          
+        if(newCondition!=null){
+            out.println("<LI>Is this a new condition?" + newCondition[0] + "</LI>");        
+        }
         out.println("<LI>Signature of Pet Owner: " + map.get("signature")[0] + "</LI>");
         out.println("<LI>Signature Date: " + map.get("signatureDate")[0] + "</LI>");
         out.println("</UL>");

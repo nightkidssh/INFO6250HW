@@ -2,37 +2,44 @@
     <servlet>
         <servlet-name>HW1part2</servlet-name>
         <servlet-class>HW1part2</servlet-class>
-
+    </servlet>
+    <servlet>
         <servlet-name>HW1part3</servlet-name>
         <servlet-class>HW1part3</servlet-class>
-
+    </servlet>
+    <servlet>
         <servlet-name>HW1part4</servlet-name>
         <servlet-class>HW1part4</servlet-class>
-
+    </servlet>
+    <servlet>
         <servlet-name>HW1part5</servlet-name>
         <servlet-class>HW1part5</servlet-class>
-
+    </servlet>
+    <servlet>
         <servlet-name>HW1part6</servlet-name>
         <servlet-class>HW1part6</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <!-- <http-method>POST</http-method> -->
         <servlet-name>HW1part2</servlet-name>
         <url-pattern>/hw1part2</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
+        <!-- <http-method>POST</http-method> -->
         <servlet-name>HW1part3</servlet-name>
         <url-pattern>/hw1part3</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>HW1part4</servlet-name>
         <url-pattern>/hw1part4</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>HW1part5</servlet-name>
         <url-pattern>/hw1part5</url-pattern>
-
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>HW1part6</servlet-name>
         <url-pattern>/hw1part6</url-pattern>
-
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>hw1part6</welcome-file>
