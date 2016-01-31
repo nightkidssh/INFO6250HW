@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>HW2 Part3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+        <script>
+            var childrenQuantity = document.getElementById("childrenQuantity").value;
+            var newWindow = window.open('hw2part3.htm');            
+            if(Number.isInteger(childrenQuantity) === true && Number !== ""){
+                newWindow.document.write("<form action='hw2part3' method='post'>");
+                for(i = 1; i<= childrenQuantity; i++){
+                    newWindow.document.write("<h3>Please enter the name of child number " + i + "</h3>");
+                    newWindow.document.write("<input type='text' name='childName" + i + "'>");
+                }
+                newWindow.document.write("</form>");
+            }
+            
+            else{
+                newWindow.document.write("ERROR input!!!!!");
+            }
+            
+            document.getElementByName("officeuse").value.replace("[^\\dA-Za-z ]", "");
+        </script>
+        </div>
+    </body>
+</html>

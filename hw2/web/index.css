@@ -1,0 +1,63 @@
+div.default{
+   text-align:center;
+   border: solid 1px;
+}
+
+div.defaultGrey{
+  text-align:center;
+  border: solid 1px;
+  background-color: grey;
+}
+
+div.leftBorder{
+  border: solid 1px;
+}
+
+div.noBorder{
+  width:100%;
+  text-align: center;
+}
+
+p.regular{
+  font-size: 25px;
+}
+
+div.leftright{
+  float: left;
+  width: 48%;
+}
+
+div.floatright{
+  float: right;
+  width: 48%;
+}
+
+div.floatcenter{
+  float: center;
+  width: 4%;
+}
+
+textarea.default{
+  overflow:auto;
+  resize:none;
+  text-decoration: underline;
+}
+
+div.leftAuto{
+  float: left;
+  border: solid 1px;
+  width:30%;
+}
+
+div.centerAuto{
+  display: inline-block;
+  margin:0 auto;
+  width:30%;
+  border: solid 1px;
+}
+
+div.rightAuto{
+  float: right;
+  border: solid 1px;
+  width:30%;
+}
