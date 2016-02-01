@@ -35,31 +35,41 @@ public class Part3 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<script type=\"text/javascript\">function submit(){" +
-//"            var childrenQuantity = document.getElementById(\"childrenQuantity\").value;\n" +
-//"            var newWindow = window.open('hw2part3.htm');            \n" +
-//"            if(Number.isInteger(childrenQuantity) === true && Number !== \"\"){\n" +
-//"                newWindow.document.write(\"<form action='hw2part3' method='post'\");\n" +
-//"                for(i = 1; i<= childrenQuantity; i++){\n" +
-//"                    newWindow.document.write(\"<h3>Please enter the name of child number \" + i + \"</h3>\");\n" +
-//"                    newWindow.document.write(\"<input type='text' name='childName\" + i + \"'>\");\n" +
-//"                }\n" +
-//"                newWindow.document.write(\"</form>\");\n" +
-//"            }\n" +
-//"            \n" +
-//"            else{\n" +
-"               document.write(\"ERROR input!!!!!\");\n" +
-//"            }\n" +
-                     "}</script>");
+            out.println("<script type=\"text/javascript\">function submitValidation(){\n" +
+"                if(document.getElementById(\"childrenQuantity\").value){\n" +
+"                    var childrenQuantity = document.getElementById(\"childrenQuantity\").value;\n" +
+"                    if(isNaN(childrenQuantity)){\n" +
+"                        document.getElementById(\"error\").innerHTML=\"<font color='red'>Illegal input!!!</font>\";\n" +
+"                    }\n" +
+"                    else{\n" +
+"                        var opened = window.open(\"enterName\");\n" +
+"                        opened.document.write(\"<html><head><title>Enter Name</title></head><body><form method='post' action='hw2part3'><div id = 'newForm'></div><input type='submit' value='Submit Query'/></form></body></html>\");\n" +
+"                        var newForm = opened.document.getElementById(\"newForm\");\n" +
+"                        for(var i = 0; i < childrenQuantity; i++){\n" +
+"                            newForm.appendChild(document.createTextNode(\"Please enter the name of child number\" + (i+1)));\n" +
+"                            var input = document.createElement(\"input\");\n" +
+"                            input.required = true;\n" +
+"                            input.type = \"text\";\n" +
+"                            input.name = \"childrenName\";\n" +
+"                            newForm.appendChild(input);\n" +
+"                            newForm.appendChild(document.createElement(\"br\"));\n" +
+"                        }\n" +
+"                    }\n" +
+"                }\n" +
+"                else{\n" +
+"                    document.getElementById(\"error\").innerHTML=\"<font color='red'>Illegal input!!!</font>\";\n" +
+"                }\n" +
+"            }"
+                    + "</script>");
             
             out.println("<title>HW2 Part3</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>HW2 Part3 at " + request.getContextPath() + "</h1>");
-            out.println("<form action='hw2part3'>");
+            out.println("<form>");
             out.println("<h3>How many children do you have?<input type='text' name='childrenQuantity' id='childrenQuantity'/></h3><br/>");
-            out.println("<input type='submit' value='Submit Query' onclick='submit()'/>");
+            out.println("<input type='button' value='Submit Query' onclick='submitValidation()'/>");
             out.println("</form>");
+            out.println("<div id='error'></div>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -92,6 +102,23 @@ public class Part3 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("</head>");
+            out.println("<body>"); 
+            out.println("<h3>Your children's names are:</h3><br>");
+            String[] data = request.getParameterValues("childrenName");
+            for(String s: data){
+                out.println("<a>" + s + "</a><br>");
+            }
+            out.println("</body>");
+            out.println("</html>");            
+        }
+        
     }
 
     /**

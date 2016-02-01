@@ -13,22 +13,49 @@ and open the template in the editor.
     <body>
         <div>
         <script>
-            var childrenQuantity = document.getElementById("childrenQuantity").value;
-            var newWindow = window.open('hw2part3.htm');            
-            if(Number.isInteger(childrenQuantity) === true && Number !== ""){
-                newWindow.document.write("<form action='hw2part3' method='post'>");
-                for(i = 1; i<= childrenQuantity; i++){
-                    newWindow.document.write("<h3>Please enter the name of child number " + i + "</h3>");
-                    newWindow.document.write("<input type='text' name='childName" + i + "'>");
-                }
-                newWindow.document.write("</form>");
-            }
+//            var childrenQuantity = document.getElementById("childrenQuantity").value;
+//            var newWindow = window.open('hw2part3.htm');            
+//            if(Number.isInteger(childrenQuantity) === true && Number !== ""){
+//                newWindow.document.write("<form action='hw2part3' method='post'>");
+//                for(i = 1; i<= childrenQuantity; i++){
+//                    newWindow.document.write("<h3>Please enter the name of child number " + i + "</h3>");
+//                    newWindow.document.write("<input type='text' name='childName" + i + "'>");
+//                }
+//                newWindow.document.write("</form>");
+//            }
+//            
+//            else{
+//                newWindow.document.write("ERROR input!!!!!");
+//            }
+//            
+//            document.getElementByName("officeuse").value.replace("[^\\dA-Za-z ]", "");
             
-            else{
-                newWindow.document.write("ERROR input!!!!!");
-            }
             
-            document.getElementByName("officeuse").value.replace("[^\\dA-Za-z ]", "");
+//            function submitValidation(){
+//                if(document.getElementById("childrenQuantity")[0]){
+//                    var childrenQuantity = document.getElementById("childrenQuantity")[0];
+//                    if(isNaN(childrenQuantity)){
+//                        document.getElementById("error").innerHTML="<font color='red'>Illegal input!!!</font>";
+//                    }
+//                    else{
+//                        var opened = window.open("enterName");
+//                        opened.document.write("<html><head><title>Enter Name</title></head><body><form method='post' action='hw2part3'><div id = 'newForm'></div><input type='submit' value='Submit Query'/></form></body></html>");
+//                        var newForm = opened.document.getElementById("newForm");
+//                        for(var i = 0; i < childrenQuantity; i++){
+//                            newForm.appendChild(document.createTextNode("Please enter the name of child number" + (i+1)));
+//                            var input = document.createElement("input");
+//                            input.required = true;
+//                            input.type = "text";
+//                            input.name = "childrenName";
+//                            newForm.appendChild(input);
+//                            newForm.appendChild(document.createElement("br"));
+//                        }
+//                    }
+//                }
+//                else{
+//                    document.getElementById("error").innerHTML="<font color='red'>Illegal input!!!</font>";
+//                }
+            }
         </script>
         </div>
     </body>
