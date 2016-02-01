@@ -4,6 +4,7 @@
     Author     : kym-1992
 --%>
 
+<%@page import="java.io.PrintWriter"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,74 @@
         <title>HW2 PART5</title>
     </head>
     <body>
+        <%
+            if("POST".equalsIgnoreCase(request.getMethod())){
+                response.setContentType("text/html");
+
+                PrintWriter output = response.getWriter();
+                output.println("<!doctype html><HTML>");
+                output.println("<head>");
+                output.println("<title>Part6 Report</title>");
+                output.println("</head>");
+                output.println("<body bgcolor='pink'>");
+
+                output.println("<UL>");        
+
+                output.println("<LI>Officeuse: " + request.getParameter("officeuse") + "</LI>");
+                String [] addresschanged = request.getParameterValues("addresschanged");
+                if(addresschanged!=null){
+                    output.println("<LI>Check here if this is a new address: " + addresschanged[0] + "</LI>");
+                }
+                output.println("<LI>Name: " + request.getParameter("name") + "</LI>");
+                output.println("<LI>Address: " + request.getParameter("address") + "</LI>");
+                output.println("<LI>City/State/Zip: " + request.getParameter("CityStateZip") + "</LI>");
+                output.println("<LI>Phone: " + request.getParameter("phone") + "</LI>");
+                output.println("<LI>Email: " + request.getParameter("Email") + "</LI>");
+                output.println("<LI>Account Number: " + request.getParameter("AccountNumber") + "</LI>");
+                output.println("<LI>Pet Name: " + request.getParameter("petName") + "</LI>");        
+                output.println("<LI>Breed: " + request.getParameter("Breed") + "</LI>");
+                output.println("<LI>Age: " + request.getParameter("age") + "</LI>"); 
+                output.println("<LI>Gender: " + request.getParameter("Gender") + "</LI>");    
+                output.println("<LI>Occurrence/Diagnosis: " + request.getParameter("Occurrence/Diagnosis") + "</LI>");
+                String [] Related = request.getParameterValues("Related");
+                if(Related!=null){
+                    for(String s: Related){
+                        output.println("<LI>This claim is related to: " + s + "</LI>");
+                    }
+                }
+                String [] future = request.getParameterValues("future");
+                if(future!=null){    
+                    output.println("<LI>Is this claim an estimate for future treatment?" + future[0] + "</LI>"); 
+                }
+                output.println("<LI>TotalAmount: " + request.getParameter("totalAmount") + "</LI>");
+                output.println("<LI>FirstDate: " + request.getParameter("firstDate") + "</LI>");
+                String [] payment = request.getParameterValues("payment");
+                if(payment!=null){
+                    output.println("<LI>Send payment to:" + payment[0] + "</LI>");  
+                }
+                output.println("<LI>Veterinarian: " + request.getParameter("Veterinarian") + "</LI>");
+                output.println("<LI>Clinic Name: " + request.getParameter("ClinicName") + "</LI>");    
+                output.println("<LI>Clinic Phone: " + request.getParameter("clinicPhone") + "</LI>");
+                output.println("<LI>Clinic Fax: " + request.getParameter("ClinicFax") + "</LI>"); 
+                String [] otherVeterinarian = request.getParameterValues("otherVeterinarian");
+                if(otherVeterinarian!=null){
+                    output.println("<LI>Did any other veterinarian treat your pet?" + otherVeterinarian[0] + "</LI>");  
+                }
+                String [] newCondition = request.getParameterValues("newCondition");
+                if(newCondition!=null){
+                    output.println("<LI>Is this a new condition?" + newCondition[0] + "</LI>");   
+                }
+                output.println("<LI>Signature of Pet Owner: " + request.getParameter("signature") + "</LI>");
+                output.println("<LI>Signature Date: " + request.getParameter("signatureDate") + "</LI>");
+                output.println("</UL>");
+                output.println("</body><html>");
+                output.close();           
+
+            }
+            else{                
+        %>
         <div>
-        <form action="hw1part3" method="post">
+        <form action="hw2part5.jsp" method="post">
         <div class="default">
           <table style="float:center" border="0">
             <tr>
@@ -198,6 +265,11 @@
 
         <input type="submit" value="submit" style="height:400px; width:400px">
         </form>
-      </div>
+      </div>        
+        <%
+            }
+        %>
+        
+
     </body>
 </html>
