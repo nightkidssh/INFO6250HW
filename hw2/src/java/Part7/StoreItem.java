@@ -9,6 +9,6 @@ package Part7;
  *
  * @author kym-1992
  */
-public class storeItem {
+public class StoreItem {
     
 }

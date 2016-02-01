@@ -12,6 +12,22 @@
         <servlet-name>Part4Javascript</servlet-name>
         <servlet-class>Part4.Part4Javascript</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Store</servlet-name>
+        <servlet-class>Part7.Store</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Books</servlet-name>
+        <servlet-class>Part7.Books</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Music</servlet-name>
+        <servlet-class>Part7.Music</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Computers</servlet-name>
+        <servlet-class>Part7.Computers</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Part3</servlet-name>
         <url-pattern>/hw2part3</url-pattern>
@@ -23,6 +39,22 @@
     <servlet-mapping>
         <servlet-name>Part4Javascript</servlet-name>
         <url-pattern>/part4Javascript</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Store</servlet-name>
+        <url-pattern>/store</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Books</servlet-name>
+        <url-pattern>/books</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Music</servlet-name>
+        <url-pattern>/music</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Computers</servlet-name>
+        <url-pattern>/computers</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
