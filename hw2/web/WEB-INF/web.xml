@@ -28,6 +28,10 @@
         <servlet-name>Computers</servlet-name>
         <servlet-class>Part7.Computers</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddToCart</servlet-name>
+        <servlet-class>Part7.AddToCart</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Part3</servlet-name>
         <url-pattern>/hw2part3</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>Computers</servlet-name>
         <url-pattern>/computers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddToCart</servlet-name>
+        <url-pattern>/addItem.htm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
