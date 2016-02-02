@@ -74,7 +74,7 @@
                 output.println("<LI>Signature of Pet Owner: " + request.getParameter("signature") + "</LI>");
                 output.println("<LI>Signature Date: " + request.getParameter("signatureDate") + "</LI>");
                 output.println("</UL>");
-                output.println("</body><html>");
+                output.println("</body></html>");
                 output.close();           
 
             }

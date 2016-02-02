@@ -32,6 +32,14 @@
         <servlet-name>AddToCart</servlet-name>
         <servlet-class>Part7.AddToCart</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Part6</servlet-name>
+        <servlet-class>Part6.Part6</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MultipleFormsServlet</servlet-name>
+        <servlet-class>Part6.MultipleFormsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Part3</servlet-name>
         <url-pattern>/hw2part3</url-pattern>
@@ -64,6 +72,14 @@
         <servlet-name>AddToCart</servlet-name>
         <url-pattern>/addItem.htm</url-pattern>
         <url-pattern>/removeItem.htm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Part6</servlet-name>
+        <url-pattern>/part6</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MultipleFormsServlet</servlet-name>
+        <url-pattern>/part6testFromTeacher</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
