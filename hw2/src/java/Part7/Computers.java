@@ -73,7 +73,9 @@ public class Computers extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h3>Shop for books</h3><hr><br>");
+            out.println("<div style='float: right'>");            
             out.println("[<a href='ShoppingCart.jsp'>View Cart</a>]");
+            out.println("</div>");            
             
             HttpSession session = request.getSession();
             if(null != session.getAttribute("myShoppingCart")){
