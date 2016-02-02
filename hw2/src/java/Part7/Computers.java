@@ -8,10 +8,13 @@ package Part7;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -58,6 +61,7 @@ public class Computers extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ArrayList<StoreItem> itemList = Store.populateItem();
+        Set<StoreItem> myItem;           
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -69,6 +73,17 @@ public class Computers extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h3>Shop for books</h3><hr><br>");
+            out.println("[<a href='ShoppingCart.jsp'>View Cart</a>]");
+            
+            HttpSession session = request.getSession();
+            if(null != session.getAttribute("myShoppingCart")){
+                myItem = (Set<StoreItem>) session.getAttribute("myShoppingCart");
+            }
+            else{
+                myItem = new HashSet<StoreItem>();
+            }          
+            session.setAttribute("myShoppingCart", myItem);            
+            
             out.println("<form method='post' action='addItem.htm'>");
             for(StoreItem storeItem: itemList){
                 if(storeItem.getCatalog()!=null && storeItem.getCatalog().equalsIgnoreCase("Computers")){
