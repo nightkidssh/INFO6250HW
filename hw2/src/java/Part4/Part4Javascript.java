@@ -64,11 +64,12 @@ public class Part4Javascript extends HttpServlet {
             "<!doctype html><html>\n" +
             "<head>\n" +
             "<link rel=\"stylesheet\" type=\"text/css\" href=\"index.css\">\n" +
+            "<script type=\"text/javascript\" src=\"part4.js\"></script>" +        
             "<title>Pet insurance claim form</title>\n" +
             "</head>\n" +
             "<body>\n" +
             "<div>\n" +
-            "  <form action=\"part4Javascript\" method=\"post\">\n" +
+            "  <form action=\"part4Javascript\" method=\"post\" onSubmit=\"return validate(this);\" name=\"form\">\n" +
             "  <div class=\"default\">\n" +
             "    <table style=\"float:center\" border=\"0\">\n" +
             "      <tr>\n" +

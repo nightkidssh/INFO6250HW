@@ -284,52 +284,52 @@ public class Part4 extends HttpServlet {
         
         out.println("<UL>");        
         
-        out.println("<LI>Officeuse: " + request.getParameter("officeuse").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Officeuse: " + request.getParameter("officeuse").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
         String [] addresschanged = request.getParameterValues("addresschanged");
         if(addresschanged!=null){
-            out.println("<LI>Check here if this is a new address: " + addresschanged[0].replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
+            out.println("<LI>Check here if this is a new address: " + addresschanged[0].replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
         }
-        out.println("<LI>Name: " + request.getParameter("name").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>Address: " + request.getParameter("address").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>City/State/Zip: " + request.getParameter("CityStateZip").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>Phone: " + request.getParameter("phone").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>Email: " + request.getParameter("Email").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>Account Number: " + request.getParameter("AccountNumber").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>Pet Name: " + request.getParameter("petName").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");        
-        out.println("<LI>Breed: " + request.getParameter("Breed").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>Age: " + request.getParameter("age").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>"); 
-        out.println("<LI>Gender: " + request.getParameter("Gender").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");    
-        out.println("<LI>Occurrence/Diagnosis: " + request.getParameter("Occurrence/Diagnosis").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Name: " + request.getParameter("name").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Address: " + request.getParameter("address").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>City/State/Zip: " + request.getParameter("CityStateZip").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Phone: " + request.getParameter("phone").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Email: " + request.getParameter("Email").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Account Number: " + request.getParameter("AccountNumber").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Pet Name: " + request.getParameter("petName").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");        
+        out.println("<LI>Breed: " + request.getParameter("Breed").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Age: " + request.getParameter("age").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>"); 
+        out.println("<LI>Gender: " + request.getParameter("Gender").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");    
+        out.println("<LI>Occurrence/Diagnosis: " + request.getParameter("Occurrence/Diagnosis").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
         String [] Related = request.getParameterValues("Related");
         if(Related!=null){
             for(String s: Related){
-                out.println("<LI>This claim is related to: " + s.replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
+                out.println("<LI>This claim is related to: " + s.replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
             }
         }
         String [] future = request.getParameterValues("future");
         if(future!=null){    
-            out.println("<LI>Is this claim an estimate for future treatment?" + future[0].replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>"); 
+            out.println("<LI>Is this claim an estimate for future treatment?" + future[0].replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>"); 
         }
-        out.println("<LI>TotalAmount: " + request.getParameter("totalAmount").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>FirstDate: " + request.getParameter("firstDate").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>TotalAmount: " + request.getParameter("totalAmount").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>FirstDate: " + request.getParameter("firstDate").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
         String [] payment = request.getParameterValues("payment");
         if(payment!=null){
-            out.println("<LI>Send payment to:" + payment[0].replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");  
+            out.println("<LI>Send payment to:" + payment[0].replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");  
         }
-        out.println("<LI>Veterinarian: " + request.getParameter("Veterinarian").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>Clinic Name: " + request.getParameter("ClinicName").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");    
-        out.println("<LI>Clinic Phone: " + request.getParameter("clinicPhone").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>Clinic Fax: " + request.getParameter("ClinicFax").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>"); 
+        out.println("<LI>Veterinarian: " + request.getParameter("Veterinarian").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Clinic Name: " + request.getParameter("ClinicName").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");    
+        out.println("<LI>Clinic Phone: " + request.getParameter("clinicPhone").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Clinic Fax: " + request.getParameter("ClinicFax").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>"); 
         String [] otherVeterinarian = request.getParameterValues("otherVeterinarian");
         if(otherVeterinarian!=null){
-            out.println("<LI>Did any other veterinarian treat your pet?" + otherVeterinarian[0].replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");  
+            out.println("<LI>Did any other veterinarian treat your pet?" + otherVeterinarian[0].replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");  
         }
         String [] newCondition = request.getParameterValues("newCondition");
         if(newCondition!=null){
-            out.println("<LI>Is this a new condition?" + newCondition[0].replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");   
+            out.println("<LI>Is this a new condition?" + newCondition[0].replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");   
         }
-        out.println("<LI>Signature of Pet Owner: " + request.getParameter("signature").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
-        out.println("<LI>Signature Date: " + request.getParameter("signatureDate").replaceAll("[^\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Signature of Pet Owner: " + request.getParameter("signature").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
+        out.println("<LI>Signature Date: " + request.getParameter("signatureDate").replaceAll("[^\\@\\.\\dA-Za-z ]", "").trim() + "</LI>");
         out.println("</UL>");
         out.println("</body><html>");
         out.close();           
