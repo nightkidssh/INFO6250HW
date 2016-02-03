@@ -538,19 +538,19 @@ public class Part6 extends HttpServlet {
         out.println("<TABLE>");
         out.println("<TR>");
         out.println("<TD>1.&nbsp;</TD>");
-        out.println("<TD><INPUT TYPE='RADIO' NAME='question10' VALUE='get' checked>init()</TD>");
+        out.println("<TD><INPUT TYPE='RADIO' NAME='question10' VALUE='get' checked>get</TD>");
         out.println("</TR>");
         out.println("<TR>");
         out.println("<TD>2.&nbsp;</TD>");
-        out.println("<TD><INPUT TYPE='RADIO' NAME='question10' VALUE='post'>service()</TD>");
+        out.println("<TD><INPUT TYPE='RADIO' NAME='question10' VALUE='post'>post</TD>");
         out.println("</TR>");
         out.println("<TR>");
         out.println("<TD>3.&nbsp;</TD>");
-        out.println("<TD><INPUT TYPE='RADIO' NAME='question10' VALUE='init'>system.gc</TD>");
+        out.println("<TD><INPUT TYPE='RADIO' NAME='question10' VALUE='init'>init</TD>");
         out.println("</TR>");
         out.println("<TR>");
         out.println("<TD>4.&nbsp;</TD>");
-        out.println("<TD><INPUT TYPE='RADIO' NAME='question10' VALUE='service'>destroy</TD>");
+        out.println("<TD><INPUT TYPE='RADIO' NAME='question10' VALUE='service'>service</TD>");
         out.println("</TR>");     
         
         out.println("<TR>");
