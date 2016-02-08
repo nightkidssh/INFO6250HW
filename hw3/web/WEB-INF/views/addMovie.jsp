@@ -4,14 +4,39 @@
     Author     : kym-1992
 --%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Add movie to Database</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body style="background-color:blue;">
+        <h1>Please enter the details below:</h1>
+        <form action="movie.do" method="post">
+            <table>
+                <tr>
+                    <td>Movie Title:</td>
+                    <td><input type="text" name="title" required /></td>
+                </tr>    
+                <tr>
+                    <td>Lead Actor:</td>
+                    <td><input type="text" name="actor" required /></td>
+                </tr>  
+                <tr>
+                    <td>Lead Actress</td>
+                    <td><input type="text" name="actress" required /></td>
+                </tr>
+                <tr>
+                    <td>Genre</td>
+                    <td><input type="text" name="genre" required /></td>
+                </tr>
+                <tr>
+                    <td>Year</td>
+                    <td><input type="number" name="year" required /></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>

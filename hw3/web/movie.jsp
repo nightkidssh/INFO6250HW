@@ -16,7 +16,7 @@
         <h1>Welcome to our Movie Store</h1>
         <h3>Please make your selection below</h3>
         <form action="movie.do" method="post">
-            <select>
+            <select name="loginOption">
                 <option value="browse">Browse Movies</option>
                 <option value="add">Add New Movie to Database</option>
             </select>            
