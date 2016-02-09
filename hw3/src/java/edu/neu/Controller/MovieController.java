@@ -5,6 +5,7 @@
  */
 package edu.neu.Controller;
 
+import edu.neu.Bean.MovieBean;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -12,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -38,12 +40,14 @@ public class MovieController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
+        String value = request.getParameter("action");
+        System.out.println(value);
+        
         Connection conn = null;
         PreparedStatement stmt = null;
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String value = request.getParameter("action");
             
             if(value.equals("login")){
                 String option = request.getParameter("loginOption");
@@ -91,23 +95,32 @@ public class MovieController extends HttpServlet {
             }
             
             
-            if(value.equals("search")){
+            if(value.equals("doSearch")){
                 String searchMethod = request.getParameter("searchMethod");
                 conn = getConnectionJDBC();
                 
                 if(searchMethod.equals("title")){
-                    String sql = "SELECT * FROM movies"
-                        + "WHERE"
-                        + "title=?";
+                    String sql = "SELECT * FROM movies WHERE title=?";
                     try {
                         stmt = conn.prepareStatement(sql);
                         String searchKeyword = request.getParameter("searchKeyword");
                         stmt.setString(1, searchKeyword);
                         ResultSet rs = stmt.executeQuery();
                         
+                        ArrayList<MovieBean> movieList = new ArrayList<>();
                         while(rs.next()){
-                            
+                            MovieBean movieBean = new MovieBean();
+                            movieBean.setTitle(rs.getString(1));
+                            movieBean.setActor(rs.getString(2));
+                            movieBean.setActress(rs.getString(3));
+                            movieBean.setGenre(rs.getString(4));
+                            movieBean.setYear(rs.getInt(5));
+                            movieList.add(movieBean);
                         }
+                        request.setAttribute("resultArrayList", movieList);
+                        request.setAttribute("searchedItem", searchKeyword);
+                        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/showMovie.jsp");
+                        rd.forward(request, response);                        
                         
                         rs.close();
                         stmt.close();
@@ -118,15 +131,29 @@ public class MovieController extends HttpServlet {
                 }
                 
                 if(searchMethod.equals("actor")){
-                    String sql = "SELECT * FROM movies"
-                        + "WHERE"
-                        + "actor=?";            
+                    String sql = "SELECT * FROM movies WHERE actor=?";            
                     try {
                         stmt = conn.prepareStatement(sql);
                         String searchKeyword = request.getParameter("searchKeyword");
                         stmt.setString(1, searchKeyword);
                         ResultSet rs = stmt.executeQuery();
+                        ArrayList<MovieBean> movieList = new ArrayList<>();
+                        while(rs.next()){
+                            MovieBean movieBean = new MovieBean();
+                            movieBean.setTitle(rs.getString(1));
+                            movieBean.setActor(rs.getString(2));
+                            movieBean.setActress(rs.getString(3));
+                            movieBean.setGenre(rs.getString(4));
+                            movieBean.setYear(rs.getInt(5));
+                            movieList.add(movieBean);
+                        }
+                        request.setAttribute("resultArrayList", movieList);
+                        request.setAttribute("searchedItem", searchKeyword);
+                        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/showMovie.jsp");
+                        rd.forward(request, response);                        
                         
+                        rs.close();
+                        stmt.close();                        
                         
                         rs.close();
                         stmt.close();
@@ -136,15 +163,29 @@ public class MovieController extends HttpServlet {
                 }
                 
                 if(searchMethod.equals("actress")){
-                    String sql = "SELECT * FROM movies"
-                        + "WHERE"
-                        + "actress=?";           
+                    String sql = "SELECT * FROM movies WHERE actress=?";           
                     try {
                         stmt = conn.prepareStatement(sql);
                         String searchKeyword = request.getParameter("searchKeyword");
                         stmt.setString(1, searchKeyword);    
                         ResultSet rs = stmt.executeQuery();
+                        ArrayList<MovieBean> movieList = new ArrayList<>();
+                        while(rs.next()){
+                            MovieBean movieBean = new MovieBean();
+                            movieBean.setTitle(rs.getString(1));
+                            movieBean.setActor(rs.getString(2));
+                            movieBean.setActress(rs.getString(3));
+                            movieBean.setGenre(rs.getString(4));
+                            movieBean.setYear(rs.getInt(5));
+                            movieList.add(movieBean);
+                        }
+                        request.setAttribute("resultArrayList", movieList);
+                        request.setAttribute("searchedItem", searchKeyword);
+                        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/showMovie.jsp");
+                        rd.forward(request, response);                        
                         
+                        rs.close();
+                        stmt.close();                        
                         
                         rs.close();
                         stmt.close();
@@ -155,10 +196,12 @@ public class MovieController extends HttpServlet {
             }
         }
         
-        try {
-            conn.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+        if(conn!=null){
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

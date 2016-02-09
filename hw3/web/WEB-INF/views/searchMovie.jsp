@@ -19,7 +19,7 @@
             <h3><input type="radio" name="searchMethod" value="actor" />Search By Actor</h3>
             <h3><input type="radio" name="searchMethod" value="actress" />Search By Actress</h3>
             <input type="submit" name="Submit" value="Search Movies"/>
-            <input type="hidden" name="action" value="search" />
+            <input type="hidden" name="action" value="doSearch" />
         </form>
     </body>
 </html>
