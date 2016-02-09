@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +37,9 @@ public class MovieController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
-        Connection conn = getConnectionJDBC();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String value = request.getParameter("action");
@@ -45,11 +48,65 @@ public class MovieController extends HttpServlet {
                 String option = request.getParameter("loginOption");
                 
                 if(option.equalsIgnoreCase("browse")){
-                    
+                    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/searchMovie.jsp");
+                    rd.forward(request, response);
                 }
                 else if(option.equalsIgnoreCase("add")){
                     RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/addMovie.jsp");
                     rd.forward(request, response);
+                }
+            }
+            
+            if(value.equals("doAddMovie")){
+                conn = getConnectionJDBC();
+                String title = request.getParameter("title");
+                String actor = request.getParameter("actor");
+                String actress = request.getParameter("actress");
+                String genre = request.getParameter("genre");
+                int year = Integer.parseInt(request.getParameter("year"));
+                
+                String sql = "INSERT INTO movies (title, actor, actress, genre, year)"
+                        + "VALUES"
+                        + "(?, ?, ?, ?, ?)";
+                try {
+                    stmt = conn.prepareStatement(sql);
+                    stmt.setString(1, title);
+                    stmt.setString(2, actor);
+                    stmt.setString(3, actress);
+                    stmt.setString(4, genre);
+                    stmt.setInt(5, year);
+                    
+                    stmt.executeUpdate();
+                    stmt.close();
+                    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/movieAdded.jsp");
+                    rd.forward(request, response);
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+                    RequestDispatcher rd = request.getRequestDispatcher("movie.jsp");
+                    rd.forward(request, response);
+                }
+                
+            }
+            
+            
+            if(value.equals("search")){
+                String searchMethod = request.getParameter("searchMethod");
+                conn = getConnectionJDBC();
+                String sql = "SELECT * FROM movies (title, actor, actress, genre, year)"
+                        + "WHERE"
+                        + "(?, ?, ?, ?, ?)";
+                
+                if(searchMethod.equals("title")){
+                    
+                }
+                
+                if(searchMethod.equals("actor")){
+                    
+                }
+                
+                if(searchMethod.equals("actress")){
+                    
                 }
             }
         }
