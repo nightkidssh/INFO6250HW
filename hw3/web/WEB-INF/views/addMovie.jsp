@@ -18,23 +18,23 @@
             <table>
                 <tr>
                     <td>Movie Title:</td>
-                    <td><input type="text" name="title" required /></td>
+                    <td><input type="text" name="title" size="80" required /></td>
                 </tr>    
                 <tr>
                     <td>Lead Actor:</td>
-                    <td><input type="text" name="actor" required /></td>
+                    <td><input type="text" name="actor" size="30" required /></td>
                 </tr>  
                 <tr>
                     <td>Lead Actress</td>
-                    <td><input type="text" name="actress" required /></td>
+                    <td><input type="text" name="actress" size="30" required /></td>
                 </tr>
                 <tr>
                     <td>Genre</td>
-                    <td><input type="text" name="genre" required /></td>
+                    <td><input type="text" name="genre" size="20" required /></td>
                 </tr>
                 <tr>
                     <td>Year</td>
-                    <td><input type="number" name="year" required /></td>
+                    <td><input type="number" min="1" name="year" size="11" required /></td>
                 </tr>
             </table>
             <input type="submit" value="Submit"/>

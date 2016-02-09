@@ -4,9 +4,17 @@
         <servlet-name>MovieController</servlet-name>
         <servlet-class>edu.neu.Controller.MovieController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BooksController</servlet-name>
+        <servlet-class>edu.neu.Controller.BooksController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MovieController</servlet-name>
         <url-pattern>/movie.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BooksController</servlet-name>
+        <url-pattern>/books.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -14,6 +22,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
+        <welcome-file>books.jsp</welcome-file>
         <welcome-file>movie.jsp</welcome-file>
     </welcome-file-list>
 </web-app>
