@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -93,20 +94,63 @@ public class MovieController extends HttpServlet {
             if(value.equals("search")){
                 String searchMethod = request.getParameter("searchMethod");
                 conn = getConnectionJDBC();
-                String sql = "SELECT * FROM movies (title, actor, actress, genre, year)"
-                        + "WHERE"
-                        + "(?, ?, ?, ?, ?)";
                 
                 if(searchMethod.equals("title")){
+                    String sql = "SELECT * FROM movies"
+                        + "WHERE"
+                        + "title=?";
+                    try {
+                        stmt = conn.prepareStatement(sql);
+                        String searchKeyword = request.getParameter("searchKeyword");
+                        stmt.setString(1, searchKeyword);
+                        ResultSet rs = stmt.executeQuery();
+                        
+                        while(rs.next()){
+                            
+                        }
+                        
+                        rs.close();
+                        stmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     
                 }
                 
                 if(searchMethod.equals("actor")){
-                    
+                    String sql = "SELECT * FROM movies"
+                        + "WHERE"
+                        + "actor=?";            
+                    try {
+                        stmt = conn.prepareStatement(sql);
+                        String searchKeyword = request.getParameter("searchKeyword");
+                        stmt.setString(1, searchKeyword);
+                        ResultSet rs = stmt.executeQuery();
+                        
+                        
+                        rs.close();
+                        stmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 
                 if(searchMethod.equals("actress")){
-                    
+                    String sql = "SELECT * FROM movies"
+                        + "WHERE"
+                        + "actress=?";           
+                    try {
+                        stmt = conn.prepareStatement(sql);
+                        String searchKeyword = request.getParameter("searchKeyword");
+                        stmt.setString(1, searchKeyword);    
+                        ResultSet rs = stmt.executeQuery();
+                        
+                        
+                        rs.close();
+                        stmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         }
