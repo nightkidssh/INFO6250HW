@@ -12,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add movie to Database</title>
     </head>
-    <body style="background-color:blue;">
+    <body style="background-color:cyan;">
         <h1>Please enter the details below:</h1>
         <form action="movie.do" method="post">
             <table>
@@ -37,6 +37,8 @@
                     <td><input type="number" name="year" required /></td>
                 </tr>
             </table>
+            <input type="submit" value="Submit"/>
+            <input type="hidden" name="action" value="doAddMovie" />
         </form>
     </body>
 </html>
