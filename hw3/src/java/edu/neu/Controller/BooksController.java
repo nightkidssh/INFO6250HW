@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,13 +36,15 @@ public class BooksController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
+        Connection conn = null;
+        PreparedStatement stmt = null;
         
 //        try (PrintWriter out = response.getWriter()) {
 //            /* TODO output your page here. You may use following sample code. */
 //        }
         
         if(action.equals("add")){
-            int bookQuantity = (int) request.getAttribute("bookQuantity");
+            int bookQuantity = Integer.parseInt(request.getParameter("bookQuantity"));
             if(bookQuantity > 0){
                 request.setAttribute("bookQuantity", bookQuantity);
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/addBooks.jsp");
@@ -50,6 +53,14 @@ public class BooksController extends HttpServlet {
             else{
                 RequestDispatcher rd = request.getRequestDispatcher("movie.jsp");                 
             }
+        }
+        
+        if(action.equals("doAddBook")){
+            String isbn = request.getParameter("isbn");
+            String title = request.getParameter("title");
+            String authors = request.getParameter("authors");
+            String price = request.getParameter("price");
+            conn = getConnectionJDBC();
         }
     }
 

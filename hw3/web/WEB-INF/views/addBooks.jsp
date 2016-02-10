@@ -13,14 +13,14 @@
         <title>Enter Book Details</title>
     </head>
     <body style="background-color: yellowgreen">
-        <table style="border: 1">
+        <table border="1px">
             <tr>
                 <td>ISBN</td>
                 <td>Book Title</td>
                 <td>Authors</td>
                 <td>Prices</td>
             </tr>
-            <c:forEach begin="0" end="${requestScope.bookQuantity}">
+            <c:forEach begin="1" end="${requestScope.bookQuantity}">
                 <tr>
                     <td><input type="text" name="isbn" size="12" required/></td>
                     <td><input type="text" name="title" size="60" required/></td>
@@ -28,6 +28,12 @@
                     <td><input type="number" min="0" name="price" required/></td>
                 </tr>
             </c:forEach>
+                <tr>
+                    <td>
+                        <input type="submit" value="Add Books"/>
+                        <input type="hidden" name="action" value="doAddBook" />                        
+                    </td>
+                </tr>
         </table>
     </body>
 </html>
