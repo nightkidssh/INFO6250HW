@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -56,11 +58,39 @@ public class BooksController extends HttpServlet {
         }
         
         if(action.equals("doAddBook")){
-            String isbn = request.getParameter("isbn");
-            String title = request.getParameter("title");
-            String authors = request.getParameter("authors");
-            String price = request.getParameter("price");
+            String[] isbnList = request.getParameterValues("isbn");
+            String[] titleList = request.getParameterValues("title");
+            String[] authorsList = request.getParameterValues("authors");
+            String[] priceList = request.getParameterValues("price");
+            
             conn = getConnectionJDBC();
+            
+            
+                String sql = "INSERT INTO books (isbn, title, authors, price)"
+                        + "VALUES"
+                        + "(?, ?, ?, ?)";
+                try {
+                    stmt = conn.prepareStatement(sql);
+                    
+                    for(int i=0; i < isbnList.length; i++){
+                        stmt.setString(1, isbnList[i]);
+                        stmt.setString(2, titleList[i]);
+                        stmt.setString(3, authorsList[i]);
+                        
+                        int price = Integer.parseInt(priceList[i]);
+                        stmt.setInt(4, price);
+                        stmt.executeUpdate();                        
+                    }
+
+                    stmt.close();
+                    
+                    request.setAttribute("quantity", isbnList.length);
+                    RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/booksAdded.jsp");
+                    rd.forward(request, response);                    
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+                }                    
         }
     }
 
