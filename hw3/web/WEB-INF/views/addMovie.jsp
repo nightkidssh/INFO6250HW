@@ -34,7 +34,7 @@
                 </tr>
                 <tr>
                     <td>Year</td>
-                    <td><input type="number" min="1" name="year" size="11" required /></td>
+                    <td><input type="number" min="1000" max="2016" name="year" size="11" required /></td>
                 </tr>
             </table>
             <input type="submit" value="Submit"/>
