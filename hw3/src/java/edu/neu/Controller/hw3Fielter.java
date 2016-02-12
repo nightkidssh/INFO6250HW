@@ -208,7 +208,7 @@ public class hw3Fielter implements Filter {
         @Override
         public String getParameter(String name){
             String data = super.getParameter(name);
-            data = data.replaceAll("[^\\dA-Za-z ]", "");
+            data = data.replaceAll("[^\\-\\dA-Za-z ]", "");
             return data;
         }
     }
