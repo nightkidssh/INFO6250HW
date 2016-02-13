@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Enumeration;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -201,7 +202,7 @@ public class hw3Fielter implements Filter {
     
     public static class doChange extends HttpServletRequestWrapper{
 
-        public doChange(HttpServletRequest request) {
+        public doChange(HttpServletRequest request) {         
             super(request);
         }
         
@@ -209,6 +210,19 @@ public class hw3Fielter implements Filter {
         public String getParameter(String name){
             String data = super.getParameter(name);
             data = data.replaceAll("[^\\-\\dA-Za-z ]", "");
+            System.out.println(data);
+            return data;
+        }
+        
+        @Override
+        public String[] getParameterValues(String name){
+            String[] data = super.getParameterValues(name);
+            
+            for(int i =0; i < data.length; i++){
+                data[i] = data[i].replaceAll("[^\\-\\dA-Za-z ]", "");
+                System.out.println(data[i]);                
+            }
+            
             return data;
         }
     }

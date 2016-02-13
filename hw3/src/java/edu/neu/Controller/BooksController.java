@@ -53,7 +53,8 @@ public class BooksController extends HttpServlet {
                 rd.forward(request, response);
             }
             else{
-                RequestDispatcher rd = request.getRequestDispatcher("movie.jsp");                 
+                RequestDispatcher rd = request.getRequestDispatcher("movie.jsp");             
+                rd.forward(request, response);
             }
         }
         
@@ -90,6 +91,8 @@ public class BooksController extends HttpServlet {
                     
                 } catch (SQLException ex) {
                     Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+                    RequestDispatcher rd = request.getRequestDispatcher("books.jsp");
+                    rd.forward(request, response);                     
                 }                    
         }
     }

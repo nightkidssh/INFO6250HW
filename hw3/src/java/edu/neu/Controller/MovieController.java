@@ -126,6 +126,8 @@ public class MovieController extends HttpServlet {
                         stmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+                        RequestDispatcher rd = request.getRequestDispatcher("movie.jsp");
+                        rd.forward(request, response);
                     }
                     
                 }
@@ -159,6 +161,8 @@ public class MovieController extends HttpServlet {
                         stmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+                        RequestDispatcher rd = request.getRequestDispatcher("movie.jsp");
+                        rd.forward(request, response);
                     }
                 }
                 
@@ -191,6 +195,8 @@ public class MovieController extends HttpServlet {
                         stmt.close();
                     } catch (SQLException ex) {
                         Logger.getLogger(MovieController.class.getName()).log(Level.SEVERE, null, ex);
+                        RequestDispatcher rd = request.getRequestDispatcher("movie.jsp");
+                        rd.forward(request, response);
                     }
                 }
             }
