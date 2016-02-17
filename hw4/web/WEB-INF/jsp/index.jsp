@@ -1,19 +1,22 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-    "http://www.w3.org/TR/html4/loose.dtd">
+<%-- 
+    Document   : books
+    Created on : Feb 8, 2016, 3:44:45 PM
+    Author     : kym-1992
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to Spring Web MVC project</title>
+        <title>Books</title>
     </head>
-
     <body>
-        <p>Hello! This is the default welcome page for a Spring Web MVC project.</p>
-        <p><i>To display a different welcome page for this project, modify</i>
-            <tt>index.jsp</tt> <i>, or create your own welcome page then change
-                the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
-                welcome page and also update the welcome-file setting in</i>
-            <tt>web.xml</tt>.</p>
+        <h1>How many books do you want to add?</h1>
+        <form action="books.htm" method="post">
+            <input type="number" min="1" name="bookQuantity" required />
+            <input type="submit" name="Submit" value="Submit"/>
+            <input type="hidden" name="action" value="add"/>
+        </form>
     </body>
 </html>

@@ -13,7 +13,7 @@
         <title>Enter Book Details</title>
     </head>
     <body style="background-color: yellowgreen">
-        <form action="books.do" method="post">
+        <form action="books.htm" method="post">
             <table border="1px">
                 <tr>
                     <td>ISBN</td>

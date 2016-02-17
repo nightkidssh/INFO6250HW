@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +21,9 @@ import org.springframework.web.servlet.mvc.Controller;
  * @author kym-1992
  */
 public class BooksController implements Controller{
+
+    public BooksController() {
+    }
 
     @Override
     public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
@@ -35,19 +37,18 @@ public class BooksController implements Controller{
 //            /* TODO output your page here. You may use following sample code. */
 //        }
         
+//        if(action == null){
+//            mv.setViewName("books");
+//        }
+
         if(action.equals("add")){
             int bookQuantity = Integer.parseInt(hsr.getParameter("bookQuantity"));
             if(bookQuantity > 0){
-//                hsr.setAttribute("bookQuantity", bookQuantity);
-//                RequestDispatcher rd = hsr.getRequestDispatcher("/WEB-INF/views/addBooks.jsp");
-//                rd.forward(hsr, hsr1);    
                 mv.addObject("bookQuantity", bookQuantity);
                 mv.setViewName("addBooks");
             }
             else{
-//                RequestDispatcher rd = hsr.getRequestDispatcher("movie.jsp");             
-//                rd.forward(hsr, hsr1);
-                mv.setViewName("movie");
+                mv.setViewName("index");
             }
         }
         
@@ -79,16 +80,12 @@ public class BooksController implements Controller{
 
                     stmt.close();
                     
-                    hsr.setAttribute("quantity", isbnList.length);
-//                    RequestDispatcher rd = hsr.getRequestDispatcher("/WEB-INF/views/booksAdded.jsp");
-//                    rd.forward(hsr, hsr1);                    
+                    hsr.setAttribute("quantity", isbnList.length);                
                     mv.setViewName("booksAdded");
                     
                 } catch (SQLException ex) {
-                    Logger.getLogger(BooksController.class.getName()).log(Level.SEVERE, null, ex);
-//                    RequestDispatcher rd = hsr.getRequestDispatcher("books.jsp");
-//                    rd.forward(hsr, hsr1);          
-                    mv.setViewName("books");
+                    Logger.getLogger(BooksController.class.getName()).log(Level.SEVERE, null, ex);         
+                    mv.setViewName("index");
                 }                    
         }
         
