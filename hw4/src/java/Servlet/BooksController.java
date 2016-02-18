@@ -5,12 +5,10 @@
  */
 package Servlet;
 
-import DAO.DAO;
+import Bean.BookBean;
+import DAO.BooksDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,8 +19,10 @@ import org.springframework.web.servlet.mvc.Controller;
  * @author kym-1992
  */
 public class BooksController implements Controller{
-
-    public BooksController() {
+    BooksDAO booksDAO;
+    
+    public BooksController(BooksDAO booksDAO) {
+        this.booksDAO = booksDAO;
     }
 
     @Override
@@ -33,13 +33,6 @@ public class BooksController implements Controller{
         Connection conn = null;
         PreparedStatement stmt = null;
         
-//        try (PrintWriter out = hsr1.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//        }
-        
-//        if(action == null){
-//            mv.setViewName("books");
-//        }
 
         if(action.equals("add")){
             int bookQuantity = Integer.parseInt(hsr.getParameter("bookQuantity"));
@@ -58,35 +51,19 @@ public class BooksController implements Controller{
             String[] authorsList = hsr.getParameterValues("authors");
             String[] priceList = hsr.getParameterValues("price");
             
-            DAO dao = new DAO();
-            conn = dao.getConnection();
             
-            
-                String sql = "INSERT INTO books (isbn, title, authors, price)"
-                        + "VALUES"
-                        + "(?, ?, ?, ?)";
-                try {
-                    stmt = conn.prepareStatement(sql);
-                    
-                    for(int i=0; i < isbnList.length; i++){
-                        stmt.setString(1, isbnList[i]);
-                        stmt.setString(2, titleList[i]);
-                        stmt.setString(3, authorsList[i]);
-                        
-                        int price = Integer.parseInt(priceList[i]);
-                        stmt.setInt(4, price);
-                        stmt.executeUpdate();                        
-                    }
+            for(int i = 0; i < isbnList.length; i++){
+                BookBean book = new BookBean();
+                book.setIsbn(isbnList[i]);
+                book.setTitle(titleList[i]);
+                book.setAuthors(authorsList[i]);
+                float price = Float.parseFloat(priceList[i]);
+                book.setPrice(price);
+                booksDAO.addBooks(book, mv);
+            }
 
-                    stmt.close();
-                    
-                    hsr.setAttribute("quantity", isbnList.length);                
-                    mv.setViewName("booksAdded");
-                    
-                } catch (SQLException ex) {
-                    Logger.getLogger(BooksController.class.getName()).log(Level.SEVERE, null, ex);         
-                    mv.setViewName("index");
-                }                    
+                hsr.setAttribute("quantity", isbnList.length);                
+                mv.setViewName("booksAdded");                   
         }
         
         return mv;
