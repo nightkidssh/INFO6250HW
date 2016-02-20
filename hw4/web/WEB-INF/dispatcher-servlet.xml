@@ -21,6 +21,7 @@
             <props>
                 <prop key="index.htm">indexController</prop>
                 <prop key="books.htm">booksController</prop>
+                <prop key="part4.htm">part4Controller</prop>
             </props>
         </property>
     </bean>
@@ -40,4 +41,9 @@
     <bean name="booksController" class="Servlet.BooksController">
         <constructor-arg name="booksDAO" ref="booksDAO"/>
     </bean>
+    
+    <bean name="part4Controller" class="Servlet.Part4Controller">
+        
+    </bean>
+    
 </beans>

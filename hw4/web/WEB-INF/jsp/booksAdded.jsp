@@ -14,6 +14,6 @@
     </head>
     <body style="background-color: greenyellow">
         <h1><c:out value="${requestScope.quantity}"/> books added successfully</h1>
-        <a href="books.jsp">Click here to go back to the main page</a>
+        <a href="index.htm">Click here to go back to the main page</a>
     </body>
 </html>

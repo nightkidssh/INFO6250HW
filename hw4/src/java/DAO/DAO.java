@@ -24,9 +24,9 @@ public class DAO {
     
     public DAO(){
         driver = "com.mysql.jdbc.Driver";
-        dburl = "jdbc:mysql://107.170.205.206:3306/lab5";
-        dbuser = "java";
-        dbpassword="javaUser@1";
+        dburl = "jdbc:mysql://localhost:3306/webtoolhw3_schema";
+        dbuser = "root";
+        dbpassword="j-epyppsC5Qg";
         
         DbUtils.loadDriver(driver);
     }
