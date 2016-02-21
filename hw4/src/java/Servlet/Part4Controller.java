@@ -102,6 +102,11 @@ public class Part4Controller implements Controller{
         }
         
         else if(action.equals("doInsert")){
+//            orders = (ArrayList<SalesOrderBean>) hsr.getAttribute("recordList");
+//            for(SalesOrderBean salesOrderBean: orders){
+//                insertCSVDAO.addRecord(salesOrderBean);
+//            }
+            
             String[] SalesOrderID = hsr.getParameterValues("SalesOrderID");
             String[] RevisionNumber = hsr.getParameterValues("RevisionNumber");
             String[] OrderDate = hsr.getParameterValues("OrderDate");
