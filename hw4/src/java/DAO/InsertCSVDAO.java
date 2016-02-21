@@ -44,7 +44,14 @@ public class InsertCSVDAO extends DAO{
             ps.setInt(15, orderBean.getShipToAddressID());
             ps.setInt(16, orderBean.getShipMethodID());
             ps.setInt(17, orderBean.getCreditCardID());
-            
+            ps.setString(18, orderBean.getCreditCardApprovalCode());
+            ps.setString(19, orderBean.getCurrencyRateID());
+            ps.setDouble(20, orderBean.getSubTotal());
+            ps.setDouble(21, orderBean.getTaxAmt());
+            ps.setDouble(22, orderBean.getFreight());
+            ps.setDouble(23, orderBean.getTotalDue());
+            ps.setString(24, orderBean.getComment());
+            ps.setString(25, orderBean.getModifiedDate());
             
             ps.executeUpdate();
             

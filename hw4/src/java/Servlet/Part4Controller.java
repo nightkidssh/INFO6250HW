@@ -6,6 +6,7 @@
 package Servlet;
 
 import Bean.SalesOrderBean;
+import DAO.InsertCSVDAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,6 +23,11 @@ import org.springframework.web.servlet.mvc.Controller;
  */
 public class Part4Controller implements Controller{
     private ArrayList<SalesOrderBean> orders;
+    InsertCSVDAO insertCSVDAO;
+    
+    public Part4Controller(InsertCSVDAO insertCSVDAO) {
+        this.insertCSVDAO = insertCSVDAO;
+    }
     
     @Override
     public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
@@ -97,10 +103,68 @@ public class Part4Controller implements Controller{
         
         else if(action.equals("doInsert")){
             String[] SalesOrderID = hsr.getParameterValues("SalesOrderID");
+            String[] RevisionNumber = hsr.getParameterValues("RevisionNumber");
+            String[] OrderDate = hsr.getParameterValues("OrderDate");
+            String[] DueDate = hsr.getParameterValues("DueDate");
+            String[] ShipDate = hsr.getParameterValues("ShipDate");
+            String[] Status = hsr.getParameterValues("Status");
+            String[] OnlineOrderFlag = hsr.getParameterValues("OnlineOrderFlag");
+            String[] SalesOrderNumber = hsr.getParameterValues("SalesOrderNumber");
+            String[] PurchaseOrderNumber = hsr.getParameterValues("PurchaseOrderNumber");
+            String[] AccountNumber = hsr.getParameterValues("AccountNumber");
+            String[] CustomerID = hsr.getParameterValues("CustomerID");
+            String[] SalesPersonID = hsr.getParameterValues("SalesPersonID");
+            String[] TerritoryID = hsr.getParameterValues("TerritoryID");
+            String[] BillToAddressID = hsr.getParameterValues("BillToAddressID");
+            String[] ShipToAddressID = hsr.getParameterValues("ShipToAddressID");
+            String[] ShipMethodID = hsr.getParameterValues("ShipMethodID");
+            String[] CreditCardID = hsr.getParameterValues("CreditCardID");
+            String[] CreditCardApprovalCode = hsr.getParameterValues("CreditCardApprovalCode");
+            String[] CurrencyRateID = hsr.getParameterValues("CurrencyRateID");
+            String[] SubTotal = hsr.getParameterValues("SubTotal");
+            String[] TaxAmt = hsr.getParameterValues("TaxAmt");
+            String[] Freight = hsr.getParameterValues("Freight");
+            String[] TotalDue = hsr.getParameterValues("TotalDue");
+            String[] Comment = hsr.getParameterValues("Comment");
+            String[] ModifiedDate = hsr.getParameterValues("ModifiedDate");
             
-            for(int i = 0; i < SalesOrderID.length; i++){
-                System.out.println(SalesOrderID[i]);
+            
+            for(int i = 0; i < 100; i++){
+                SalesOrderBean salesOrderBean = new SalesOrderBean();
+                salesOrderBean.setSalesOrderID(Integer.parseInt(SalesOrderID[i]));
+                salesOrderBean.setRevisionNumber(Integer.parseInt(RevisionNumber[i]));
+                salesOrderBean.setOrderDate(OrderDate[i]);
+                salesOrderBean.setDueDate(DueDate[i]);
+                salesOrderBean.setShipDate(ShipDate[i]);
+                salesOrderBean.setStatus(Integer.parseInt(Status[i]));
+                salesOrderBean.setOnlineOrderFlag(Integer.parseInt(OnlineOrderFlag[i]));
+                salesOrderBean.setSalesOrderNumber(SalesOrderNumber[i]);
+                salesOrderBean.setPurchaseOrderNumber(PurchaseOrderNumber[i]);
+                salesOrderBean.setAccountNumber(AccountNumber[i]);
+                
+                salesOrderBean.setCustomerID(Integer.parseInt(CustomerID[i]));
+                salesOrderBean.setSalesPersonID(Integer.parseInt(SalesPersonID[i]));
+                salesOrderBean.setTerritoryID(Integer.parseInt(TerritoryID[i]));
+                salesOrderBean.setBillToAddressID(Integer.parseInt(BillToAddressID[i]));
+                salesOrderBean.setShipToAddressID(Integer.parseInt(ShipToAddressID[i]));
+                salesOrderBean.setShipMethodID(Integer.parseInt(ShipMethodID[i]));
+                salesOrderBean.setCreditCardID(Integer.parseInt(CreditCardID[i]));
+                
+                salesOrderBean.setCreditCardApprovalCode(CreditCardApprovalCode[i]);
+                salesOrderBean.setCurrencyRateID(CurrencyRateID[i]);
+                salesOrderBean.setSubTotal(Double.parseDouble(SubTotal[i]));
+                salesOrderBean.setTaxAmt(Double.parseDouble(TaxAmt[i]));
+                salesOrderBean.setFreight(Double.parseDouble(Freight[i]));
+                salesOrderBean.setTotalDue(Double.parseDouble(TotalDue[i]));
+                salesOrderBean.setComment(Comment[i]);
+                salesOrderBean.setModifiedDate(ModifiedDate[i]);           
+                
+                insertCSVDAO.addRecord(salesOrderBean);
             }
+            
+                mv.addObject("quantity", SalesOrderID.length);
+                mv.addObject("flag", "added");
+                mv.setViewName("part4");            
         }
         
         return mv;

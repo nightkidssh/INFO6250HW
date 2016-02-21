@@ -58,34 +58,38 @@
                     <c:forEach var="record" items="${requestScope.orderList}">
                         <tr>
                             <td><input type="text" name= "SalesOrderID" value="${record.getSalesOrderID()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getRevisionNumber()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getOrderDate()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getDueDate()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getShipDate()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getStatus()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getOnlineOrderFlag()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getSalesOrderNumber()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getPurchaseOrderNumber()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getAccountNumber()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getCustomerID()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getSalesPersonID()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getTerritoryID()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getBillToAddressID()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getShipToAddressID()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getShipMethodID()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getCreditCardID()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getCreditCardApprovalCode()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getCurrencyRateID()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getSubTotal()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getTaxAmt()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getFreight()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getTotalDue()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getComment()}" readonly=""/></td>
-                            <td><input type="text" name= "SalesOrderID" value="${record.getModifiedDate()}" readonly=""/></td>
+                            <td><input type="text" name= "RevisionNumber" value="${record.getRevisionNumber()}" readonly=""/></td>
+                            <td><input type="text" name= "OrderDate" value="${record.getOrderDate()}" readonly=""/></td>
+                            <td><input type="text" name= "DueDate" value="${record.getDueDate()}" readonly=""/></td>
+                            <td><input type="text" name= "ShipDate" value="${record.getShipDate()}" readonly=""/></td>
+                            <td><input type="text" name= "Status" value="${record.getStatus()}" readonly=""/></td>
+                            <td><input type="text" name= "OnlineOrderFlag" value="${record.getOnlineOrderFlag()}" readonly=""/></td>
+                            <td><input type="text" name= "SalesOrderNumber" value="${record.getSalesOrderNumber()}" readonly=""/></td>
+                            <td><input type="text" name= "PurchaseOrderNumber" value="${record.getPurchaseOrderNumber()}" readonly=""/></td>
+                            <td><input type="text" name= "AccountNumber" value="${record.getAccountNumber()}" readonly=""/></td>
+                            <td><input type="text" name= "CustomerID" value="${record.getCustomerID()}" readonly=""/></td>
+                            <td><input type="text" name= "SalesPersonID" value="${record.getSalesPersonID()}" readonly=""/></td>
+                            <td><input type="text" name= "TerritoryID" value="${record.getTerritoryID()}" readonly=""/></td>
+                            <td><input type="text" name= "BillToAddressID" value="${record.getBillToAddressID()}" readonly=""/></td>
+                            <td><input type="text" name= "ShipToAddressID" value="${record.getShipToAddressID()}" readonly=""/></td>
+                            <td><input type="text" name= "ShipMethodID" value="${record.getShipMethodID()}" readonly=""/></td>
+                            <td><input type="text" name= "CreditCardID" value="${record.getCreditCardID()}" readonly=""/></td>
+                            <td><input type="text" name= "CreditCardApprovalCode" value="${record.getCreditCardApprovalCode()}" readonly=""/></td>
+                            <td><input type="text" name= "CurrencyRateID" value="${record.getCurrencyRateID()}" readonly=""/></td>
+                            <td><input type="text" name= "SubTotal" value="${record.getSubTotal()}" readonly=""/></td>
+                            <td><input type="text" name= "TaxAmt" value="${record.getTaxAmt()}" readonly=""/></td>
+                            <td><input type="text" name= "Freight" value="${record.getFreight()}" readonly=""/></td>
+                            <td><input type="text" name= "TotalDue" value="${record.getTotalDue()}" readonly=""/></td>
+                            <td><input type="text" name= "Comment" value="${record.getComment()}" readonly=""/></td>
+                            <td><input type="text" name= "ModifiedDate" value="${record.getModifiedDate()}" readonly=""/></td>
                         </tr>
                     </c:forEach>
                     </table>
                     </form>
+                </c:when>
+                <c:when test="${requestScope.flag == 'added'}">
+                    <h1>Number of column added: ${requestScope.quantity}</h1>
+                    <a href="part4.htm">Return to home</a>
                 </c:when>
         </c:choose>
     </body>

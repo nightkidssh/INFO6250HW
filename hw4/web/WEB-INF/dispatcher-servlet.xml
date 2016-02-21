@@ -11,6 +11,8 @@
 
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
     <bean id="booksDAO" class="DAO.BooksDAO"/>
+    <bean id="insertCSVDAO" class="DAO.InsertCSVDAO"/>
+    
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
@@ -43,7 +45,7 @@
     </bean>
     
     <bean name="part4Controller" class="Servlet.Part4Controller">
-        
+        <constructor-arg name="insertCSVDAO" ref="insertCSVDAO"/>
     </bean>
     
 </beans>
