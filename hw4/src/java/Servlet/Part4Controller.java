@@ -26,6 +26,8 @@ public class Part4Controller implements Controller{
     @Override
     public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
         ModelAndView mv = new ModelAndView();
+        orders = new ArrayList<>();
+                    
         
         String action = hsr.getParameter("part4action");
         
@@ -35,8 +37,6 @@ public class Part4Controller implements Controller{
         }
         
         else if(action.equals("enterName")){
-            orders = new ArrayList<>();
-            
             String filename = hsr.getParameter("filename");
             try {
                 // Load the driver.
@@ -73,9 +73,13 @@ public class Part4Controller implements Controller{
                     salesOrderBean.setCreditCardID(rs.getInt(17));
                     salesOrderBean.setCreditCardApprovalCode(rs.getString(18));
                     salesOrderBean.setCurrencyRateID(rs.getString(19));
-                    
-                    
-                            
+                    salesOrderBean.setSubTotal(rs.getDouble(20));
+                    salesOrderBean.setTaxAmt(rs.getDouble(21));
+                    salesOrderBean.setFreight(rs.getDouble(22));
+                    salesOrderBean.setTotalDue(rs.getDouble(23));
+                    salesOrderBean.setComment(rs.getString(24));
+                    salesOrderBean.setModifiedDate(rs.getString(25));
+                        
                     orders.add(salesOrderBean);
                 }
 
@@ -90,6 +94,15 @@ public class Part4Controller implements Controller{
                 System.out.println("EXCEPTION: " + e.getMessage());
             }            
         }
+        
+        else if(action.equals("doInsert")){
+            String[] SalesOrderID = hsr.getParameterValues("SalesOrderID");
+            
+            for(int i = 0; i < SalesOrderID.length; i++){
+                System.out.println(SalesOrderID[i]);
+            }
+        }
+        
         return mv;
     }
     
