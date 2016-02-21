@@ -24,6 +24,7 @@
                 <prop key="index.htm">indexController</prop>
                 <prop key="books.htm">booksController</prop>
                 <prop key="part4.htm">part4Controller</prop>
+                <prop key="part5.htm">part5Controller</prop>
             </props>
         </property>
     </bean>
@@ -47,5 +48,8 @@
     <bean name="part4Controller" class="Servlet.Part4Controller">
         <constructor-arg name="insertCSVDAO" ref="insertCSVDAO"/>
     </bean>
-    
+ 
+    <bean name="part5Controller" class="Servlet.Part5Controller">
+        <constructor-arg name="insertCSVDAO" ref="insertCSVDAO"/>
+    </bean>       
 </beans>
