@@ -41,9 +41,9 @@ public class Part5CustomTag extends SimpleTagSupport{
             JspWriter out = getJspContext().getOut();
             
             out.println("                    <h1>Please confirm the input:</h1>\n" +
-"                    <form action=\"part4.htm\" method=\"post\">\n" +
+"                    <form action=\"part5.htm\" method=\"post\">\n" +
 "                        <input type=\"submit\" value=\"Submit\" name=\"Submit\"/>\n" +
-"                        <input type=\"hidden\" name=\"part4action\" value=\"doInsert\" />\n" +
+"                        <input type=\"hidden\" name=\"part5action\" value=\"doInsert\" />\n" +
 "                    <table border=\"1\">\n" +
 "                    <tr>\n" +
 "                        <td>SalesOrderID</td>\n" +

@@ -7,11 +7,6 @@ package ServletFiles;
 
 import Bean.SalesOrderBean;
 import DAO.InsertCSVDAO;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,7 +17,6 @@ import org.springframework.web.servlet.mvc.Controller;
  * @author kym-1992
  */
 public class Part5Controller implements Controller{
-    private ArrayList<SalesOrderBean> orders;
     InsertCSVDAO insertCSVDAO;
     
     public Part5Controller(InsertCSVDAO insertCSVDAO) {
@@ -32,7 +26,6 @@ public class Part5Controller implements Controller{
     @Override
     public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
         ModelAndView mv = new ModelAndView();
-        orders = new ArrayList<>();
                     
         
         String action = hsr.getParameter("part5action");
