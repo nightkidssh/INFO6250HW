@@ -41,15 +41,15 @@
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
 
-    <bean name="booksController" class="Servlet.BooksController">
+    <bean name="booksController" class="ServletFiles.BooksController">
         <constructor-arg name="booksDAO" ref="booksDAO"/>
     </bean>
     
-    <bean name="part4Controller" class="Servlet.Part4Controller">
+    <bean name="part4Controller" class="ServletFiles.Part4Controller">
         <constructor-arg name="insertCSVDAO" ref="insertCSVDAO"/>
     </bean>
  
-    <bean name="part5Controller" class="Servlet.Part5Controller">
+    <bean name="part5Controller" class="ServletFiles.Part5Controller">
         <constructor-arg name="insertCSVDAO" ref="insertCSVDAO"/>
     </bean>       
 </beans>

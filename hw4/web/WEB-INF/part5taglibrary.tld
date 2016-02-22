@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
   <tlib-version>1.0</tlib-version>
-  <jsp-version>2.0</jsp-version>
+  <jsp-version>2.3</jsp-version>
   <short-name>part5taglibrary</short-name>
   <uri>/WEB-INF/part5taglibrary</uri>
   <!-- A validator verifies that the tags are used correctly at JSP
@@ -21,10 +21,9 @@
           <listener-class>com.mycompany.TagLibListener</listener-class> 
       </listener>
     -->
-    <tag>
+  <tag>
     <name>part5tag</name>
-    <tag-class>Servlet.Part5CustomTag</tag-class>
+    <tag-class>ServletFiles.Part5CustomTag</tag-class>
     <body-content>empty</body-content>
-    </tag>    
-    
+  </tag>
 </taglib>

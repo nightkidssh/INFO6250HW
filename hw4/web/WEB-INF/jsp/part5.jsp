@@ -4,7 +4,7 @@
     Author     : kym-1992
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="part5" uri="/WEB-INF/part5taglibrary.tld" %>
+<%@ taglib prefix="part5taglibrary" uri="/WEB-INF/part5taglibrary.tld" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
                 </form>                
             </c:when>
                 <c:when test="${requestScope.flag == 'enterName'}">
-                    <part5:part5tag />
+                    <part5taglibrary:part5tag />
                 </c:when>
                     
                 <c:when test="${requestScope.flag == 'added'}">
