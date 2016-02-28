@@ -28,4 +28,32 @@
       </key>
     </database-model>
   </data-source>
+  <data-source name="hibernate.cfg.xml/Hibernate" uuid="09f302aa-3aa5-4787-b532-ab62a2787a8f">
+    <database-info product="MySQL" version="5.7.11" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="hw5"/>
+      <table id="2" parent="1" name="books"/>
+      <column id="3" parent="2" name="isbn">
+        <mandatory>1</mandatory>
+        <data-type>varchar(12)</data-type>
+      </column>
+      <column id="4" parent="2" name="title">
+        <data-type>varchar(60)</data-type>
+      </column>
+      <column id="5" parent="2" name="authors">
+        <data-type>varchar(60)</data-type>
+      </column>
+      <column id="6" parent="2" name="price">
+        <data-type>float</data-type>
+      </column>
+      <key id="7" parent="2" name="PRIMARY">
+        <columns>isbn</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
 </component>

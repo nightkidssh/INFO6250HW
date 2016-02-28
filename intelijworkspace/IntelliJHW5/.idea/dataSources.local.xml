@@ -7,5 +7,11 @@
       <schema-pattern>hw5.*</schema-pattern>
       <default-schemas>hw5.*</default-schemas>
     </data-source>
+    <data-source name="hibernate.cfg.xml/Hibernate" uuid="09f302aa-3aa5-4787-b532-ab62a2787a8f">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>hw5.*</schema-pattern>
+      <default-schemas>hw5.*</default-schemas>
+    </data-source>
   </component>
 </project>
