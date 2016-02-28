@@ -10,12 +10,14 @@
 
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
     <bean id="booksDAO" class="Dao.BooksDao"/>
+    <bean id="insertCSVDAO" class="Dao.InsertCSVDAO"/>
 
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
                 <prop key="index.htm">indexController</prop>
                 <prop key="books.htm">booksController</prop>
+                <prop key="part4.htm">part4Controller</prop>
             </props>
         </property>
     </bean>
@@ -36,5 +38,8 @@
         <constructor-arg name="booksDAO" ref="booksDAO"/>
     </bean>
 
+    <bean name="part4Controller" class="ServletFiles.Part4Controller">
+        <constructor-arg name="insertCSVDAO" ref="insertCSVDAO"/>
+    </bean>
 
 </beans>

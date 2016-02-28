@@ -31,7 +31,7 @@
     </filter>
     <filter-mapping>
         <filter-name>BooksFielter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/books.htm</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>dispatcher</servlet-name>

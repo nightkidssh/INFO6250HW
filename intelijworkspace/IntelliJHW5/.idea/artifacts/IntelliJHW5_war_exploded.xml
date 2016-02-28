@@ -14,6 +14,8 @@
           <element id="library" level="project" name="mysql-connector-java-5.1.38-bin" />
           <element id="library" level="project" name="json-20140107" />
           <element id="library" level="project" name="jstl-api" />
+          <element id="library" level="project" name="csvjdbc-1.0-28" />
+          <element id="library" level="project" name="commons-dbutils-1.6" />
         </element>
       </element>
     </root>

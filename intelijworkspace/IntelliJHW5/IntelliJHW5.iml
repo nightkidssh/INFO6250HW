@@ -38,5 +38,7 @@
     <orderEntry type="library" name="json-20140107" level="project" />
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" name="jstl-api" level="project" />
+    <orderEntry type="library" name="csvjdbc-1.0-28" level="project" />
+    <orderEntry type="library" name="commons-dbutils-1.6" level="project" />
   </component>
 </module>
