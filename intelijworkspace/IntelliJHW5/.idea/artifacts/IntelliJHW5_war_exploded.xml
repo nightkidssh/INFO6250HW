@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="IntelliJHW5:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/IntelliJHW5_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="IntelliJHW5/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="IntelliJHW5" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Hibernate 4.2.2-4.2.2" />
+          <element id="library" level="project" name="Spring-4.2.5.RELEASE" />
+          <element id="library" level="project" name="Spring MVC-4.2.5.RELEASE" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
