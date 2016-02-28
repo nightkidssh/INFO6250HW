@@ -36,5 +36,7 @@
     <orderEntry type="library" name="Spring MVC-4.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.38-bin" level="project" />
     <orderEntry type="library" name="json-20140107" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="jstl-api" level="project" />
   </component>
 </module>

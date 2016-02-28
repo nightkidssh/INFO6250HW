@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jstl-api">
+    <CLASSES>
+      <root url="jar:///Applications/NetBeans/NetBeans 8.1.app/Contents/Resources/NetBeans/enterprise/modules/ext/jstl-api.jar!/" />
+      <root url="jar:///Applications/NetBeans/NetBeans 8.1.app/Contents/Resources/NetBeans/enterprise/modules/ext/jstl-impl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

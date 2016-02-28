@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - hw5@localhost" uuid="2ac4a0cf-8c8c-4536-81ee-7328189da27d">
+    <database-info product="MySQL" version="5.7.11" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="hw5"/>
+      <table id="2" parent="1" name="books"/>
+      <column id="3" parent="2" name="isbn">
+        <mandatory>1</mandatory>
+        <data-type>varchar(12)</data-type>
+      </column>
+      <column id="4" parent="2" name="title">
+        <data-type>varchar(60)</data-type>
+      </column>
+      <column id="5" parent="2" name="authors">
+        <data-type>varchar(60)</data-type>
+      </column>
+      <column id="6" parent="2" name="price">
+        <data-type>float</data-type>
+      </column>
+      <key id="7" parent="2" name="PRIMARY">
+        <columns>isbn</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>
