@@ -99,6 +99,7 @@ public class Part4Controller implements Controller{
                 }
 
                 mv.addObject("fileNamee", filename);
+                mv.addObject("currentPage", page);
                 mv.addObject("maxPage", totalRecords/100+1);
                 mv.addObject("orderList", orders);
                 mv.addObject("flag", "display");

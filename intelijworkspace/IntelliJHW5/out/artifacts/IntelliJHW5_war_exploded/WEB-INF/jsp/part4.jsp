@@ -8,6 +8,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Part 4</title>
 </head>
@@ -52,6 +54,8 @@
                     <td>TotalDue</td>
                     <td>Comment</td>
                     <td>ModifiedDate</td>
+                    <td>AddToDataBase</td>
+                    <td>DeleteRecord</td>
                 </tr>
 
                 <c:forEach var="record" items="${requestScope.orderList}">
@@ -81,11 +85,24 @@
                         <td><input type="text" name= "TotalDue" value="${record.getTotalDue()}" readonly=""/></td>
                         <td><input type="text" name= "Comment" value="${record.getComment()}" readonly=""/></td>
                         <td><input type="text" name= "ModifiedDate" value="${record.getModifiedDate()}" readonly=""/></td>
+                        <td><input type="button" value="SAVE" onclick="addToDB(this, '${record.getSalesOrderID()}', '${record.getRevisionNumber()}', '${record.getOrderDate()}',
+                            '${record.getDueDate()}', '${record.getShipDate()}', '${record.getStatus()}', '${record.getOnlineOrderFlag()}', '${record.getSalesOrderNumber()}',
+                            '${record.getPurchaseOrderNumber()}', '${record.getAccountNumber()}', '${record.getCustomerID()}', '${record.getSalesPersonID()}', '${record.getTerritoryID()}', '${record.getBillToAddressID()}',
+                            '${record.getShipToAddressID()}', '${record.getShipMethodID()}', '${record.getCreditCardID()}', '${record.getCreditCardApprovalCode()}', '${record.getCurrencyRateID()}', '${record.getSubTotal()}',
+                            '${record.getTaxAmt()}', '${record.getFreight()}', '${record.getTotalDue()}', '${record.getComment()}', '${record.getModifiedDate()}')"/></td>
+                        <td><input type="button" value="Remove">Remove</input></td>
                     </tr>
                 </c:forEach>
             </table>
             <c:forEach var="page" begin="1" end="${requestScope.maxPage}">
-                <a href="part4.htm?page=${page}&part4action=enterName&filename=${requestScope.fileNamee}">  [${page}]  </a>
+                <c:choose>
+                    <c:when test="${page == requestScope.currentPage+1}">
+                        <a>[${page}]</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="part4.htm?page=${page}&part4action=enterName&filename=${requestScope.fileNamee}">  [${page}]  </a>
+                    </c:otherwise>
+                </c:choose>
             </c:forEach>
         </form>
     </c:when>
@@ -94,5 +111,12 @@
         <a href="part4.htm">Return to home</a>
     </c:when>
 </c:choose>
+<script>
+    function addToDB(thisNode, SalesOrderID,RevisionNumber,OrderDate,DueDate,ShipDate,Status,OnlineOrderFlag,SalesOrderNumber,PurchaseOrderNumber,AccountNumber,CustomerID,SalesPersonID,TerritoryID,BillToAddressID,ShipToAddressID,ShipMethodID,CreditCardID,CreditCardApprovalCode,CurrencyRateID,SubTotal,TaxAmt,Freight,TotalDue,Comment,ModifiedDate){
+        thisNode.parentNode.parentNode.style.backgroundColor = "green";
+        thisNode.value = "SAVED";
+        thisNode.disabled = true;
+    }
+</script>
 </body>
 </html>
