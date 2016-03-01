@@ -146,7 +146,7 @@ public class Part4Controller implements Controller{
             String[] ModifiedDate = hsr.getParameterValues("ModifiedDate");
 
 
-            for(int i = 0; i < 100; i++){
+            for(int i = 0; i < SalesOrderID.length; i++){
                 SalesOrderBean salesOrderBean = new SalesOrderBean();
                 salesOrderBean.setSalesOrderID(Integer.parseInt(SalesOrderID[i]));
                 salesOrderBean.setRevisionNumber(Integer.parseInt(RevisionNumber[i]));
@@ -179,9 +179,9 @@ public class Part4Controller implements Controller{
                 insertCSVDAO.addRecord(salesOrderBean);
             }
 
-            mv.addObject("quantity", SalesOrderID.length);
-            mv.addObject("flag", "added");
-            mv.setViewName("part4");
+//            mv.addObject("quantity", SalesOrderID.length);
+//            mv.addObject("flag", "added");
+//            mv.setViewName("part4");
         }
 
         return mv;

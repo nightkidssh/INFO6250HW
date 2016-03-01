@@ -90,7 +90,7 @@
                             '${record.getPurchaseOrderNumber()}', '${record.getAccountNumber()}', '${record.getCustomerID()}', '${record.getSalesPersonID()}', '${record.getTerritoryID()}', '${record.getBillToAddressID()}',
                             '${record.getShipToAddressID()}', '${record.getShipMethodID()}', '${record.getCreditCardID()}', '${record.getCreditCardApprovalCode()}', '${record.getCurrencyRateID()}', '${record.getSubTotal()}',
                             '${record.getTaxAmt()}', '${record.getFreight()}', '${record.getTotalDue()}', '${record.getComment()}', '${record.getModifiedDate()}')"/></td>
-                        <td><input type="button" value="Remove">Remove</input></td>
+                        <td><input type="button" value="Remove" onclick="removeRow(this)"/></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -112,10 +112,60 @@
     </c:when>
 </c:choose>
 <script>
+    var xmlHttp;
+    xmlHttp = GetXmlHttpObject();
+
     function addToDB(thisNode, SalesOrderID,RevisionNumber,OrderDate,DueDate,ShipDate,Status,OnlineOrderFlag,SalesOrderNumber,PurchaseOrderNumber,AccountNumber,CustomerID,SalesPersonID,TerritoryID,BillToAddressID,ShipToAddressID,ShipMethodID,CreditCardID,CreditCardApprovalCode,CurrencyRateID,SubTotal,TaxAmt,Freight,TotalDue,Comment,ModifiedDate){
-        thisNode.parentNode.parentNode.style.backgroundColor = "green";
-        thisNode.value = "SAVED";
-        thisNode.disabled = true;
+        if (xmlHttp == null)
+        {
+            alert("Your browser does not support AJAX!");
+            return;
+        }
+
+        var query = "part4action=doInsert&SalesOrderID=" + SalesOrderID + "&RevisionNumber=" + RevisionNumber + "&OrderDate=" + OrderDate +"&DueDate=" + DueDate +"&ShipDate=" + ShipDate+"&Status=" + Status + "&OnlineOrderFlag=" + OnlineOrderFlag +"&SalesOrderNumber=" + SalesOrderNumber +
+                "&PurchaseOrderNumber=" +PurchaseOrderNumber+"&AccountNumber="+AccountNumber+"&CustomerID="+CustomerID+"&SalesPersonID=" + SalesPersonID+"&TerritoryID="+TerritoryID+"&BillToAddressID="+BillToAddressID+"&ShipToAddressID="+ShipToAddressID+"&ShipMethodID="+ShipMethodID+"&CreditCardID=" +CreditCardID+
+                "&CreditCardApprovalCode="+CreditCardApprovalCode+"&CurrencyRateID="+CurrencyRateID+"&SubTotal="+SubTotal+"&TaxAmt="+TaxAmt+"&Freight="+Freight+"&TotalDue="+TotalDue+"&Comment="+Comment+"&ModifiedDate="+ModifiedDate;
+
+        xmlHttp.onreadystatechange = function stateChanged()
+        {
+            if (xmlHttp.readyState == 4)
+            {
+                thisNode.parentNode.parentNode.style.backgroundColor = "green";
+                thisNode.value = "SAVED";
+                thisNode.disabled = true;
+            }
+        };
+        xmlHttp.open("POST", "part4.htm", true);
+        xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlHttp.send(query);
+        return false;
+
+    }
+
+    function removeRow(buttonNode){
+        trNode = buttonNode.parentNode.parentNode;
+        trNode.parentNode.removeChild(trNode);
+    }
+
+    function GetXmlHttpObject()
+    {
+        var xmlHttp = null;
+        try
+        {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        } catch (e)
+        {
+            // Internet Explorer
+            try
+            {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e)
+            {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
     }
 </script>
 </body>
