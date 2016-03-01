@@ -92,7 +92,7 @@
                     </tr>
                 </c:forEach>
             </table>
-            <button type="button" id="loadMoreButton" onclick="loadMore('${requestScope.fileNamee}', '${requestScope.currentPage}')">Load More</button>
+            <button type="button" id="loadMoreButton" onclick="loadMore('${requestScope.fileNamee}')">Load More</button>
         </form>
     </c:when>
     <c:when test="${requestScope.flag == 'added'}">
@@ -100,106 +100,110 @@
         <a href="part5.htm">Return to home</a>
     </c:when>
 </c:choose>
-<script>
+<script type="text/javascript">
     var xmlHttp;
     xmlHttp = GetXmlHttpObject();
+    var pagee = '${requestScope.currentPage}';
 
-    function loadMore(fileNamee, pagee){
+    function loadMore(fileNamee){
         if (xmlHttp == null)
         {
             alert("Your browser does not support AJAX!");
             return;
         }
 
-        var query = "part5action=enterName&filename=" + fileNamee + "&page=" + pagee;
+        var query = "part5action=loadMoreAjax&filename=" + fileNamee + "&page=" + pagee;
         xmlHttp.onreadystatechange = function stateChanged()
         {
             if (xmlHttp.readyState == 4)
             {
-                var lastTr = document.getElementById('orderTable').lastElementChild.lastElementChild;
+                var tableRef = document.getElementById('orderTable').getElementsByTagName('tbody')[0];
+
+
+                console.log(xmlHttp.responseText);
                 var json = JSON.parse(xmlHttp.responseText);
+                pagee = json.currentPage;
+
                 if(json.orders.length >0){
                     for(var i = 0; i<json.orders.length; i++){
-                        var tr1 = document.createElement("TR");
+                        var newRow = tableRef.insertRow(tableRef.rows.length);
 
-                        var td1= document.createElement("TD");
-                        td1.innerHTML = json.orders.SalesOrderID;
-                        tr1.appendChild(td1);
+                        var newCell = newRow.insertCell(0);
+                        var newText = document.createTextNode(json.orders[i].salesOrderID);
+                        newCell.appendChild(newText);
 
-                        var td2= document.createElement("TD");
-                        td2.innerHTML = json.orders.RevisionNumber;
+//                        var td2= document.createElement("TD");
+//                        td2.innerHTML = json.orders[i].revisionNumber;
+//
+//                        var td3= document.createElement("TD");
+//                        td3.innerHTML = json.orders[i].orderDate;
+//
+//                        var td4= document.createElement("TD");
+//                        td4.innerHTML = json.orders[i].dueDate;
+//
+//                        var td5= document.createElement("TD");
+//                        td5.innerHTML = json.orders[i].shipDate;
+//
+//                        var td6= document.createElement("TD");
+//                        td6.innerHTML = json.orders[i].status;
+//
+//                        var td7= document.createElement("TD");
+//                        td7.innerHTML = json.orders[i].onlineOrderFlag;
+//
+//                        var td8= document.createElement("TD");
+//                        td8.innerHTML = json.orders[i].salesOrderNumber;
+//
+//                        var td9= document.createElement("TD");
+//                        td9.innerHTML = json.orders[i].purchaseOrderNumber;
+//
+//                        var td10= document.createElement("TD");
+//                        td10.innerHTML = json.orders[i].accountNumber;
+//
+//                        var td11= document.createElement("TD");
+//                        td11.innerHTML = json.orders[i].customerID;
+//
+//                        var td12= document.createElement("TD");
+//                        td12.innerHTML = json.orders[i].salesPersonID;
+//
+//                        var td13= document.createElement("TD");
+//                        td13.innerHTML = json.orders[i].territoryID;
+//
+//                        var td14= document.createElement("TD");
+//                        td14.innerHTML = json.orders[i].billToAddressID;
+//
+//                        var td15= document.createElement("TD");
+//                        td15.innerHTML = json.orders[i].shipToAddressID;
+//
+//                        var td16= document.createElement("TD");
+//                        td16.innerHTML = json.orders[i].shipMethodID;
+//
+//                        var td17= document.createElement("TD");
+//                        td17.innerHTML = json.orders[i].creditCardID;
+//
+//                        var td18= document.createElement("TD");
+//                        td18.innerHTML = json.orders[i].creditCardApprovalCode;
+//
+//                        var td19= document.createElement("TD");
+//                        td19.innerHTML = json.orders[i].currencyRateID;
+//
+//                        var td20= document.createElement("TD");
+//                        td20.innerHTML = json.orders[i].subTotal;
+//
+//                        var td21= document.createElement("TD");
+//                        td21.innerHTML = json.orders[i].taxAmt;
+//
+//                        var td22= document.createElement("TD");
+//                        td22.innerHTML = json.orders[i].freight;
+//
+//                        var td23= document.createElement("TD");
+//                        td23.innerHTML = json.orders[i].totalDue;
+//
+//                        var td24= document.createElement("TD");
+//                        td24.innerHTML = json.orders[i].comment;
+//
+//                        var td25= document.createElement("TD");
+//                        td25.innerHTML = json.orders[i].modifiedDate;
 
-                        var td3= document.createElement("TD");
-                        td3.innerHTML = json.orders.OrderDate;
-
-                        var td4= document.createElement("TD");
-                        td4.innerHTML = json.orders.DueDate;
-
-                        var td5= document.createElement("TD");
-                        td5.innerHTML = json.orders.ShipDate;
-
-                        var td6= document.createElement("TD");
-                        td6.innerHTML = json.orders.Status;
-
-                        var td7= document.createElement("TD");
-                        td7.innerHTML = json.orders.OnlineOrderFlag;
-
-                        var td8= document.createElement("TD");
-                        td8.innerHTML = json.orders.SalesOrderNumber;
-
-                        var td9= document.createElement("TD");
-                        td9.innerHTML = json.orders.PurchaseOrderNumber;
-
-                        var td10= document.createElement("TD");
-                        td10.innerHTML = json.orders.AccountNumber;
-
-                        var td11= document.createElement("TD");
-                        td11.innerHTML = json.orders.CustomerID;
-
-                        var td12= document.createElement("TD");
-                        td12.innerHTML = json.orders.SalesPersonID;
-
-                        var td13= document.createElement("TD");
-                        td13.innerHTML = json.orders.TerritoryID;
-
-                        var td14= document.createElement("TD");
-                        td14.innerHTML = json.orders.BillToAddressID;
-
-                        var td15= document.createElement("TD");
-                        td15.innerHTML = json.orders.ShipToAddressID;
-
-                        var td16= document.createElement("TD");
-                        td16.innerHTML = json.orders.ShipMethodID;
-
-                        var td17= document.createElement("TD");
-                        td17.innerHTML = json.orders.CreditCardID;
-
-                        var td18= document.createElement("TD");
-                        td18.innerHTML = json.orders.CreditCardApprovalCode;
-
-                        var td19= document.createElement("TD");
-                        td19.innerHTML = json.orders.CurrencyRateID;
-
-                        var td20= document.createElement("TD");
-                        td20.innerHTML = json.orders.SubTotal;
-
-                        var td21= document.createElement("TD");
-                        td21.innerHTML = json.orders.TaxAmt;
-
-                        var td22= document.createElement("TD");
-                        td22.innerHTML = json.orders.Freight;
-
-                        var td23= document.createElement("TD");
-                        td23.innerHTML = json.orders.TotalDue;
-
-                        var td24= document.createElement("TD");
-                        td24.innerHTML = json.orders.Comment;
-
-                        var td25= document.createElement("TD");
-                        td25.innerHTML = json.orders.ModifiedDate;
-
-
-                        lastTr.parentNode.insertBefore(lastTr, tr1.nextSibling );
                     }
                 }
             }

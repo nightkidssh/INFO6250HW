@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -45,6 +46,84 @@ public class Part5Controller implements Controller{
         }
 
         else if(action.equals("enterName")){
+            String filename = hsr.getParameter("filename");
+            int page = 0;
+
+//            if(hsr.getParameter("page") !=null){
+//                page = Integer.parseInt(hsr.getParameter("page")) - 1;
+//            }
+
+            try {
+                // Load the driver.
+                Class.forName("org.relique.jdbc.csv.CsvDriver");
+
+                // Create a connection. CSV file is in D:
+                Connection conn = DriverManager.getConnection("jdbc:relique:csv:/STUDY/NEU/INFO6250/workspace/intelijworkspace/IntelliJHW5");
+
+                // Create a Statement object to execute the query with.
+                Statement stmt = conn.createStatement();
+
+                //Get Number of records
+                ResultSet total = stmt.executeQuery("SELECT COUNT(*) FROM "+ filename);
+                total.next();
+                int totalRecords = total.getInt(1);
+
+                // Select columns from SalesOrder.csv
+                ResultSet rs = stmt.executeQuery("SELECT * FROM "+ filename + " LIMIT 100 OFFSET " + page*100);
+
+                //loop through rs
+                while(rs.next()){
+                    SalesOrderBean salesOrderBean = new SalesOrderBean();
+                    salesOrderBean.setSalesOrderID(rs.getInt(1));
+                    salesOrderBean.setRevisionNumber(rs.getInt(2));
+                    salesOrderBean.setOrderDate(rs.getString(3));
+                    salesOrderBean.setDueDate(rs.getString(4));
+                    salesOrderBean.setShipDate(rs.getString(5));
+                    salesOrderBean.setStatus(rs.getInt(6));
+                    salesOrderBean.setOnlineOrderFlag(rs.getInt(7));
+                    salesOrderBean.setSalesOrderNumber(rs.getString(8));
+                    salesOrderBean.setPurchaseOrderNumber(rs.getString(9));
+                    salesOrderBean.setAccountNumber(rs.getString(10));
+                    salesOrderBean.setCustomerID(rs.getInt(11));
+                    salesOrderBean.setSalesPersonID(rs.getInt(12));
+                    salesOrderBean.setTerritoryID(rs.getInt(13));
+                    salesOrderBean.setBillToAddressID(rs.getInt(14));
+                    salesOrderBean.setShipToAddressID(rs.getInt(15));
+                    salesOrderBean.setShipMethodID(rs.getInt(16));
+                    salesOrderBean.setCreditCardID(rs.getInt(17));
+                    salesOrderBean.setCreditCardApprovalCode(rs.getString(18));
+                    salesOrderBean.setCurrencyRateID(rs.getString(19));
+                    salesOrderBean.setSubTotal(rs.getDouble(20));
+                    salesOrderBean.setTaxAmt(rs.getDouble(21));
+                    salesOrderBean.setFreight(rs.getDouble(22));
+                    salesOrderBean.setTotalDue(rs.getDouble(23));
+                    salesOrderBean.setComment(rs.getString(24));
+                    salesOrderBean.setModifiedDate(rs.getString(25));
+
+                    orders.add(salesOrderBean);
+                }
+
+//                JSONObject obj = new JSONObject();
+//                obj.put("orders", orders);
+//                System.out.println(orders.size());
+//                PrintWriter out = hsr1.getWriter();
+//                out.println(obj);
+
+                mv.addObject("fileNamee", filename);
+                mv.addObject("currentPage", page+2);
+                mv.addObject("orderList", orders);
+                mv.addObject("flag", "display");
+                mv.setViewName("part5");
+                // Clean up
+                conn.close();
+                stmt.close();
+                rs.close();
+            } catch (Exception e) {
+                System.out.println("EXCEPTION: " + e.getMessage());
+            }
+        }
+
+        else if(action.equals("loadMoreAjax")){
             String filename = hsr.getParameter("filename");
             int page = 0;
 
@@ -104,17 +183,21 @@ public class Part5Controller implements Controller{
 
                 JSONObject obj = new JSONObject();
                 obj.put("orders", orders);
-//                System.out.println(orders.size());
+                obj.put("currentPage", page+2);
+                PrintWriter out = hsr1.getWriter();
+                out.println(obj);
 
-                mv.addObject("fileNamee", filename);
-                mv.addObject("currentPage", page+1);
-                mv.addObject("orderList", orders);
-                mv.addObject("flag", "display");
-                mv.setViewName("part5");
+//                mv.addObject("fileNamee", filename);
+//                mv.addObject("currentPage", page+1);
+//                mv.addObject("orderList", orders);
+//                mv.addObject("flag", "display");
+//                mv.setViewName("part5");
                 // Clean up
                 conn.close();
                 stmt.close();
                 rs.close();
+
+                return null;
             } catch (Exception e) {
                 System.out.println("EXCEPTION: " + e.getMessage());
             }
