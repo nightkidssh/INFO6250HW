@@ -9,23 +9,23 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Part 4</title>
+    <title>Part 5</title>
 </head>
 <body>
 <c:choose>
     <c:when test="${requestScope.flag == 'init'}">
         <h1>Please enter the name of the file:</h1>
-        <form method="post" action="part4.htm">
+        <form method="post" action="part5.htm">
             <input type="text" name="filename"/>
             <input type="submit" name="submit" value="submit"/>
-            <input type="hidden" name="part4action" value="enterName"/>
+            <input type="hidden" name="part5action" value="enterName"/>
         </form>
     </c:when>
     <c:when test="${requestScope.flag == 'display'}">
         <h1>Please confirm the input:</h1>
-        <form action="part4.htm" method="post">
-            <input type="hidden" name="part4action" value="doInsert" />
-            <table border="1">
+        <form action="part5.htm" method="post">
+            <input type="hidden" name="part5action" value="doInsert" />
+            <table border="1" id="orderTable">
                 <tr>
                     <td>SalesOrderID</td>
                     <td>RevisionNumber</td>
@@ -92,26 +92,124 @@
                     </tr>
                 </c:forEach>
             </table>
-            <c:forEach var="page" begin="1" end="${requestScope.maxPage}">
-                <c:choose>
-                    <c:when test="${page == requestScope.currentPage+1}">
-                        <a>[${page}]</a>
-                    </c:when>
-                    <c:otherwise>
-                        <a href="part4.htm?page=${page}&part4action=enterName&filename=${requestScope.fileNamee}">  [${page}]  </a>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>
+            <button type="button" id="loadMoreButton" onclick="loadMore('${requestScope.fileNamee}', '${requestScope.currentPage}')">Load More</button>
         </form>
     </c:when>
     <c:when test="${requestScope.flag == 'added'}">
         <h1>Number of column added: ${requestScope.quantity}</h1>
-        <a href="part4.htm">Return to home</a>
+        <a href="part5.htm">Return to home</a>
     </c:when>
 </c:choose>
 <script>
     var xmlHttp;
     xmlHttp = GetXmlHttpObject();
+
+    function loadMore(fileNamee, pagee){
+        if (xmlHttp == null)
+        {
+            alert("Your browser does not support AJAX!");
+            return;
+        }
+
+        var query = "part5action=enterName&filename=" + fileNamee + "&page=" + pagee;
+        xmlHttp.onreadystatechange = function stateChanged()
+        {
+            if (xmlHttp.readyState == 4)
+            {
+                var lastTr = document.getElementById('orderTable').lastElementChild.lastElementChild;
+                var json = JSON.parse(xmlHttp.responseText);
+                if(json.orders.length >0){
+                    for(var i = 0; i<json.orders.length; i++){
+                        var tr1 = document.createElement("TR");
+
+                        var td1= document.createElement("TD");
+                        td1.innerHTML = json.orders.SalesOrderID;
+                        tr1.appendChild(td1);
+
+                        var td2= document.createElement("TD");
+                        td2.innerHTML = json.orders.RevisionNumber;
+
+                        var td3= document.createElement("TD");
+                        td3.innerHTML = json.orders.OrderDate;
+
+                        var td4= document.createElement("TD");
+                        td4.innerHTML = json.orders.DueDate;
+
+                        var td5= document.createElement("TD");
+                        td5.innerHTML = json.orders.ShipDate;
+
+                        var td6= document.createElement("TD");
+                        td6.innerHTML = json.orders.Status;
+
+                        var td7= document.createElement("TD");
+                        td7.innerHTML = json.orders.OnlineOrderFlag;
+
+                        var td8= document.createElement("TD");
+                        td8.innerHTML = json.orders.SalesOrderNumber;
+
+                        var td9= document.createElement("TD");
+                        td9.innerHTML = json.orders.PurchaseOrderNumber;
+
+                        var td10= document.createElement("TD");
+                        td10.innerHTML = json.orders.AccountNumber;
+
+                        var td11= document.createElement("TD");
+                        td11.innerHTML = json.orders.CustomerID;
+
+                        var td12= document.createElement("TD");
+                        td12.innerHTML = json.orders.SalesPersonID;
+
+                        var td13= document.createElement("TD");
+                        td13.innerHTML = json.orders.TerritoryID;
+
+                        var td14= document.createElement("TD");
+                        td14.innerHTML = json.orders.BillToAddressID;
+
+                        var td15= document.createElement("TD");
+                        td15.innerHTML = json.orders.ShipToAddressID;
+
+                        var td16= document.createElement("TD");
+                        td16.innerHTML = json.orders.ShipMethodID;
+
+                        var td17= document.createElement("TD");
+                        td17.innerHTML = json.orders.CreditCardID;
+
+                        var td18= document.createElement("TD");
+                        td18.innerHTML = json.orders.CreditCardApprovalCode;
+
+                        var td19= document.createElement("TD");
+                        td19.innerHTML = json.orders.CurrencyRateID;
+
+                        var td20= document.createElement("TD");
+                        td20.innerHTML = json.orders.SubTotal;
+
+                        var td21= document.createElement("TD");
+                        td21.innerHTML = json.orders.TaxAmt;
+
+                        var td22= document.createElement("TD");
+                        td22.innerHTML = json.orders.Freight;
+
+                        var td23= document.createElement("TD");
+                        td23.innerHTML = json.orders.TotalDue;
+
+                        var td24= document.createElement("TD");
+                        td24.innerHTML = json.orders.Comment;
+
+                        var td25= document.createElement("TD");
+                        td25.innerHTML = json.orders.ModifiedDate;
+
+
+                        lastTr.parentNode.insertBefore(lastTr, tr1.nextSibling );
+                    }
+                }
+            }
+        };
+        xmlHttp.open("POST", "part5.htm", true);
+        xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlHttp.send(query);
+        return false;
+
+    }
 
     function addToDB(thisNode, SalesOrderID,RevisionNumber,OrderDate,DueDate,ShipDate,Status,OnlineOrderFlag,SalesOrderNumber,PurchaseOrderNumber,AccountNumber,CustomerID,SalesPersonID,TerritoryID,BillToAddressID,ShipToAddressID,ShipMethodID,CreditCardID,CreditCardApprovalCode,CurrencyRateID,SubTotal,TaxAmt,Freight,TotalDue,Comment,ModifiedDate){
         if (xmlHttp == null)
@@ -120,7 +218,7 @@
             return;
         }
 
-        var query = "part4action=doInsert&SalesOrderID=" + SalesOrderID + "&RevisionNumber=" + RevisionNumber + "&OrderDate=" + OrderDate +"&DueDate=" + DueDate +"&ShipDate=" + ShipDate+"&Status=" + Status + "&OnlineOrderFlag=" + OnlineOrderFlag +"&SalesOrderNumber=" + SalesOrderNumber +
+        var query = "part5action=doInsert&SalesOrderID=" + SalesOrderID + "&RevisionNumber=" + RevisionNumber + "&OrderDate=" + OrderDate +"&DueDate=" + DueDate +"&ShipDate=" + ShipDate+"&Status=" + Status + "&OnlineOrderFlag=" + OnlineOrderFlag +"&SalesOrderNumber=" + SalesOrderNumber +
                 "&PurchaseOrderNumber=" +PurchaseOrderNumber+"&AccountNumber="+AccountNumber+"&CustomerID="+CustomerID+"&SalesPersonID=" + SalesPersonID+"&TerritoryID="+TerritoryID+"&BillToAddressID="+BillToAddressID+"&ShipToAddressID="+ShipToAddressID+"&ShipMethodID="+ShipMethodID+"&CreditCardID=" +CreditCardID+
                 "&CreditCardApprovalCode="+CreditCardApprovalCode+"&CurrencyRateID="+CurrencyRateID+"&SubTotal="+SubTotal+"&TaxAmt="+TaxAmt+"&Freight="+Freight+"&TotalDue="+TotalDue+"&Comment="+Comment+"&ModifiedDate="+ModifiedDate;
 
@@ -133,7 +231,7 @@
                 thisNode.disabled = true;
             }
         };
-        xmlHttp.open("POST", "part4.htm", true);
+        xmlHttp.open("POST", "part5.htm", true);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(query);
         return false;
