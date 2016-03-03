@@ -132,78 +132,115 @@
                         var newText = document.createTextNode(json.orders[i].salesOrderID);
                         newCell.appendChild(newText);
 
-//                        var td2= document.createElement("TD");
-//                        td2.innerHTML = json.orders[i].revisionNumber;
-//
-//                        var td3= document.createElement("TD");
-//                        td3.innerHTML = json.orders[i].orderDate;
-//
-//                        var td4= document.createElement("TD");
-//                        td4.innerHTML = json.orders[i].dueDate;
-//
-//                        var td5= document.createElement("TD");
-//                        td5.innerHTML = json.orders[i].shipDate;
-//
-//                        var td6= document.createElement("TD");
-//                        td6.innerHTML = json.orders[i].status;
-//
-//                        var td7= document.createElement("TD");
-//                        td7.innerHTML = json.orders[i].onlineOrderFlag;
-//
-//                        var td8= document.createElement("TD");
-//                        td8.innerHTML = json.orders[i].salesOrderNumber;
-//
-//                        var td9= document.createElement("TD");
-//                        td9.innerHTML = json.orders[i].purchaseOrderNumber;
-//
-//                        var td10= document.createElement("TD");
-//                        td10.innerHTML = json.orders[i].accountNumber;
-//
-//                        var td11= document.createElement("TD");
-//                        td11.innerHTML = json.orders[i].customerID;
-//
-//                        var td12= document.createElement("TD");
-//                        td12.innerHTML = json.orders[i].salesPersonID;
-//
-//                        var td13= document.createElement("TD");
-//                        td13.innerHTML = json.orders[i].territoryID;
-//
-//                        var td14= document.createElement("TD");
-//                        td14.innerHTML = json.orders[i].billToAddressID;
-//
-//                        var td15= document.createElement("TD");
-//                        td15.innerHTML = json.orders[i].shipToAddressID;
-//
-//                        var td16= document.createElement("TD");
-//                        td16.innerHTML = json.orders[i].shipMethodID;
-//
-//                        var td17= document.createElement("TD");
-//                        td17.innerHTML = json.orders[i].creditCardID;
-//
-//                        var td18= document.createElement("TD");
-//                        td18.innerHTML = json.orders[i].creditCardApprovalCode;
-//
-//                        var td19= document.createElement("TD");
-//                        td19.innerHTML = json.orders[i].currencyRateID;
-//
-//                        var td20= document.createElement("TD");
-//                        td20.innerHTML = json.orders[i].subTotal;
-//
-//                        var td21= document.createElement("TD");
-//                        td21.innerHTML = json.orders[i].taxAmt;
-//
-//                        var td22= document.createElement("TD");
-//                        td22.innerHTML = json.orders[i].freight;
-//
-//                        var td23= document.createElement("TD");
-//                        td23.innerHTML = json.orders[i].totalDue;
-//
-//                        var td24= document.createElement("TD");
-//                        td24.innerHTML = json.orders[i].comment;
-//
-//                        var td25= document.createElement("TD");
-//                        td25.innerHTML = json.orders[i].modifiedDate;
+                        var newCell = newRow.insertCell(1);
+                        var newText = document.createTextNode(json.orders[i].revisionNumber);
+                        newCell.appendChild(newText);
 
+                        var newCell = newRow.insertCell(2);
+                        var newText = document.createTextNode(json.orders[i].orderDate);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(3);
+                        var newText = document.createTextNode(json.orders[i].dueDate);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(4);
+                        var newText = document.createTextNode(json.orders[i].shipDate);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(5);
+                        var newText = document.createTextNode(json.orders[i].status);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(6);
+                        var newText = document.createTextNode(json.orders[i].onlineOrderFlag);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(7);
+                        var newText = document.createTextNode(json.orders[i].salesOrderNumber);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(8);
+                        var newText = document.createTextNode(json.orders[i].purchaseOrderNumber);
+                        newCell.appendChild(newText)
+
+                        var newCell = newRow.insertCell(9);
+                        var newText = document.createTextNode(json.orders[i].accountNumber);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(10);
+                        var newText = document.createTextNode(json.orders[i].customerID);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(11);
+                        var newText = document.createTextNode(json.orders[i].salesPersonID);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(12);
+                        var newText = document.createTextNode(json.orders[i].territoryID);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(13);
+                        var newText = document.createTextNode(json.orders[i].billToAddressID);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(14);
+                        var newText = document.createTextNode(json.orders[i].shipToAddressID);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(15);
+                        var newText = document.createTextNode(json.orders[i].shipMethodID);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(16);
+                        var newText = document.createTextNode(json.orders[i].creditCardID);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(17);
+                        var newText = document.createTextNode(json.orders[i].creditCardApprovalCode);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(18);
+                        var newText = document.createTextNode(json.orders[i].currencyRateID);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(19);
+                        var newText = document.createTextNode(json.orders[i].subTotal);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(20);
+                        var newText = document.createTextNode(json.orders[i].taxAmt);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(21);
+                        var newText = document.createTextNode(json.orders[i].freight);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(22);
+                        var newText = document.createTextNode(json.orders[i].totalDue);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(23);
+                        var newText = document.createTextNode(json.orders[i].comment);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(24);
+                        var newText = document.createTextNode(json.orders[i].modifiedDate);
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(25);
+                        var saveButton = document.createElement("input");
+                        saveButton.type= "button";
+                        saveButton.value = "SAVE";
+                        saveButton.onclick = "addToDB(this)";
+                        newCell.appendChild(saveButton);
+
+                        var newCell = newRow.insertCell(26);
+                        var removeButton = document.createElement("input");
+                        newCell.appendChild(removeButton);
+                        removeButton.type= "button";
+                        removeButton.value = "Remove";
+                        removeButton.onclick = removeRow(this);
                     }
                 }
             }
@@ -245,6 +282,7 @@
     function removeRow(buttonNode){
         trNode = buttonNode.parentNode.parentNode;
         trNode.parentNode.removeChild(trNode);
+        return false;
     }
 
     function GetXmlHttpObject()
