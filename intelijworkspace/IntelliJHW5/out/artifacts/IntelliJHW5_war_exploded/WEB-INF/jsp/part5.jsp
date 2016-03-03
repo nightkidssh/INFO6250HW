@@ -119,8 +119,6 @@
             {
                 var tableRef = document.getElementById('orderTable').getElementsByTagName('tbody')[0];
 
-
-                console.log(xmlHttp.responseText);
                 var json = JSON.parse(xmlHttp.responseText);
                 pagee = json.currentPage;
 
@@ -232,7 +230,18 @@
                         var saveButton = document.createElement("input");
                         saveButton.type= "button";
                         saveButton.value = "SAVE";
-                        saveButton.onclick = "addToDB(this)";
+                        saveButton.onclick = (function(xmlHttp){
+                            return function(){
+                                console.log("aaa");
+                                addToDB(saveButton, json.orders[i].salesOrderID, json.orders[i].revisionNumber, json.orders[i].orderDate,
+                                json.orders[i].dueDate, json.orders[i].shipDate, json.orders[i].status, json.orders[i].onlineOrderFlag,
+                                json.orders[i].salesOrderNumber, json.orders[i].purchaseOrderNumber, json.orders[i].accountNumber, json.orders[i].customerID,
+                                json.orders[i].salesPersonID, json.orders[i].territoryID, json.orders[i].billToAddressID, json.orders[i].shipToAddressID,
+                                json.orders[i].shipMethodID, json.orders[i].creditCardID, json.orders[i].creditCardApprovalCode, json.orders[i].currencyRateID,
+                                json.orders[i].subTotal, json.orders[i].taxAmt, json.orders[i].freight, json.orders[i].totalDue,json.orders[i].comment,
+                                        json.orders[i].modifiedDate);
+                            }
+                        })(saveButton, json);
                         newCell.appendChild(saveButton);
 
                         var newCell = newRow.insertCell(26);
