@@ -237,10 +237,14 @@
 
                         var newCell = newRow.insertCell(26);
                         var removeButton = document.createElement("input");
-                        newCell.appendChild(removeButton);
                         removeButton.type= "button";
                         removeButton.value = "Remove";
-                        removeButton.onclick = removeRow(this);
+                        removeButton.onclick = (function(removeButton){
+                            return function(){
+                                removeRow(removeButton);
+                            }
+                        })(removeButton);
+                        newCell.appendChild(removeButton);
                     }
                 }
             }
