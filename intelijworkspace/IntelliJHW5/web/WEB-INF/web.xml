@@ -21,6 +21,7 @@
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
+            <role-name>boss</role-name>
         </auth-constraint>
     </security-constraint>
 

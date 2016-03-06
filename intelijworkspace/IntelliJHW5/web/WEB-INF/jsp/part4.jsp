@@ -12,6 +12,9 @@
     <title>Part 4</title>
 </head>
 <body>
+<% if (request.isUserInRole("boss")) { %>
+<h1>Yooooo Boss!!!</h1>
+<% } %>
 <c:choose>
     <c:when test="${requestScope.flag == 'init'}">
         <h1>Please enter the name of the file:</h1>
