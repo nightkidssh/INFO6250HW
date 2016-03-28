@@ -1,0 +1,52 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Remote_Glassfish" type="GlassfishConfiguration" factoryName="Remote" APPLICATION_SERVER_NAME="GlassFish 4.1.1" ALTERNATIVE_JRE_ENABLED="false">
+    <option name="HOST" value="boweiwang.me" />
+    <option name="LOCAL" value="false" />
+    <option name="UPDATING_POLICY" value="hot-swap-classes" />
+    <deployment>
+      <artifact name="IntelliJHW5:war">
+        <settings />
+      </artifact>
+    </deployment>
+    <server-settings>
+      <data>
+        <option name="adminServerHost" value="" />
+        <option name="clusterName" value="" />
+        <option name="password" value="20140529" />
+        <option name="preserve" value="true" />
+        <option name="stagingRemotePath" value="" />
+        <option name="transportHostId" />
+        <option name="transportStagingTarget">
+          <TransportTarget>
+            <option name="id" value="95ffbab4-ac6a-4dbb-bdde-10da7071ae46" />
+            <id>95ffbab4-ac6a-4dbb-bdde-10da7071ae46</id>
+          </TransportTarget>
+        </option>
+        <option name="virtualServer" value="domain1" />
+        <password>20140529</password>
+        <preserve>true</preserve>
+        <virtual-server>domain1</virtual-server>
+        <admin-server-host />
+        <cluster-name />
+        <transport-target>
+          <TransportTarget>
+            <option name="id" value="95ffbab4-ac6a-4dbb-bdde-10da7071ae46" />
+            <id>95ffbab4-ac6a-4dbb-bdde-10da7071ae46</id>
+          </TransportTarget>
+        </transport-target>
+        <staging-path />
+        <host-id />
+      </data>
+    </server-settings>
+    <predefined_log_file id="GlassFish" enabled="true" />
+    <RunnerSettings RunnerId="Debug">
+      <option name="DEBUG_PORT" value="63861" />
+      <option name="LOCAL" value="false" />
+    </RunnerSettings>
+    <method>
+      <option name="BuildArtifacts" enabled="true">
+        <artifact name="IntelliJHW5:war" />
+      </option>
+    </method>
+  </configuration>
+</component>

@@ -10,20 +10,20 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>Auth</realm-name>
-    </login-config>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Everything</web-resource-name>
-            <url-pattern>/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
-            <role-name>admin</role-name>
-            <role-name>boss</role-name>
-        </auth-constraint>
-    </security-constraint>
+    <!--<login-config>-->
+        <!--<auth-method>BASIC</auth-method>-->
+        <!--<realm-name>Auth</realm-name>-->
+    <!--</login-config>-->
+    <!--<security-constraint>-->
+        <!--<web-resource-collection>-->
+            <!--<web-resource-name>Everything</web-resource-name>-->
+            <!--<url-pattern>/*</url-pattern>-->
+        <!--</web-resource-collection>-->
+        <!--<auth-constraint>-->
+            <!--<role-name>admin</role-name>-->
+            <!--<role-name>boss</role-name>-->
+        <!--</auth-constraint>-->
+    <!--</security-constraint>-->
 
 
     <filter>
