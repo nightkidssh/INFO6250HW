@@ -39,6 +39,14 @@
     </script>
   </head>
   <body onload="loadMap()">
+    <div align="center">
+      <form method="post" action="">
+        <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
+        <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
+        <input type="submit" name="loginButton" value="login" />
+        <input type="button" name="registerButton" value="register" />
+      </form>
+    </div>
     <div id="map_container"></div>
   </body>
 </html>

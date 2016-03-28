@@ -41,5 +41,6 @@
     <orderEntry type="library" name="Hibernate 4.2.2-4.2.2" level="project" />
     <orderEntry type="library" name="Spring-4.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Spring MVC-4.2.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Spring Security-3.2.5" level="project" />
   </component>
 </module>
