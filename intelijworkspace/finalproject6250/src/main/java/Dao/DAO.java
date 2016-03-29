@@ -17,6 +17,9 @@ public class DAO {
 
     private static final ThreadLocal sessionThread = new ThreadLocal();
     private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+//    private static final Configuration configuration = new Configuration().configure();
+//    private static final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+//    private static final SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
 
     protected DAO() {
     }

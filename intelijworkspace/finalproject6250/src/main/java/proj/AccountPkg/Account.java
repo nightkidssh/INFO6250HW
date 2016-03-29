@@ -9,6 +9,7 @@ import java.util.Date;
  * Created by kym-1992 on 3/27/16.
  */
 @Entity
+@Table(name = "accounttable")
 public class Account {
 
     @Id
@@ -32,7 +33,11 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
 
-    public Account() {
+    public Account(String userName, String password, Date dateCreated, AccountType accountType) {
+        this.userName = userName;
+        this.password = password;
+        this.dateCreated = dateCreated;
+        this.accountType = accountType;
     }
 
     public AccountType getAccountType() {

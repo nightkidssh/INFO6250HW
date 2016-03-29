@@ -1,0 +1,35 @@
+package Controller;
+
+import Dao.AccountDao;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import proj.AccountPkg.AccountType;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Created by kym-1992 on 3/28/16.
+ */
+@Controller
+@RequestMapping("/register.do")
+public class RegisterController{
+
+//    public RegisterController() {
+//        AccountDao accountDao = new AccountDao();
+//        accountDao.create("a", "aa", AccountType.SystemAdmin, "Bowei", "Wang", "M", "1111111", "qqq@qq.com", "ccc", "xxx");
+//    }
+
+    @RequestMapping(method= RequestMethod.GET)
+    protected ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
+        AccountDao accountDao = new AccountDao();
+        accountDao.create("a", "aa", AccountType.SystemAdmin, "Bowei", "Wang", "M", "1111111", "qqq@qq.com", "ccc", "xxx");
+
+        ModelAndView model = new ModelAndView("HelloWorldPage");
+        model.addObject("msg", "hello world");
+
+        return model;
+    }
+}

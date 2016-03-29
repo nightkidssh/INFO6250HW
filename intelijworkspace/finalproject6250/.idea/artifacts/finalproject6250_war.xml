@@ -3,6 +3,12 @@
     <output-path>$PROJECT_DIR$/out/artifacts/finalproject6250_war</output-path>
     <root id="archive" name="finalproject6250_war.war">
       <element id="artifact" artifact-name="finalproject6250:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Spring Security-3.2.5" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.38-bin" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

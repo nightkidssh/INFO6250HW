@@ -36,6 +36,11 @@
         });
 
       }
+
+      function showRegister(){
+        window.open("register.do");
+        return false;
+      }
     </script>
   </head>
   <body onload="loadMap()">
@@ -44,7 +49,7 @@
         <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
         <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
         <input type="submit" name="loginButton" value="login" />
-        <input type="button" name="registerButton" value="register" />
+        <input type="button" name="registerButton" value="register" onclick="showRegister()"/>
       </form>
     </div>
     <div id="map_container"></div>
