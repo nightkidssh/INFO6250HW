@@ -17,14 +17,23 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/register.do")
 public class RegisterController{
 
-    @RequestMapping(method= RequestMethod.GET)
+    @RequestMapping(method= RequestMethod.POST)
     protected ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        AccountDao accountDao = new AccountDao();
-        accountDao.create("a", "aa", AccountType.SystemAdmin, "Bowei", "Wang", "M", "1111111", "qqq@qq.com", "ccc", "xxx");
+        String status = request.getParameter("registerStatus");
+        if(status.equals("init")){
+            ModelAndView model = new ModelAndView();
+            model.setViewName("register");
+            return model;
+        }
 
-        ModelAndView model = new ModelAndView("HelloWorldPage");
-        model.addObject("msg", "hello world");
+        else {
+            AccountDao accountDao = new AccountDao();
+            accountDao.create("a", "aa", AccountType.SystemAdmin, "Bowei", "Wang", "M", "1111111", "qqq@qq.com", "ccc", "xxx");
 
-        return model;
+            ModelAndView model = new ModelAndView("HelloWorldPage");
+            model.addObject("msg", "hello world");
+
+            return model;
+        }
     }
 }

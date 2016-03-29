@@ -3,6 +3,8 @@ package proj.PersonPkg;
 import proj.AccountPkg.Account;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by kym-1992 on 3/27/16.
@@ -35,6 +37,9 @@ public class Person {
 
     @Column(name = "zipCode")
     private String zipCode;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "person")
+    private Set<Account> accounts = new HashSet<Account>(0);
 
     public Person(String firstName, String lastName, String sex, String phoneNumber, String emailAddress, String mailingAddress, String zipCode) {
         this.firstName = firstName;

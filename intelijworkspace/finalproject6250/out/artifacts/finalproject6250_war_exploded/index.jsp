@@ -38,23 +38,22 @@
 
       }
 
-      function showRegister(){
-        window.open("register.do");
-        return false;
-      }
     </script>
   </head>
   <body onload="loadMap()">
     <div align="center">
-      <form method="post" action="">
+      <form method="post" action="login.do" style="display: inline-block;">
         <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
         <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
-        <label>Account Type:</label>&nbsp&nbsp<select><option value="SystemAdmin">System Admin Account</option>
+        <label>Account Type:</label>&nbsp&nbsp<select>
         <option value="SystemAdmin">System Admin Account</option><option value="Landlord">Landlord Account</option>
         <option value="HomeBuyer">Home Buyer Account</option><option value="Lessor">Leassor Account</option>
         <option value="Lessee">Lessee Account</option><option value="SpecialAdmin">Special Admin Account</option></select>
         <input type="submit" name="loginButton" value="login" />
-        <input type="button" name="registerButton" value="register" onclick="showRegister()"/>
+      </form>
+      <form method="post" action="register.do" style="display: inline-block;">
+        <input type="submit" name="registerButton" value="register"/>
+        <input type="hidden" name="registerStatus" value="init">
       </form>
     </div>
     <div id="map_container"></div>

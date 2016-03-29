@@ -24,7 +24,7 @@ public class Account {
     private String password;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(name = "person")
+    @JoinColumn(name = "personID")
     private Person person;
 
     @Column(name = "dateCreated")

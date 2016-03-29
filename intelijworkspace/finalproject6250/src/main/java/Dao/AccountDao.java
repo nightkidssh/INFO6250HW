@@ -1,6 +1,7 @@
 package Dao;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import proj.AccountPkg.Account;
 import proj.AccountPkg.AccountType;
 import proj.PersonPkg.Person;
@@ -15,18 +16,20 @@ public class AccountDao extends DAO{
     public AccountDao() {
     }
 
-//    public Account get(String username){
-//        try {
-//            begin();
-//            Query q = getSession().createQuery("from User where name = :username");
+    public Account get(String username){
+        Account account = null;
+        try {
+            begin();
+            Query q = getSession().createQuery("from accounttable where userName = 'a'");
 //            q.setString("username", username);
-//            Account user = (Account) q.uniqueResult();
-//            commit();
-//            return user;
-//        } catch (HibernateException e) {
-//            rollback();
-//        }
-//    }
+            account = (Account) q.uniqueResult();
+            commit();
+            return account;
+        } catch (HibernateException e) {
+            rollback();
+        }
+        return account;
+    }
 
     public Account create(String userName, String password, AccountType accountType,
                           String firstName, String lastName, String sex, String phoneNumber, String emailAddress, String mailingAddress, String zipCode){
