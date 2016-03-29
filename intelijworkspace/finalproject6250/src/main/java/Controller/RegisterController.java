@@ -17,11 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/register.do")
 public class RegisterController{
 
-//    public RegisterController() {
-//        AccountDao accountDao = new AccountDao();
-//        accountDao.create("a", "aa", AccountType.SystemAdmin, "Bowei", "Wang", "M", "1111111", "qqq@qq.com", "ccc", "xxx");
-//    }
-
     @RequestMapping(method= RequestMethod.GET)
     protected ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
         AccountDao accountDao = new AccountDao();

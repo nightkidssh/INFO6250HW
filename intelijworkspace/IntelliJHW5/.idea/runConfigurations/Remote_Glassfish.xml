@@ -15,7 +15,7 @@
         <option name="password" value="20140529" />
         <option name="preserve" value="true" />
         <option name="stagingRemotePath" value="" />
-        <option name="transportHostId" />
+        <option name="transportHostId" value="" />
         <option name="transportStagingTarget">
           <TransportTarget>
             <option name="id" value="95ffbab4-ac6a-4dbb-bdde-10da7071ae46" />

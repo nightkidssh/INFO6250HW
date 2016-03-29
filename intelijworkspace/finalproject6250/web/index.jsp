@@ -5,6 +5,7 @@
   Time: 17:43
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -48,6 +49,10 @@
       <form method="post" action="">
         <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
         <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
+        <label>Account Type:</label>&nbsp&nbsp<select>
+        <option value="SystemAdmin">System Admin Account</option><option value="Landlord">Landlord Account</option>
+        <option value="HomeBuyer">Home Buyer Account</option><option value="Lessor">Leassor Account</option>
+        <option value="Lessee">Lessee Account</option><option value="SpecialAdmin">Special Admin Account</option></select>
         <input type="submit" name="loginButton" value="login" />
         <input type="button" name="registerButton" value="register" onclick="showRegister()"/>
       </form>

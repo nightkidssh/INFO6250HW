@@ -12,12 +12,8 @@ import javax.persistence.*;
 public class Person {
     @Id
     @GeneratedValue
-    @Column(name="accountID", unique=true, nullable=false)
+    @Column(name="personID", unique=true, nullable=false)
     private int personID;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @PrimaryKeyJoinColumn(name = "personID")
-    private Account account;
 
     @Column(name = "firstName")
     private String firstName;
@@ -56,14 +52,6 @@ public class Person {
 
     public void setPersonID(int personID) {
         this.personID = personID;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
     }
 
     public String getFirstName() {

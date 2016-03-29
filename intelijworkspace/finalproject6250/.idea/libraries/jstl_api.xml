@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jstl-api">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jstl-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jstl-impl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

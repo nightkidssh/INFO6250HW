@@ -23,7 +23,8 @@ public class Account {
     @Column(name="password" )
     private String password;
 
-    @OneToOne(mappedBy = "account", cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinColumn(name = "person")
     private Person person;
 
     @Column(name = "dateCreated")
