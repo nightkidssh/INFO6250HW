@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import proj.AccountPkg.Account;
+import proj.AccountPkg.AccountType;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +25,7 @@ public class LoginController {
     protected ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
         accountDao = new AccountDao();
 //        AccountDao accountDao = new AccountDao();
-//        accountDao.create("a", "aa", AccountType.SystemAdmin, "Bowei", "Wang", "M", "1111111", "qqq@qq.com", "ccc", "xxx");
+        accountDao.create("a", "aa", AccountType.SystemAdmin, "Bowei", "Wang", "M", "1111111", "qqq@qq.com", "ccc", "xxx");
 //
 //        AccountDao accountDao = new AccountDao();
         String userName = request.getParameter("userName");

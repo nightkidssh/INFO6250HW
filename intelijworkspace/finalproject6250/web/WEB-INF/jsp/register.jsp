@@ -43,37 +43,37 @@
             <div id="loginInfoSection" class="default">
                 <h3>Login Information</h3>
                 <label>Account Type:</label>&nbsp&nbsp
-                <select name="accountType" id="accountType">
+                <select name="accountType" id="accountType" required>
                     <option value="SystemAdmin">System Admin Account</option><option value="Landlord">Landlord Account</option>
                     <option value="HomeBuyer">Home Buyer Account</option><option value="Lessor">Leassor Account</option>
                     <option value="Lessee">Lessee Account</option><option value="SpecialAdmin">Special Admin Account</option>
                 </select><br/><br/>
-                <input name="userName" id="userName" placeholder="User Name"/><br/>
+                <input name="userName" id="userName" placeholder="User Name" required/><br/>
                 <label id="userNameErrorLabel"></label><br/>
-                <input name="password" id="password" type="password" placeholder="password"/><br/>
+                <input name="password" id="password" type="password" placeholder="password" required/><br/>
                 <label id="passwordErrorLabel"></label><br/>
-                <input name="confirmPassword" id="confirmPassword" type="password" placeholder="Confirm Password"/><br/>
+                <input name="confirmPassword" id="confirmPassword" type="password" placeholder="Confirm Password" required/><br/>
                 <label id="confirmPasswordErrorLabel"></label><br/>
             </div>
 
             <div id="personalInfoSection" class="default">
                 <h3>Personal Information</h3>
-                <input name="firstName" id="firstName" placeholder="First Name"/><br/>
+                <input name="firstName" id="firstName" placeholder="First Name" required/><br/>
                 <label id="firstNameErrorLabel"></label><br/>
-                <input name="lastName" id="lastName" placeholder="Last Name"/><br/>
+                <input name="lastName" id="lastName" placeholder="Last Name" required/><br/>
                 <label id="lastNameErrorLabel"></label><br/>
                 <select name="sex" id="sex">
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                 </select><br/><br/>
 
-                <input name="phoneNumber" id="phoneNumber" placeholder="Phone Number"/><br/>
+                <input name="phoneNumber" id="phoneNumber" placeholder="Phone Number" required/><br/>
                 <label id="phoneNumberErrorLabel"></label><br/>
-                <input name="emailAddress" id="emailAddress" placeholder="Email Address"/><br/>
+                <input name="emailAddress" id="emailAddress" placeholder="Email Address" required/><br/>
                 <label id="emailAddressErrorLabel"></label><br/>
-                <input name="mailingAddress" id="mailingAddress" placeholder="Mailing Address"/><br/>
+                <input name="mailingAddress" id="mailingAddress" placeholder="Mailing Address" required/><br/>
                 <label id="mailingAddressErrorLabel"></label><br/>
-                <input name="zipCode" id="zipCode" placeholder="Zip Code"/><br/>
+                <input name="zipCode" id="zipCode" placeholder="Zip Code" required/><br/>
                 <label id="zipCodeErrorLabel"></label><br/>
             </div>
 
