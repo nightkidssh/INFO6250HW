@@ -6,6 +6,8 @@ import java.util.Date;
 /**
  * Created by kym-1992 on 3/30/16.
  */
+//For Login
+
 @Entity
 @Table(name = "combinedAccounttable")
 public class CombinedAccount {
