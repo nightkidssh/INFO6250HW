@@ -37,14 +37,14 @@ public class AccountDao extends DAO{
             begin();
             Person person = new Person(firstName, lastName, sex, phoneNumber, emailAddress, mailingAddress, zipCode);
             Account account = new Account(userName, password, new Date(), accountType);
-            Account account1 = new Account("ccc", "ddd", new Date(), AccountType.HomeBuyer);
+//            Account account1 = new Account("ccc", "ddd", new Date(), AccountType.HomeBuyer);
 
             account.setPerson(person);
-            account1.setPerson(person);
+//            account1.setPerson(person);
 
             getSession().save(person);
             getSession().save(account);
-            getSession().save(account1);
+//            getSession().save(account1);
 
             commit();
             return account;
