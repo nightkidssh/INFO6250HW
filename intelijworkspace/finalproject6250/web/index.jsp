@@ -45,10 +45,6 @@
       <form method="post" action="login.do" style="display: inline-block;">
         <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
         <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
-        <label>Account Type:</label>&nbsp&nbsp<select>
-        <option value="SystemAdmin">System Admin Account</option><option value="Landlord">Landlord Account</option>
-        <option value="HomeBuyer">Home Buyer Account</option><option value="Lessor">Leassor Account</option>
-        <option value="Lessee">Lessee Account</option><option value="SpecialAdmin">Special Admin Account</option></select>
         <input type="submit" name="loginButton" value="login" />
       </form>
       <form method="post" action="register.do" style="display: inline-block;">

@@ -51,6 +51,9 @@ public class Person {
         this.zipCode = zipCode;
     }
 
+    public Person() {
+    }
+
     public int getPersonID() {
         return personID;
     }

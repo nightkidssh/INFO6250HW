@@ -20,8 +20,8 @@ public class AccountDao extends DAO{
         Account account = null;
         try {
             begin();
-            Query q = getSession().createQuery("from accounttable where userName = 'a'");
-//            q.setString("username", username);
+            Query q = getSession().createQuery("from accounttable where userName = :username");
+            q.setString("username", username);
             account = (Account) q.uniqueResult();
             commit();
             return account;

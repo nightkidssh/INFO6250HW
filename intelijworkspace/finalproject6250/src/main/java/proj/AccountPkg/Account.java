@@ -41,6 +41,9 @@ public class Account {
         this.accountType = accountType;
     }
 
+    public Account() {
+    }
+
     public AccountType getAccountType() {
         return accountType;
     }
