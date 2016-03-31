@@ -16,6 +16,7 @@
 
     <mapping class="proj.AccountPkg.Account"/>
     <mapping class="proj.PersonPkg.Person"/>
+    <mapping class="proj.AccountPkg.CombinedAccount"/>
 
   </session-factory>
 </hibernate-configuration>
