@@ -2,6 +2,7 @@ package Dao;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 import proj.AccountPkg.AccountType;
 import proj.AccountPkg.CombinedAccount;
@@ -33,10 +34,11 @@ public class CombinedAccountDao extends DAO{
     }
 
     public CombinedAccount create(String userName, String password, Date dateCreated, AccountType accountType, String firstName, String lastName, String sex, String phoneNumber, String emailAddress, String mailingAddress, String zipCode){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         try {
             begin();
 
-            CombinedAccount combinedAccount = new CombinedAccount(userName, password, dateCreated, accountType, firstName, lastName, sex, phoneNumber, emailAddress, mailingAddress, zipCode);
+            CombinedAccount combinedAccount = new CombinedAccount(userName, passwordEncoder.encode(password), dateCreated, accountType, firstName, lastName, sex, phoneNumber, emailAddress, mailingAddress, zipCode);
             getSession().save(combinedAccount);
 
             commit();
