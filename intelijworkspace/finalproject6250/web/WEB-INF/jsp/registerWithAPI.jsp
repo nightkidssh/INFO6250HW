@@ -26,7 +26,7 @@
         <option value="HomeBuyer">Home Buyer Account</option><option value="Lessor">Leassor Account</option>
         <option value="Lessee">Lessee Account</option><option value="SpecialAdmin">Special Admin Account</option>
     </form:select><br/><br/>&nbsp&nbsp
-    <form:errors path="userName"/><br/>&nbsp&nbsp
+    <form:errors path="accountType"/><br/>&nbsp&nbsp
 
     <form:input path="userName" id="userName" placeholder="User Name"/><br/>&nbsp&nbsp
     <form:errors path="userName"/><br/>&nbsp&nbsp

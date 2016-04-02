@@ -35,10 +35,10 @@ public class RegisterControllerWithAPI {
 
     @RequestMapping(method = RequestMethod.POST)
     public String doSubmitAction(@ModelAttribute("user") CombinedAccount account, BindingResult result) throws Exception {
-//        validator.validate(account, result);
-//        if (result.hasErrors()) {
-//            return "registerWithAPI";
-//        }
+        validator.validate(account, result);
+        if (result.hasErrors()) {
+            return "registerWithAPI";
+        }
 
         try {
             System.out.print("test");
