@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/css/registerCSS.css">
 </head>
 <body background="ImageResources/registerbgimg.jpg">
-<div id="globalContainer" class="global" style="background-color: white; opacity: 0.8">
+<div id="globalContainer" class="global" style="background-color: white; opacity: 0.9">
     <form:form action="registerAPI.do" method="post" commandName="user">
     <h1>Register on Easy Housing system</h1>
     <div id="loginInfoSection" class="default" style="background-color: white">

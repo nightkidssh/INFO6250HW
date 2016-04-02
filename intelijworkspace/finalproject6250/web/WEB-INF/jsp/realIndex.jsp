@@ -69,7 +69,7 @@
 </sec:authorize>
 
 <div align="center">
-    <c:url value="/login.do" var="loginURL"/>
+    <c:url value="/j_spring_security_check" var="loginURL"/>
     <form method="post" action="${loginURL}" style="display: inline-block;">
         <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
         <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp

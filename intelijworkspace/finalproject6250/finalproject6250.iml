@@ -25,6 +25,7 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/web/WEB-INF/spring-config.xml</file>
+          <file>file://$MODULE_DIR$/src/main/java/configFiles/SecurityConfig.java</file>
         </fileset>
       </configuration>
     </facet>
