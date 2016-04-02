@@ -14,11 +14,11 @@
     <title>Register for Easy Hosing system!</title>
     <link rel="stylesheet" href="/css/registerCSS.css">
 </head>
-<body>
-<div id="globalContainer" class="default">
+<body background="ImageResources/registerbgimg.jpg">
+<div id="globalContainer" class="global" style="background-color: white; opacity: 0.9">
     <form:form action="registerAPI.do" method="post" commandName="user">
     <h1>Register on Easy Housing system</h1>
-    <div id="loginInfoSection" class="default">
+    <div id="loginInfoSection" class="default" style="background-color: white">
     <h3>Login Information</h3>&nbsp&nbsp
     <label>Account Type:</label>&nbsp&nbsp
     <form:select path="accountType">
@@ -38,7 +38,7 @@
     <form:errors path="confirmPassword"/><br/>&nbsp&nbsp
     </div>
 
-    <div id="personalInfoSection" class="default">
+    <div id="personalInfoSection" class="default" style="background-color: white">
         <h3>Personal Information</h3>&nbsp&nbsp
         <form:input path="firstName" placeholder="First Name"/><br/>&nbsp&nbsp
         <form:errors path="firstName"/><br/>&nbsp&nbsp
@@ -60,7 +60,7 @@
         <form:errors path="zipCode"/><br/>&nbsp&nbsp
     </div>
 
-    <div id="submitSection" class="default">
+    <div id="submitSection" class="default" style="background-color: white">
     <input type="submit" name="submit" value="Submit"/>
     </div>
     </form:form>

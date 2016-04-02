@@ -7,3 +7,13 @@ div.default{
     margin-right:auto;
     width: auto;
 }
+
+div.global{
+    border-width: medium;
+    border-style: double;
+    border-color: black;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    width: 50%;
+}
