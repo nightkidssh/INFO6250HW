@@ -33,6 +33,21 @@ public class CombinedAccountDao extends DAO{
         return combinedAccount;
     }
 
+    public CombinedAccount findUniqueEmail(String emailAddress){
+        CombinedAccount combinedAccount = null;
+        try {
+            begin();
+            Query q = getSession().createQuery("from CombinedAccount where emailAddress = :emailAddress");
+            q.setString("emailAddress", emailAddress);
+            combinedAccount = (CombinedAccount) q.uniqueResult();
+            commit();
+            return combinedAccount;
+        } catch (HibernateException e) {
+            rollback();
+        }
+        return combinedAccount;
+    }
+
     public CombinedAccount create(String userName, String password, Date dateCreated, AccountType accountType, String firstName, String lastName, String sex, String phoneNumber, String emailAddress, String mailingAddress, String zipCode){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         try {

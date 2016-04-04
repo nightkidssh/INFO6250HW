@@ -17,3 +17,15 @@ div.global{
     margin-right:auto;
     width: 50%;
 }
+
+input[type="text"]
+{
+    width: 40%;
+    border: 1px solid black;
+}
+
+input[type="password"]
+{
+    width: 40%;
+    border: 1px solid black;
+}

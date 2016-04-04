@@ -26,13 +26,15 @@
         <option value="HomeBuyer">Home Buyer Account</option><option value="Lessor">Leassor Account</option>
         <option value="Lessee">Lessee Account</option><option value="SpecialAdmin">Special Admin Account</option>
     </form:select><br/><br/>&nbsp&nbsp
-    <form:errors path="userName"/><br/>&nbsp&nbsp
+    <form:errors path="accountType"/><br/>&nbsp&nbsp
 
     <form:input path="userName" id="userName" placeholder="User Name"/><br/>&nbsp&nbsp
-    <form:errors path="userName"/><br/>&nbsp&nbsp
+    <form:errors path="userName" cssStyle="color: red"/><br/>&nbsp&nbsp
 
     <form:input path="password" id="password" type="password" placeholder="password"/><br/>&nbsp&nbsp
     <form:errors path="password"/><br/>&nbsp&nbsp
+    <label>Password Requirement: #must contains one digit from 0-9 <br/>#must contains one lowercase characters <br/>#must contains one uppercase characters
+        <br/>#must contains one special symbols "@#$%" <br/>#length at least 6 characters and maximum of 20<br/></label>
 
     <form:input path="confirmPassword" id="confirmPassword" type="password" placeholder="Confirm Password"/><br/>&nbsp&nbsp
     <form:errors path="confirmPassword"/><br/>&nbsp&nbsp
@@ -66,5 +68,48 @@
     </form:form>
 
 </div>
+
+<script>
+
+    var placeSearch, autocomplete;
+//    var componentForm = {
+//        zipCode: 'short_name'
+//    };
+
+    function initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        autocomplete = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('mailingAddress')),
+                {types: ['geocode']});
+
+        // When the user selects an address from the dropdown, populate the address
+        // fields in the form.
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+//    function fillInAddress() {
+//        // Get the place details from the autocomplete object.
+//        var place = autocomplete.getPlace();
+//
+//        for (var component in componentForm) {
+//            document.getElementById(component).value = '';
+//            document.getElementById(component).disabled = false;
+//        }
+//
+//        // Get each component of the address from the place details
+//        // and fill the corresponding field on the form.
+//        for (var i = 0; i < place.address_components.length; i++) {
+//            var addressType = place.address_components[i].types[0];
+//            if (componentForm[addressType]) {
+//                var val = place.address_components[i][componentForm[addressType]];
+//                document.getElementById(addressType).value = val;
+//            }
+//        }
+//    }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
+        async defer></script>
 </body>
 </html>

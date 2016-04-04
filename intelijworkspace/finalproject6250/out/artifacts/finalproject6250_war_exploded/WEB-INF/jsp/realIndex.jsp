@@ -18,7 +18,7 @@
             margin: 0 auto;
         }
     </style>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTcV-hPaIpO4DkqyQLdAr7coINAWoyyWo&sensor=false"
+    <script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false"
             type="text/javascript"></script>
 
     <script type="text/javascript">
