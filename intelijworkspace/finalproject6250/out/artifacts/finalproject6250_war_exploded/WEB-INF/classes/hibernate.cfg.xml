@@ -11,7 +11,7 @@
     <property name="hibernate.connection.password">j-epyppsC5Qg</property>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="hibernate.show_sql">true</property>
 
     <mapping class="proj.AccountPkg.Account"/>

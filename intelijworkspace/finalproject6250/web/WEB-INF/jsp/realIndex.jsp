@@ -42,46 +42,49 @@
     </script>
 </head>
 <body onload="loadMap()">
-<h1>Title : ${title}</h1>
-<h1>Message : ${message}</h1>
+<%--<h1>Title : ${title}</h1>--%>
+<%--<h1>Message : ${message}</h1>--%>
 
-<sec:authorize access="hasRole('SystemAdmin')">
-    <!-- For login user -->
-    <c:url value="/j_spring_security_logout" var="logoutUrl" />
-    <form action="${logoutUrl}" method="post" id="logoutForm">
-        <input type="hidden" name="${_csrf.parameterName}"
-               value="${_csrf.token}" />
-    </form>
-    <script>
-        function formSubmit() {
-            document.getElementById("logoutForm").submit();
-        }
-    </script>
+<%--<sec:authorize access="hasRole('SystemAdmin')">--%>
+    <%--<!-- For login user -->--%>
+    <%--<c:url value="/j_spring_security_logout" var="logoutUrl" />--%>
+    <%--<form action="${logoutUrl}" method="post" id="logoutForm">--%>
+        <%--<input type="hidden" name="${_csrf.parameterName}"--%>
+               <%--value="${_csrf.token}" />--%>
+    <%--</form>--%>
+    <%--<script>--%>
+        <%--function formSubmit() {--%>
+            <%--document.getElementById("logoutForm").submit();--%>
+        <%--}--%>
+    <%--</script>--%>
 
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <h2>
-            User : ${pageContext.request.userPrincipal.name} | <a
-                href="javascript:formSubmit()"> Logout</a>
-        </h2>
-    </c:if>
+    <%--<c:if test="${pageContext.request.userPrincipal.name != null}">--%>
+        <%--<h2>--%>
+            <%--User : ${pageContext.request.userPrincipal.name} | <a--%>
+                <%--href="javascript:formSubmit()"> Logout</a>--%>
+        <%--</h2>--%>
+    <%--</c:if>--%>
 
 
-</sec:authorize>
+<%--</sec:authorize>--%>
 
 <div align="center">
-    <c:url value="/j_spring_security_check" var="loginURL"/>
-    <form method="post" action="${loginURL}" style="display: inline-block;">
+    <%--<c:url value="/j_spring_security_check" var="loginURL"/>--%>
+    <form method="post" action="/login.do" style="display: inline-block;">
         <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
         <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
         <input type="submit" name="loginButton" value="login" />
-        <input type="hidden" name="${_csrf.parameterName}"
-               value="${_csrf.token}" />
+        <%--<input type="hidden" name="${_csrf.parameterName}"--%>
+               <%--value="${_csrf.token}" />--%>
+
     </form>
     <button onclick="location.href='registerAPI.do'">Register</button>
     <%--<form method="post" action="registerAPI.do" style="display: inline-block;">--%>
         <%--<input type="submit" name="registerButton" value="register"/>--%>
         <%--<input type="hidden" name="registerStatus" value="init">--%>
     <%--</form>--%>
+        <label style="color: red">${requestScope.Error}</label>
+        <label>${sessionScope.loggedInAccount.userName}</label>
 </div>
 <div id="map_container"></div>
 </body>

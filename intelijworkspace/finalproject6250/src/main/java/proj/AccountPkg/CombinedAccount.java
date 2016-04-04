@@ -12,7 +12,7 @@ import java.util.Date;
 @Table(name = "combinedAccounttable")
 public class CombinedAccount {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="accountID", unique=true, nullable=false)
     private int accountID;
 
@@ -32,9 +32,9 @@ public class CombinedAccount {
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
 
-    @GeneratedValue
-    @Column(name="personID", unique=true, nullable=false)
-    private int personID;
+//    @GeneratedValue
+//    @Column(name="personID", unique=true, nullable=false)
+//    private int personID;
 
     @Column(name = "firstName")
     private String firstName;
@@ -122,13 +122,13 @@ public class CombinedAccount {
         this.accountType = accountType;
     }
 
-    public int getPersonID() {
-        return personID;
-    }
-
-    public void setPersonID(int personID) {
-        this.personID = personID;
-    }
+//    public int getPersonID() {
+//        return personID;
+//    }
+//
+//    public void setPersonID(int personID) {
+//        this.personID = personID;
+//    }
 
     public String getFirstName() {
         return firstName;

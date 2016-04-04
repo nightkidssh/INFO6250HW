@@ -32,34 +32,34 @@
     <form:errors path="userName" cssStyle="color: red"/><br/>&nbsp&nbsp
 
     <form:input path="password" id="password" type="password" placeholder="password"/><br/>&nbsp&nbsp
-    <form:errors path="password"/><br/>&nbsp&nbsp
+    <form:errors path="password" cssStyle="color: red"/><br/>&nbsp&nbsp
     <label>Password Requirement: #must contains one digit from 0-9 <br/>#must contains one lowercase characters <br/>#must contains one uppercase characters
         <br/>#must contains one special symbols "@#$%" <br/>#length at least 6 characters and maximum of 20<br/></label>
 
     <form:input path="confirmPassword" id="confirmPassword" type="password" placeholder="Confirm Password"/><br/>&nbsp&nbsp
-    <form:errors path="confirmPassword"/><br/>&nbsp&nbsp
+    <form:errors path="confirmPassword" cssStyle="color: red"/><br/>&nbsp&nbsp
     </div>
 
     <div id="personalInfoSection" class="default" style="background-color: white">
         <h3>Personal Information</h3>&nbsp&nbsp
         <form:input path="firstName" placeholder="First Name"/><br/>&nbsp&nbsp
-        <form:errors path="firstName"/><br/>&nbsp&nbsp
+        <form:errors path="firstName" cssStyle="color: red"/><br/>&nbsp&nbsp
         <form:input path="lastName" placeholder="Last Name"/><br/>&nbsp&nbsp
-        <form:errors path="lastName"/><br/>&nbsp&nbsp
+        <form:errors path="lastName" cssStyle="color: red"/><br/>&nbsp&nbsp
         <form:select path="sex">
             <option value="M">Male</option>
             <option value="F">Female</option>
         </form:select><br/><br/>
-        <form:errors path="sex"/><br/>&nbsp&nbsp
+        <form:errors path="sex" cssStyle="color: red"/><br/>&nbsp&nbsp
 
         <form:input path="phoneNumber" placeholder="Phone Number"/><br/>&nbsp&nbsp
-        <form:errors path="phoneNumber"/><br/>&nbsp&nbsp
+        <form:errors path="phoneNumber" cssStyle="color: red"/><br/>&nbsp&nbsp
         <form:input path="emailAddress" placeholder="Email Address"/><br/>&nbsp&nbsp
-        <form:errors path="emailAddress"/><br/>&nbsp&nbsp
+        <form:errors path="emailAddress" cssStyle="color: red"/><br/>&nbsp&nbsp
         <form:input path="mailingAddress" placeholder="Mailing Address"/><br/>&nbsp&nbsp
-        <form:errors path="mailingAddress"/><br/>&nbsp&nbsp
+        <form:errors path="mailingAddress" cssStyle="color: red"/><br/>&nbsp&nbsp
         <form:input path="zipCode" placeholder="Zip Code"/><br/>&nbsp&nbsp
-        <form:errors path="zipCode"/><br/>&nbsp&nbsp
+        <form:errors path="zipCode" cssStyle="color: red"/><br/>&nbsp&nbsp
     </div>
 
     <div id="submitSection" class="default" style="background-color: white">
