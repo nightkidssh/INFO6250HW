@@ -40,6 +40,8 @@
         }
 
     </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
 </head>
 <body onload="loadMap()">
 <%--<h1>Title : ${title}</h1>--%>
@@ -73,6 +75,7 @@
     <form method="post" action="/login.do" style="display: inline-block;">
         <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
         <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
+        <div class="g-recaptcha" data-sitekey="6LeqjBwTAAAAAGXXIHRlQipbogvJCSJvo5FnoKDB"></div>&nbsp&nbsp
         <input type="submit" name="loginButton" value="login" />
         <%--<input type="hidden" name="${_csrf.parameterName}"--%>
                <%--value="${_csrf.token}" />--%>

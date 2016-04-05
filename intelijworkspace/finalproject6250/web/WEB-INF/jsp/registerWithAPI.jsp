@@ -13,6 +13,7 @@
 <head>
     <title>Register for Easy Hosing system!</title>
     <link rel="stylesheet" href="/css/registerCSS.css">
+    <%--<script src="https://www.google.com/recaptcha/api.js" async defer></script>--%>
 </head>
 <body background="ImageResources/registerbgimg.jpg">
 <div id="globalContainer" class="global" style="background-color: white; opacity: 0.9">
@@ -61,6 +62,10 @@
         <form:input path="zipCode" placeholder="Zip Code"/><br/>&nbsp&nbsp
         <form:errors path="zipCode" cssStyle="color: red"/><br/>&nbsp&nbsp
     </div>
+
+    <%--<div id="reCAPTCHA" class="g-recaptcha" data-sitekey="6LeqjBwTAAAAAGXXIHRlQipbogvJCSJvo5FnoKDB" style="background-color: white">--%>
+        <%--<h3 style="color: red">${requestScope.reCAPTCHAError}</h3>--%>
+    <%--</div>--%>
 
     <div id="submitSection" class="default" style="background-color: white">
     <input type="submit" name="submit" value="Submit"/>

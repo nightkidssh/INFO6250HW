@@ -1,6 +1,7 @@
 package Controller;
 
 import Dao.CombinedAccountDao;
+import org.json.JSONObject;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,12 @@ import proj.AccountPkg.CombinedAccount;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Date;
 
 /**
@@ -21,6 +28,9 @@ import java.util.Date;
 @Controller
 @RequestMapping("/login.do")
 public class LoginController {
+
+    private static final String googleURL = "https://www.google.com/recaptcha/api/siteverify";
+    private static final String secret = "6LeqjBwTAAAAAPxaF5k_ozGsutOxl0PvZ4YDv0tA";
 
     @RequestMapping(method= RequestMethod.POST)
     protected ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -32,8 +42,55 @@ public class LoginController {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
 
+        String grecaptcharesponse = request.getParameter("g-recaptcha-response");
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
+        }
+
+        try {
+            URL urlObj = new URL(googleURL);
+
+            HttpURLConnection connection =
+                    (HttpURLConnection) urlObj.openConnection();
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            connection.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+
+            String postParams = "secret=" + secret + "&response="
+                    + grecaptcharesponse;
+
+            // Send post request
+            connection.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+            wr.writeBytes(postParams);
+            wr.flush();
+            wr.close();
+
+            InputStream json = connection.getInputStream();
+
+            BufferedReader streamReader = new BufferedReader(new InputStreamReader(json));
+            StringBuilder responseStrBuilder = new StringBuilder();
+
+            String inputStr;
+            while ((inputStr = streamReader.readLine()) != null) {
+                responseStrBuilder.append(inputStr);
+            }
+            JSONObject jsonObject = new JSONObject(responseStrBuilder.toString());
+            Boolean success = (Boolean) jsonObject.get("success");
+
+            if(success == false){
+                request.setAttribute("Error", "Please finish the CAPTCHA!");
+                ModelAndView model = new ModelAndView("realIndex");
+                return model;
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
         CombinedAccount account = combinedAccountDao.get(userName);
-//        System.out.println(account.getPassword());
 
         if(account!=null){
             if(passwordEncoder.matches(password, account.getPassword()) == true){
