@@ -17,6 +17,8 @@
     <mapping class="proj.AccountPkg.Account"/>
     <mapping class="proj.PersonPkg.Person"/>
     <mapping class="proj.AccountPkg.CombinedAccount"/>
+    <mapping class="proj.ListingPkg.Listing"/>
+    <mapping class="proj.ListingPkg.SalesListing"/>
 
   </session-factory>
 </hibernate-configuration>

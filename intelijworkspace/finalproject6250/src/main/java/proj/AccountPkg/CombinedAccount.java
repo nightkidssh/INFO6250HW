@@ -1,7 +1,11 @@
 package proj.AccountPkg;
 
+import proj.ListingPkg.Listing;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by kym-1992 on 3/30/16.
@@ -57,6 +61,9 @@ public class CombinedAccount {
     @Column(name = "zipCode")
     private String zipCode;
 
+    @OneToMany(mappedBy = "combinedAccount")
+    private Set<Listing> listings;
+
     public CombinedAccount(String userName, String password, Date dateCreated, AccountType accountType, String firstName, String lastName, String sex, String phoneNumber, String emailAddress, String mailingAddress, String zipCode) {
         this.userName = userName;
         this.password = password;
@@ -69,6 +76,7 @@ public class CombinedAccount {
         this.emailAddress = emailAddress;
         this.mailingAddress = mailingAddress;
         this.zipCode = zipCode;
+        this.listings = new HashSet<Listing>();
     }
 
     public CombinedAccount() {
@@ -184,5 +192,13 @@ public class CombinedAccount {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public Set<Listing> getListings() {
+        return listings;
+    }
+
+    public void setListings(Set<Listing> listings) {
+        this.listings = listings;
     }
 }

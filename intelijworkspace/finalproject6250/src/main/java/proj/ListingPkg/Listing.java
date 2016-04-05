@@ -1,23 +1,89 @@
 package proj.ListingPkg;
 
+import proj.AccountPkg.CombinedAccount;
+
+import javax.persistence.*;
+
+import static com.sun.tools.doclets.formats.html.markup.HtmlStyle.description;
+
 /**
  * Created by kym-1992 on 3/27/16.
  */
+@Entity
+@Table(name = "listing")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+        name="discriminator",
+        discriminatorType=DiscriminatorType.STRING
+)
+@DiscriminatorValue(value="P")
 public class Listing {
+    @Id
+    @GeneratedValue
+    @Column(name = "listingID")
     private int listingID;
+
+    @Column(name = "listingType")
+    @Enumerated(EnumType.STRING)
     private ListingType listingType;
+
+    @ManyToOne
+    @JoinColumn(name = "accountID")
+    private CombinedAccount combinedAccount;
+
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "numberOfBeds")
     private int numberOfBeds;
+
+    @Column(name = "numberOfBaths")
     private int numberOfBaths;
+
+    @Column(name = "sizeInSqft")
     private double sizeInSqft;
-    private String salesPrice;
-    private String leasePrice;
+//    private String salesPrice;
+//    private String leasePrice;
+
+    @Column(name = "lotSize")
     private double lotSize;
+
+    @Column(name = "type")
     private String type;
+
+    @Column(name = "yearOfBuilt")
     private int yearOfBuilt;
+
+    @Column(name = "heatingType")
     private String heatingType;
+
+    @Column(name = "propertyTax")
     private String propertyTax;
+
+    @Column(name = "comments")
+    private String comments;
+
+    public Listing() {
+    }
+
+    public Listing(ListingType listingType, CombinedAccount combinedAccount, String address, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments) {
+        this.listingType = listingType;
+        this.combinedAccount = combinedAccount;
+        this.address = address;
+        this.description = description;
+        this.numberOfBeds = numberOfBeds;
+        this.numberOfBaths = numberOfBaths;
+        this.sizeInSqft = sizeInSqft;
+        this.lotSize = lotSize;
+        this.type = type;
+        this.yearOfBuilt = yearOfBuilt;
+        this.heatingType = heatingType;
+        this.propertyTax = propertyTax;
+        this.comments = comments;
+    }
 
     public int getListingID() {
         return listingID;
@@ -75,20 +141,28 @@ public class Listing {
         this.sizeInSqft = sizeInSqft;
     }
 
-    public String getSalesPrice() {
-        return salesPrice;
+//    public String getSalesPrice() {
+//        return salesPrice;
+//    }
+//
+//    public void setSalesPrice(String salesPrice) {
+//        this.salesPrice = salesPrice;
+//    }
+//
+//    public String getLeasePrice() {
+//        return leasePrice;
+//    }
+//
+//    public void setLeasePrice(String leasePrice) {
+//        this.leasePrice = leasePrice;
+//    }
+
+    public CombinedAccount getCombinedAccount() {
+        return combinedAccount;
     }
 
-    public void setSalesPrice(String salesPrice) {
-        this.salesPrice = salesPrice;
-    }
-
-    public String getLeasePrice() {
-        return leasePrice;
-    }
-
-    public void setLeasePrice(String leasePrice) {
-        this.leasePrice = leasePrice;
+    public void setCombinedAccount(CombinedAccount combinedAccount) {
+        this.combinedAccount = combinedAccount;
     }
 
     public double getLotSize() {

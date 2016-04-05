@@ -3,6 +3,7 @@ package Dao;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import java.util.logging.Level;
@@ -16,10 +17,10 @@ public class DAO {
     private static final Logger log = Logger.getAnonymousLogger();
 
     private static final ThreadLocal sessionThread = new ThreadLocal();
-    private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-//    private static final Configuration configuration = new Configuration().configure();
-//    private static final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-//    private static final SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
+//    private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+    private static final Configuration configuration = new Configuration().configure();
+    private static final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+    private static final SessionFactory sessionFactory = configuration.buildSessionFactory(builder.build());
 
     protected DAO() {
     }
