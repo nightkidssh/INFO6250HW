@@ -69,26 +69,38 @@
 
 
 <%--</sec:authorize>--%>
-
 <div align="center">
-    <%--<c:url value="/j_spring_security_check" var="loginURL"/>--%>
-    <form method="post" action="/login.do" style="display: inline-block;">
-        <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
-        <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
-        <div class="g-recaptcha" data-sitekey="6LeqjBwTAAAAAGXXIHRlQipbogvJCSJvo5FnoKDB"></div>&nbsp&nbsp
-        <input type="submit" name="loginButton" value="login" />
-        <%--<input type="hidden" name="${_csrf.parameterName}"--%>
-               <%--value="${_csrf.token}" />--%>
 
-    </form>
-    <button onclick="location.href='registerAPI.do'">Register</button>
-    <%--<form method="post" action="registerAPI.do" style="display: inline-block;">--%>
-        <%--<input type="submit" name="registerButton" value="register"/>--%>
-        <%--<input type="hidden" name="registerStatus" value="init">--%>
-    <%--</form>--%>
-        <label style="color: red">${requestScope.Error}</label>
-        <label>${sessionScope.loggedInAccount.userName}</label>
+    <c:choose>
+        <c:when test="${sessionScope.loggedInAccount.userName != null}">
+            <form method = "post" action="/logout.do" style="display: inline-block;">
+                <label>Welcome ${sessionScope.loggedInAccount.accountType} ${sessionScope.loggedInAccount.userName}</label>
+                <input type="submit" name="Logout" value="Logout"/>
+            </form>
+        </c:when>
+        <c:otherwise>
+            <%--<c:url value="/j_spring_security_check" var="loginURL"/>--%>
+            <form method="post" action="/login.do" style="display: inline-block;">
+                <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
+                <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
+                <div class="g-recaptcha" data-sitekey="6LeqjBwTAAAAAGXXIHRlQipbogvJCSJvo5FnoKDB"></div>&nbsp&nbsp
+                <input type="submit" name="loginButton" value="login" />
+                    <%--<input type="hidden" name="${_csrf.parameterName}"--%>
+                    <%--value="${_csrf.token}" />--%>
+
+            </form>
+            <button onclick="location.href='registerAPI.do'">Register</button>
+            <%--<form method="post" action="registerAPI.do" style="display: inline-block;">--%>
+            <%--<input type="submit" name="registerButton" value="register"/>--%>
+            <%--<input type="hidden" name="registerStatus" value="init">--%>
+            <%--</form>--%>
+            <label style="color: red">${requestScope.Error}</label>
+            <label>${sessionScope.loggedInAccount.userName}</label>
+        </c:otherwise>
+    </c:choose>
+
 </div>
 <div id="map_container"></div>
+<button onclick="location.href='salesListing.do'">SalesListing</button>
 </body>
 </html>

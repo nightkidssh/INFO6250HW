@@ -20,8 +20,8 @@ public class SalesListing extends Listing{
     public SalesListing() {
     }
 
-    public SalesListing(ListingType listingType, CombinedAccount combinedAccount, String address, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice) {
-        super(listingType, combinedAccount, address, description, numberOfBeds, numberOfBaths, sizeInSqft, lotSize, type, yearOfBuilt, heatingType, propertyTax, comments);
+    public SalesListing(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice) {
+        super(listingType, combinedAccount, address, zipCode, latitude, longitude, description, numberOfBeds, numberOfBaths, sizeInSqft, lotSize, type, yearOfBuilt, heatingType, propertyTax, comments);
         this.listPrice = listPrice;
     }
 

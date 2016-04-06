@@ -49,6 +49,7 @@ public class AccountDao extends DAO{
             commit();
             return account;
         }catch (HibernateException e){
+            e.printStackTrace();
             rollback();
         }
         return null;

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import proj.AccountPkg.AccountType;
 import proj.AccountPkg.CombinedAccount;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Date;
 
 /**
  * Created by kym-1992 on 3/27/16.
@@ -36,7 +34,7 @@ public class LoginController {
     protected ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
         CombinedAccountDao combinedAccountDao = new CombinedAccountDao();
 
-        combinedAccountDao.create("a", "aa", new Date(), AccountType.SystemAdmin, "Bowei", "Wang", "M", "1111111", "qqq@qq.com", "ccc", "111");
+//        combinedAccountDao.create("a", "aa", new Date(), AccountType.SystemAdmin, "Bowei", "Wang", "M", "1111111", "qqq@qq.com", "ccc", "111");
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String userName = request.getParameter("userName");

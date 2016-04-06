@@ -3,6 +3,7 @@ package Controller;
 import Dao.CombinedAccountDao;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -34,7 +35,7 @@ public class RegisterControllerWithAPI {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String doSubmitAction(@ModelAttribute("user") CombinedAccount account, BindingResult result) throws Exception {
+    public String doSubmitAction(@ModelAttribute("user") CombinedAccount account, BindingResult result, HttpRequest httpRequest) throws Exception {
         validator.validate(account, result);
         if (result.hasErrors()) {
             return "registerWithAPI";
@@ -56,11 +57,6 @@ public class RegisterControllerWithAPI {
         return "realIndex";
     }
 
-//    @RequestMapping(method = RequestMethod.GET)
-//    public String initializeForm(@ModelAttribute("user")CombinedAccount account, BindingResult result) {
-//
-//        return "registerWithAPI";
-//    }
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView initializeForm(@ModelAttribute("user")CombinedAccount account, BindingResult result) {

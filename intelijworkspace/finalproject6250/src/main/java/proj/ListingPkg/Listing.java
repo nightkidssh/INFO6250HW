@@ -4,7 +4,6 @@ import proj.AccountPkg.CombinedAccount;
 
 import javax.persistence.*;
 
-import static com.sun.tools.doclets.formats.html.markup.HtmlStyle.description;
 
 /**
  * Created by kym-1992 on 3/27/16.
@@ -33,6 +32,15 @@ public class Listing {
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "zipCode")
+    private String zipCode;
+
+    @Column(name = "latitude")
+    private String latitude;
+
+    @Column(name = "longitude")
+    private String longitude;
 
     @Column(name = "description")
     private String description;
@@ -69,10 +77,13 @@ public class Listing {
     public Listing() {
     }
 
-    public Listing(ListingType listingType, CombinedAccount combinedAccount, String address, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments) {
+    public Listing(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments) {
         this.listingType = listingType;
         this.combinedAccount = combinedAccount;
         this.address = address;
+        this.zipCode = zipCode;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.description = description;
         this.numberOfBeds = numberOfBeds;
         this.numberOfBaths = numberOfBaths;
@@ -107,6 +118,38 @@ public class Listing {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
     public String getDescription() {
