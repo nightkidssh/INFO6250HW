@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/css/registerCSS.css">
 </head>
 <body>
+<div id="logoutContainer" class="global" style="background-color: white; opacity: 0.9">
 <c:choose>
     <c:when test="${sessionScope.loggedInAccount.userName != null}">
         <form method = "post" action="/logout.do" style="display: inline-block;">
@@ -26,6 +27,7 @@
         <c:redirect url="/realIndex.do"/>
     </c:otherwise>
 </c:choose>
+</div>
 
 
 <div id="globalContainer" class="global" style="background-color: white; opacity: 0.9">
@@ -43,7 +45,7 @@
             <form:input path="address" id="address" placeholder="Property Address"/><br/>&nbsp&nbsp
             <form:errors path="address"/><br/>&nbsp&nbsp
 
-            <form:textarea path="description" id="description" placeholder="Description"/><br/>&nbsp&nbsp
+            <form:textarea path="description" id="description" placeholder="Description" rows="5" cols="50"/><br/>&nbsp&nbsp
             <form:errors path="description"/><br/>&nbsp&nbsp
 
             <label>Number of Beds</label>
@@ -76,7 +78,7 @@
             <form:input path="propertyTax" id="propertyTax" placeholder="propertyTax"/><br/>&nbsp&nbsp
             <form:errors path="address"/><br/>&nbsp&nbsp
 
-            <form:textarea path="comments" id="comments" placeholder="comments"/><br/>&nbsp&nbsp
+            <form:textarea path="comments" id="comments" placeholder="comments" rows="5" cols="50"/><br/>&nbsp&nbsp
             <form:errors path="comments"/><br/>&nbsp&nbsp
 
         </div>
@@ -91,6 +93,7 @@
         <%--</div>--%>
 
         <div id="submitSection" class="default" style="background-color: white">
+            <button onclick="location.href='realIndex.do'">Back to Home Page</button>
             <input type="submit" name="submit" value="Submit"/>
         </div>
     </form:form>

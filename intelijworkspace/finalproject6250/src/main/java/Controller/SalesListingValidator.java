@@ -2,6 +2,7 @@ package Controller;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.w3c.dom.Document;
 import proj.ListingPkg.SalesListing;
@@ -23,6 +24,19 @@ public class SalesListingValidator implements Validator{
 
     public void validate(Object o, Errors errors) {
         SalesListing salesListing = (SalesListing) o;
+
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "listingType", "Invalid.listingType", "listingType Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "Invalid.address", "Address Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "Invalid.description", "description Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "numberOfBeds", "Invalid.numberOfBeds", "numberOfBeds Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "numberOfBaths", "Invalid.numberOfBaths", "numberOfBaths Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sizeInSqft", "Invalid.sizeInSqft", "sizeInSqft Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lotSize", "Invalid.lotSize", "lotSize Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "type", "Invalid.type", "type Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "yearOfBuilt", "Invalid.yearOfBuilt", "yearOfBuilt Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "heatingType", "Invalid.heatingType", "heatingType Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "propertyTax", "Invalid.propertyTax", "propertyTax Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "comments", "Invalid.comments", "comments Required!");
 
         //Address with Google Map API
         String rawaddress = salesListing.getAddress();

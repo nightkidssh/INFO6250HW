@@ -3,7 +3,6 @@ package Dao;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Repository;
 import proj.AccountPkg.AccountType;
 import proj.AccountPkg.CombinedAccount;
 
@@ -13,7 +12,6 @@ import java.util.Date;
 /**
  * Created by kym-1992 on 3/30/16.
  */
-@Repository
 public class CombinedAccountDao extends DAO{
     public CombinedAccountDao() {
     }

@@ -10,7 +10,7 @@ import proj.ListingPkg.SalesListing;
  * Created by kym-1992 on 4/4/16.
  */
 public class ListingDao extends DAO{
-    public Listing create(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice){
+    public Listing createSales(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice){
         try{
             begin();
             if(listingType == ListingType.forLease){
@@ -32,7 +32,7 @@ public class ListingDao extends DAO{
             e.printStackTrace();
             rollback();
         }
-//
+
         return null;
     }
 }

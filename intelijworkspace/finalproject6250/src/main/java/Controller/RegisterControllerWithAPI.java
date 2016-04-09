@@ -3,7 +3,6 @@ package Controller;
 import Dao.CombinedAccountDao;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -15,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 import proj.AccountPkg.AccountType;
 import proj.AccountPkg.CombinedAccount;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 /**
@@ -35,7 +36,7 @@ public class RegisterControllerWithAPI {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String doSubmitAction(@ModelAttribute("user") CombinedAccount account, BindingResult result, HttpRequest httpRequest) throws Exception {
+    public String doSubmitAction(@ModelAttribute("user") CombinedAccount account, BindingResult result, HttpServletRequest request) throws Exception {
         validator.validate(account, result);
         if (result.hasErrors()) {
             return "registerWithAPI";
@@ -49,6 +50,15 @@ public class RegisterControllerWithAPI {
             combinedAccountDao.create(account.getUserName(), account.getPassword(), new Date(), account.getAccountType(), account.getFirstName(), account.getLastName()
                     , account.getSex(), account.getPhoneNumber(), account.getEmailAddress(), account.getMailingAddress(), account.getZipCode());
 
+            if(request.isRequestedSessionIdValid() == false) {
+                HttpSession session = request.getSession();
+                session.invalidate();
+                session.setAttribute("loggedInAccount", account);
+            }
+            else{
+                HttpSession session = request.getSession();
+                session.setAttribute("loggedInAccount", account);
+            }
             // DAO.close();
         } catch (HibernateException e) {
             System.out.println("Exception: " + e.getMessage());

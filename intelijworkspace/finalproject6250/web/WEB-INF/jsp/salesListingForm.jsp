@@ -93,6 +93,7 @@
         <%--</div>--%>
 
         <div id="submitSection" class="default" style="background-color: white">
+            <button onclick="location.href='realIndex.do'">Back to Home Page</button>
             <input type="submit" name="submit" value="Submit"/>
         </div>
     </form:form>
