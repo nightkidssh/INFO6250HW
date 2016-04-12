@@ -60,13 +60,14 @@ public class SalesListingValidator implements Validator{
 
             doc.getDocumentElement().normalize();
             String status = doc.getElementsByTagName("status").item(0).getTextContent();
-            if(status.equalsIgnoreCase("OK")){
+            String type = doc.getElementsByTagName("type").item(0).getTextContent();
+            if(status.equalsIgnoreCase("OK") && type.equalsIgnoreCase("street_address")){
                 salesListing.setAddress(doc.getElementsByTagName("formatted_address").item(0).getTextContent());
                 salesListing.setLatitude(doc.getElementsByTagName("lat").item(0).getTextContent());
                 salesListing.setLongitude(doc.getElementsByTagName("lng").item(0).getTextContent());
             }
             else{
-                errors.rejectValue("address", "Invalid.address", doc.getElementsByTagName("error_message").item(0).getTextContent());
+                errors.rejectValue("address", "Invalid.address", "Invalid Address!");
             }
 
         }catch (Exception e){

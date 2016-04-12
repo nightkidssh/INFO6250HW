@@ -30,13 +30,19 @@
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("map_container"),myOptions);
+            var infowindow = new google.maps.InfoWindow();
 
             var marker = new google.maps.Marker({
                 position: latlng,
                 map: map,
                 title:"Northeastern University"
             });
-
+            google.maps.event.addListener(marker, 'click', (function (marker) {
+                return function () {
+                    infowindow.setContent("Northeastern University");
+                    infowindow.open(map, marker);
+                }
+            })(marker));
         }
 
     </script>

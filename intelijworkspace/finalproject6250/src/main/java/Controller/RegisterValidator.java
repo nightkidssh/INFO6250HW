@@ -98,7 +98,8 @@ public class RegisterValidator implements Validator {
 
             doc.getDocumentElement().normalize();
             String status = doc.getElementsByTagName("status").item(0).getTextContent();
-            if(status.equalsIgnoreCase("OK")){
+            String type = doc.getElementsByTagName("type").item(0).getTextContent();
+            if(status.equalsIgnoreCase("OK") && type.equalsIgnoreCase("street_address")){
                 combinedAccount.setMailingAddress(doc.getElementsByTagName("formatted_address").item(0).getTextContent());
             }
             else{
