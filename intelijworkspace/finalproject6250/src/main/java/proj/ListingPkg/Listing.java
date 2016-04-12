@@ -53,8 +53,6 @@ public class Listing {
 
     @Column(name = "sizeInSqft")
     private double sizeInSqft;
-//    private String salesPrice;
-//    private String leasePrice;
 
     @Column(name = "lotSize")
     private double lotSize;

@@ -27,6 +27,7 @@ public class SalesListingValidator implements Validator{
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "listingType", "Invalid.listingType", "listingType Required!");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "Invalid.address", "Address Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "zipCode", "Invalid.zipCode", "zipCode Required!");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "Invalid.description", "description Required!");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "numberOfBeds", "Invalid.numberOfBeds", "numberOfBeds Required!");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "numberOfBaths", "Invalid.numberOfBaths", "numberOfBaths Required!");
@@ -37,6 +38,7 @@ public class SalesListingValidator implements Validator{
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "heatingType", "Invalid.heatingType", "heatingType Required!");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "propertyTax", "Invalid.propertyTax", "propertyTax Required!");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "comments", "Invalid.comments", "comments Required!");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "listPrice", "Invalid.listPrice", "listPrice Required!");
 
         //Address with Google Map API
         String rawaddress = salesListing.getAddress();
@@ -60,6 +62,8 @@ public class SalesListingValidator implements Validator{
             String status = doc.getElementsByTagName("status").item(0).getTextContent();
             if(status.equalsIgnoreCase("OK")){
                 salesListing.setAddress(doc.getElementsByTagName("formatted_address").item(0).getTextContent());
+                salesListing.setLatitude(doc.getElementsByTagName("lat").item(0).getTextContent());
+                salesListing.setLongitude(doc.getElementsByTagName("lng").item(0).getTextContent());
             }
             else{
                 errors.rejectValue("address", "Invalid.address", doc.getElementsByTagName("error_message").item(0).getTextContent());
