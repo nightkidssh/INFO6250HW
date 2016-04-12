@@ -1,10 +1,13 @@
 package Dao;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import proj.AccountPkg.CombinedAccount;
 import proj.ListingPkg.Listing;
 import proj.ListingPkg.ListingType;
 import proj.ListingPkg.SalesListing;
+
+import java.util.List;
 
 /**
  * Created by kym-1992 on 4/4/16.
@@ -39,5 +42,35 @@ public class ListingDao extends DAO{
         }
 
         return null;
+    }
+
+    public List getData(CombinedAccount combinedAccount, int limit, int offset){
+        List result = null;
+        try {
+            begin();
+            Query q = getSession().createQuery("from Listing where combinedAccount = :combinedAccount ");
+            q.setParameter("combinedAccount", combinedAccount);
+            q.setFirstResult(offset);
+            q.setMaxResults(100);
+            result = q.list();
+        } catch (HibernateException e) {
+            rollback();
+        }
+
+        return result;
+    }
+
+    public Number getRowCount(CombinedAccount combinedAccount){
+        Number rowCount = 0;
+        try {
+            begin();
+            Query q = getSession().createQuery("select count(*) from Listing where combinedAccount = :combinedAccount");
+            q.setParameter("combinedAccount", combinedAccount);
+            rowCount = (Number) q.uniqueResult();
+            return rowCount;
+        } catch (HibernateException e) {
+            rollback();
+        }
+        return rowCount;
     }
 }

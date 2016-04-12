@@ -24,6 +24,7 @@
         </form>
     </c:when>
     <c:otherwise>
+        <c:set var="Error" value="Please Login First!" scope="request"/>
         <c:redirect url="/realIndex.do"/>
     </c:otherwise>
 </c:choose>
@@ -44,6 +45,9 @@
 
             <form:input path="address" id="address" placeholder="Property Address"/><br/>&nbsp&nbsp
             <form:errors path="address"/><br/>&nbsp&nbsp
+
+            <form:input path="zipCode" id="zipCode" placeholder="Zip Code"/><br/>&nbsp&nbsp
+            <form:errors path="zipCode"/><br/>&nbsp&nbsp
 
             <form:textarea path="description" id="description" placeholder="Description" rows="5" cols="50"/><br/>&nbsp&nbsp
             <form:errors path="description"/><br/>&nbsp&nbsp
@@ -72,15 +76,18 @@
             <form:errors path="yearOfBuilt"/><br/>&nbsp&nbsp
 
             <form:input path="heatingType" id="heatingType" placeholder="heatingType"/><br/>&nbsp&nbsp
-            <form:errors path="address"/><br/>&nbsp&nbsp
+            <form:errors path="heatingType"/><br/>&nbsp&nbsp
 
             <label>Property Tax</label>
             <form:input path="propertyTax" id="propertyTax" placeholder="propertyTax"/><br/>&nbsp&nbsp
-            <form:errors path="address"/><br/>&nbsp&nbsp
+            <form:errors path="propertyTax"/><br/>&nbsp&nbsp
 
             <form:textarea path="comments" id="comments" placeholder="comments" rows="5" cols="50"/><br/>&nbsp&nbsp
             <form:errors path="comments"/><br/>&nbsp&nbsp
 
+            <label>List Price</label>
+            <form:input path="listPrice" id="listPrice" placeholder="listPrice"/><br/>&nbsp&nbsp
+            <form:errors path="listPrice"/><br/>&nbsp&nbsp
         </div>
 
         <div id="fileUploadSection" class="default" style="background-color: white">

@@ -93,11 +93,12 @@ public class LoginController {
             if(passwordEncoder.matches(password, account.getPassword()) == true){
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedInAccount", account);
+                response.sendRedirect("showmylisting.do");
             }
             else{
                 request.setAttribute("Error", "Login Failed! Please check your input!");
             }
-//            System.out.println("Success");
+
         }
         else{
             request.setAttribute("Error", "Login Failed! No such user!");
