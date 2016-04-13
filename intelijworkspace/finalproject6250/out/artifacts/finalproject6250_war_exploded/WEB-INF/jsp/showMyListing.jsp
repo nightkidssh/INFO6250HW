@@ -68,6 +68,7 @@
                 <label>Welcome ${sessionScope.loggedInAccount.accountType} ${sessionScope.loggedInAccount.userName}</label>
                 <input type="submit" name="Logout" value="Logout"/>
             </form>
+            <button onclick="location.href='salesListing.do'">Add New SalesListing</button>
         </c:when>
         <c:otherwise>
             <%--<c:set var="Error" value="Please Login First!" scope="request"/>--%>

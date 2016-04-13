@@ -25,26 +25,52 @@
         function loadMap() {
             var latlng = new google.maps.LatLng(42.3383292,-71.0886148);
             var myOptions = {
-                zoom: 15,
+                zoom: 10,
                 center: latlng,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("map_container"),myOptions);
             var infowindow = new google.maps.InfoWindow();
 
-            var marker = new google.maps.Marker({
-                position: latlng,
-                map: map,
-                title:"Northeastern University"
-            });
-            google.maps.event.addListener(marker, 'click', (function (marker) {
-                return function () {
-                    infowindow.setContent("Northeastern University");
-                    infowindow.open(map, marker);
-                }
-            })(marker));
-        }
 
+
+            var dataArray = [
+                <c:forEach var="record" items="${requestScope.resultSet}">
+                [ '<c:out value="${record.getAddress()}"/>', <c:out value="${record.getLatitude()}"/>, <c:out value="${record.getLongitude()}"/> ],
+                </c:forEach>
+
+            ];
+
+            if(dataArray.length > 0) {
+                var marker, i;
+                for(i = 0; i < dataArray.length; i++) {
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(dataArray[i][1], dataArray[i][2]),
+                        map: map,
+                        title: dataArray[i][0]
+                    });
+                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                        return function () {
+                            infowindow.setContent(dataArray[i][0]);
+                            infowindow.open(map, marker);
+                        }
+                    })(marker, i));
+                }
+            }
+            else{
+                var marker = new google.maps.Marker({
+                    position: latlng,
+                    map: map,
+                    title:"Northeastern University"
+                });
+                google.maps.event.addListener(marker, 'click', (function (marker) {
+                    return function () {
+                        infowindow.setContent("Northeastern University");
+                        infowindow.open(map, marker);
+                    }
+                })(marker));
+            }
+        }
     </script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -83,6 +109,7 @@
                 <label>Welcome ${sessionScope.loggedInAccount.accountType} ${sessionScope.loggedInAccount.userName}</label>
                 <input type="submit" name="Logout" value="Logout"/>
             </form>
+            <button onclick="location.href='showmylisting.do'">Show my Listing</button>
         </c:when>
         <c:otherwise>
             <%--<c:url value="/j_spring_security_check" var="loginURL"/>--%>
@@ -107,6 +134,5 @@
 
 </div>
 <div id="map_container"></div>
-<button onclick="location.href='salesListing.do'">SalesListing</button>
 </body>
 </html>

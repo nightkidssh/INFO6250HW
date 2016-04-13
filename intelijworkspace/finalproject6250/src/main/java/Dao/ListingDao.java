@@ -75,4 +75,19 @@ public class ListingDao extends DAO{
         }
         return rowCount;
     }
+
+    public List getAllData(){
+        List<SalesListing> result = null;
+        try {
+            begin();
+            Query q = getSession().createQuery("from Listing");
+            result = q.list();
+
+            System.out.println(result.get(0).getAddress());
+        } catch (HibernateException e) {
+            rollback();
+        }
+
+        return result;
+    }
 }

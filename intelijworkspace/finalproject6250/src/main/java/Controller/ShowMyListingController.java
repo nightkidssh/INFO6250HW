@@ -30,20 +30,24 @@ public class ShowMyListingController {
 //        if(request.getParameter("page") !=null){
 //            page = Integer.parseInt(request.getParameter("page")) - 1;
 //        }
-//
+
         ListingDao listingDao = new ListingDao();
-//        long count = listingDao.getRowCount(combinedAccount).longValue();
-//
+
+//        int count = listingDao.getRowCount(combinedAccount).intValue();
+
 //        if(page > count/100+1){
-//            page = (int)(count/100 +1);
+//            page = count/100 +1;
 //        }
+//
+//        System.out.println(page);
+//        System.out.println(count);
 
         List resultSet = listingDao.getData(combinedAccount, 100, page * 100);
 
         ModelAndView mv = new ModelAndView("showMyListing");
         mv.addObject("resultSet", resultSet);
         mv.addObject("currentPage", page);
-//        mv.addObject("maxPage", (int)(count/100 +1));
+//        mv.addObject("maxPage", count/100 +1);
         return mv;
     }
 }

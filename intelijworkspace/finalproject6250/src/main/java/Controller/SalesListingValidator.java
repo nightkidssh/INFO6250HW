@@ -60,14 +60,34 @@ public class SalesListingValidator implements Validator{
 
             doc.getDocumentElement().normalize();
             String status = doc.getElementsByTagName("status").item(0).getTextContent();
-            String type = doc.getElementsByTagName("type").item(0).getTextContent();
-            if(status.equalsIgnoreCase("OK") && type.equalsIgnoreCase("street_address")){
-                salesListing.setAddress(doc.getElementsByTagName("formatted_address").item(0).getTextContent());
-                salesListing.setLatitude(doc.getElementsByTagName("lat").item(0).getTextContent());
-                salesListing.setLongitude(doc.getElementsByTagName("lng").item(0).getTextContent());
-            }
-            else{
+            if(doc.getElementsByTagName("type").item(0)== null){
                 errors.rejectValue("address", "Invalid.address", "Invalid Address!");
+            }
+            else {
+                String type = doc.getElementsByTagName("type").item(0).getTextContent();
+                if (status.equalsIgnoreCase("OK") && type.equalsIgnoreCase("street_address")) {
+                    salesListing.setAddress(doc.getElementsByTagName("formatted_address").item(0).getTextContent());
+                    salesListing.setLatitude(doc.getElementsByTagName("lat").item(0).getTextContent());
+                    salesListing.setLongitude(doc.getElementsByTagName("lng").item(0).getTextContent());
+                } else {
+                    errors.rejectValue("address", "Invalid.address", "Invalid Address or zip code!");
+                }
+            }
+
+            String zipRegex = "^[0-9]{5}(?:-[0-9]{4})?$";
+            if(!salesListing.getZipCode().matches(zipRegex)){
+                errors.rejectValue("zipCode", "Invalid.zipCode", "Not valid zipCode");
+            }
+
+
+
+            String priceRegex = "^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\\.[0-9]{2})?$";
+            if(!salesListing.getPropertyTax().matches(priceRegex)){
+                errors.rejectValue("propertyTax", "Invalid.propertyTax", "Not valid propertyTax");
+            }
+
+            if(!salesListing.getListPrice().matches(priceRegex)){
+                errors.rejectValue("listPrice", "Invalid.listPrice", "Not valid listPrice");
             }
 
         }catch (Exception e){
