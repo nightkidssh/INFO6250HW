@@ -14,11 +14,12 @@
     <title>My Listing</title>
     <style type="text/css">
         div#map_container{
-            width:90%;
-            height:70%;
+            width:60%;
+            height:60%;
             margin: 0 auto;
         }
     </style>
+    <link rel="stylesheet" href="/css/showResultCSS.css">
     <script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false"
             type="text/javascript"></script>
     <script type="text/javascript">
@@ -26,24 +27,19 @@
             //Put data in array
             var dataArray = [
                 <c:forEach var="record" items="${requestScope.resultSet}">
-                [ <c:out value="${record.getAddress()}"/>, <c:out value="${record.getLatitude()}"/>, <c:out value="${record.getLongitude()}"/> ],
+                [ '<c:out value="${record.getAddress()}"/>', <c:out value="${record.getLatitude()}"/>, <c:out value="${record.getLongitude()}"/> ],
                 </c:forEach>
 
             ];
 
             var myOptions = {
                 zoom: 15,
-                center: new google.maps.LatLng(42.3383292,-71.0886148),
+                center: new google.maps.LatLng(dataArray[0][1], dataArray[0][2]),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("map_container"), myOptions);
             var infowindow = new google.maps.InfoWindow();
 
-//            var marker = new google.maps.Marker({
-//                position: latlng,
-//                map: map,
-//                title: "Northeastern University"
-//            });
             if(dataArray.length > 0) {
                 var marker, i;
                 for(i = 0; i < dataArray.length; i++) {
@@ -54,7 +50,7 @@
                     });
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
-                            infowindow.setContent(locations[i][0]);
+                            infowindow.setContent(dataArray[i][0]);
                             infowindow.open(map, marker);
                         }
                     })(marker, i));
@@ -74,8 +70,10 @@
             </form>
         </c:when>
         <c:otherwise>
-            <c:set var="Error" value="Please Login First!" scope="request"/>
-            <c:redirect url="/realIndex.do"/>
+            <%--<c:set var="Error" value="Please Login First!" scope="request"/>--%>
+            <c:redirect url="/realIndex.do">
+                <c:param name="Error"  value="Please Login First!"/>
+            </c:redirect>
         </c:otherwise>
     </c:choose>
 </div>
@@ -106,24 +104,26 @@
 
         <c:forEach var="record" items="${requestScope.resultSet}">
             <tr>
-                <td><input type="text" name= "listingID" value="${record.getSalesOrderID()}" readonly=""/></td>
-                <td><input type="text" name= "listingType" value="${record.getRevisionNumber()}" readonly=""/></td>
-                <td><input type="text" name= "accountID" value="${record.getOrderDate()}" readonly=""/></td>
+                <td><input type="text" name= "listingID" value="${record.getListingID()}" readonly=""/></td>
+                <td><input type="text" name= "listingType" value="${record.getListingType()}" readonly=""/></td>
+                <td><input type="text" name= "accountID" value="${record.getCombinedAccount().getAccountID()}" readonly=""/></td>
                 <td><input type="text" name= "address" value="${record.getAddress()}" readonly=""/></td>
-                <td><input type="text" name= "zipCode" value="${record.getShipDate()}" readonly=""/></td>
+                <td><input type="text" name= "zipCode" value="${record.getZipCode()}" readonly=""/></td>
                 <td><input type="text" name= "latitude" value="${record.getLatitude()}" readonly=""/></td>
                 <td><input type="text" name= "longitude" value="${record.getLongitude()}" readonly=""/></td>
-                <td><input type="text" name= "description" value="${record.getSalesOrderNumber()}" readonly=""/></td>
-                <td><input type="text" name= "numberOfBeds" value="${record.getPurchaseOrderNumber()}" readonly=""/></td>
-                <td><input type="text" name= "numberOfBaths" value="${record.getAccountNumber()}" readonly=""/></td>
-                <td><input type="text" name= "sizeInSqft" value="${record.getCustomerID()}" readonly=""/></td>
-                <td><input type="text" name= "lotSize" value="${record.getSalesPersonID()}" readonly=""/></td>
-                <td><input type="text" name= "type" value="${record.getTerritoryID()}" readonly=""/></td>
-                <td><input type="text" name= "yearOfBuilt" value="${record.getBillToAddressID()}" readonly=""/></td>
-                <td><input type="text" name= "heatingType" value="${record.getShipToAddressID()}" readonly=""/></td>
-                <td><input type="text" name= "propertyTax" value="${record.getShipMethodID()}" readonly=""/></td>
-                <td><input type="text" name= "comments" value="${record.getCreditCardID()}" readonly=""/></td>
-                <td><input type="text" name= "price" value="${record.getCreditCardApprovalCode()}" readonly=""/></td>
+                <td><input type="text" name= "description" value="${record.getDescription()}" readonly=""/></td>
+                <td><input type="text" name= "numberOfBeds" value="${record.getNumberOfBeds()}" readonly=""/></td>
+                <td><input type="text" name= "numberOfBaths" value="${record.getNumberOfBaths()}" readonly=""/></td>
+                <td><input type="text" name= "sizeInSqft" value="${record.getSizeInSqft()}" readonly=""/></td>
+                <td><input type="text" name= "lotSize" value="${record.getLotSize()}" readonly=""/></td>
+                <td><input type="text" name= "type" value="${record.getType()}" readonly=""/></td>
+                <td><input type="text" name= "yearOfBuilt" value="${record.getYearOfBuilt()}" readonly=""/></td>
+                <td><input type="text" name= "heatingType" value="${record.getHeatingType()}" readonly=""/></td>
+                <td><input type="text" name= "propertyTax" value="${record.getPropertyTax()}" readonly=""/></td>
+                <td><input type="text" name= "comments" value="${record.getComments()}" readonly=""/></td>
+                <c:if test="${record.getClass().simpleName =='SalesListing'}">
+                    <td><input type="text" name= "price" value="${record.getListPrice()}" readonly=""/></td>
+                </c:if>
                 <%--<td><input type="button" value="Remove" onclick="removeRow(this)"/></td>--%>
             </tr>
         </c:forEach>

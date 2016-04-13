@@ -245,4 +245,6 @@ public class Listing {
     public void setPropertyTax(String propertyTax) {
         this.propertyTax = propertyTax;
     }
+
+
 }

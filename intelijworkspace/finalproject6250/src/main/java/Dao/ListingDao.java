@@ -50,11 +50,10 @@ public class ListingDao extends DAO{
             begin();
             Query q = getSession().createQuery("from Listing where combinedAccount = :combinedAccount");
             q.setParameter("combinedAccount", combinedAccount);
-//            q.setFirstResult(offset);
-//            q.setMaxResults(limit);
-            for(final Object o : q.list()) {
-                result.add((SalesListing)o);
-            }
+            q.setFirstResult(offset);
+            q.setMaxResults(limit);
+            result = q.list();
+
             System.out.println(result.get(0).getAddress());
         } catch (HibernateException e) {
             rollback();

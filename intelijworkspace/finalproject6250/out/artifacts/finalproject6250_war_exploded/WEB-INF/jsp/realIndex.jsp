@@ -13,8 +13,8 @@
     <title>Welcome to Easy Housing system!</title>
     <style type="text/css">
         div#map_container{
-            width:90%;
-            height:70%;
+            width:60%;
+            height:60%;
             margin: 0 auto;
         }
     </style>
