@@ -17,6 +17,17 @@
             height:60%;
             margin: 0 auto;
         }
+
+        div.global{
+            border-width: medium;
+            border-style: double;
+            border-color: black;
+            text-align:center;
+            margin-left:auto;
+            margin-right:auto;
+            width: 50%;
+        }
+
     </style>
     <script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false"
             type="text/javascript"></script>
@@ -101,7 +112,7 @@
 
 
 <%--</sec:authorize>--%>
-<div align="center">
+<div id="logoutContainer" class="global" style="background-color: white; opacity: 0.9">
 
     <c:choose>
         <c:when test="${sessionScope.loggedInAccount.userName != null}">
@@ -113,16 +124,15 @@
         </c:when>
         <c:otherwise>
             <%--<c:url value="/j_spring_security_check" var="loginURL"/>--%>
+            <button onclick="location.href='registerAPI.do'" style="float:right">Register</button>
             <form method="post" action="/login.do" style="display: inline-block;">
                 <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
                 <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
-                <div class="g-recaptcha" data-sitekey="6LeqjBwTAAAAAGXXIHRlQipbogvJCSJvo5FnoKDB"></div>&nbsp&nbsp
                 <input type="submit" name="loginButton" value="login" />
                     <%--<input type="hidden" name="${_csrf.parameterName}"--%>
                     <%--value="${_csrf.token}" />--%>
-
+                <div class="g-recaptcha" data-sitekey="6LeqjBwTAAAAAGXXIHRlQipbogvJCSJvo5FnoKDB"></div>&nbsp&nbsp
             </form>
-            <button onclick="location.href='registerAPI.do'">Register</button>
             <%--<form method="post" action="registerAPI.do" style="display: inline-block;">--%>
             <%--<input type="submit" name="registerButton" value="register"/>--%>
             <%--<input type="hidden" name="registerStatus" value="init">--%>

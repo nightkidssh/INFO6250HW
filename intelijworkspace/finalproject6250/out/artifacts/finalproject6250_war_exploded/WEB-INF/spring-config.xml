@@ -9,6 +9,7 @@
     <beans>
         <bean class="Controller.RegisterValidator"/>
         <bean class="Controller.SalesListingValidator"/>
+        <bean class="service.MyUserDetailsService"/>
         <context:annotation-config/>
     </beans>
 

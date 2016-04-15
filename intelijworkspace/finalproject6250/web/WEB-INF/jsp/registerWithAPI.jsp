@@ -23,9 +23,9 @@
     <h3>Login Information</h3>&nbsp&nbsp
     <label>Account Type:</label>&nbsp&nbsp
     <form:select path="accountType">
-        <option value="SystemAdmin">System Admin Account</option><option value="Landlord">Landlord Account</option>
+        <option value="Landlord">Landlord Account</option>
         <option value="HomeBuyer">Home Buyer Account</option><option value="Lessor">Leassor Account</option>
-        <option value="Lessee">Lessee Account</option><option value="SpecialAdmin">Special Admin Account</option>
+        <option value="Lessee">Lessee Account</option>
     </form:select><br/><br/>&nbsp&nbsp
     <form:errors path="accountType"/><br/>&nbsp&nbsp
 
