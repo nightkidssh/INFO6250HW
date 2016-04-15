@@ -10,6 +10,7 @@
         <bean class="Controller.RegisterValidator"/>
         <bean class="Controller.SalesListingValidator"/>
         <bean class="service.MyUserDetailsService"/>
+        <bean class="Dao.CombinedAccountDao"/>
         <context:annotation-config/>
     </beans>
 
