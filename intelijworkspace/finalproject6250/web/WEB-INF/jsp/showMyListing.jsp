@@ -101,6 +101,7 @@
             <td>propertyTax</td>
             <td>comments</td>
             <td>price</td>
+            <td>Delete</td>
         </tr>
 
         <c:forEach var="record" items="${requestScope.resultSet}">
@@ -144,6 +145,8 @@
 <div id="map_container"></div>
 
 <script>
+    var xmlHttp;
+    xmlHttp = GetXmlHttpObject();
     function removeRow(buttonNode, listingID){
         var result = confirm("Are you sure you want to delete this listing?");
         if(result == true){
@@ -161,10 +164,10 @@
                     trNode.parentNode.removeChild(trNode);
                 }
             };
-            xmlHttp.open("POST", "/showmylisting.do/delete", true);
+            xmlHttp.open("POST", "/showmylisting.do", true);
             xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlHttp.send(query);
-            
+
         }
         return false;
     }

@@ -55,7 +55,7 @@ public class ShowMyListingController {
         return mv;
     }
 
-    @RequestMapping(value = "/showmylisting.do/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/showmylisting.do", method = RequestMethod.POST)
     public ModelAndView deleteRecord(HttpServletRequest request, HttpServletResponse response) {
         CombinedAccount combinedAccount;
         if(request.getSession().getAttribute("loggedInAccount") != null) {
