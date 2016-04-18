@@ -1,13 +1,14 @@
 package edu.neu.boweiwang.Dao;
 
+import edu.neu.boweiwang.proj.AccountPkg.AccountType;
+import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
-import edu.neu.boweiwang.proj.AccountPkg.AccountType;
-import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
 
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -59,6 +60,20 @@ public class CombinedAccountDao extends DAO{
             commit();
             return combinedAccount;
         }catch (HibernateException e){
+            rollback();
+        }
+        return null;
+    }
+
+    public List<CombinedAccount> getAllUser(){
+        List<CombinedAccount> accountList;
+        try {
+            begin();
+            Query q = getSession().createQuery("from CombinedAccount");
+            accountList = q.list();
+
+            return accountList;
+        } catch (HibernateException e) {
             rollback();
         }
         return null;

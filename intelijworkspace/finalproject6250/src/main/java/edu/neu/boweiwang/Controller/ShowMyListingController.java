@@ -35,7 +35,7 @@ public class ShowMyListingController {
 //            page = Integer.parseInt(request.getParameter("page")) - 1;
 //        }
 
-        ListingDao listingDao = new ListingDao();
+//        ListingDao listingDao = new ListingDao();
 
 //        int count = listingDao.getRowCount(combinedAccount).intValue();
 

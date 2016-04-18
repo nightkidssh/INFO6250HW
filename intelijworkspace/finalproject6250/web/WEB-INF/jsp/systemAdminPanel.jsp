@@ -26,6 +26,40 @@
         </jsp:forward>
     </c:otherwise>
 </c:choose>
-<h1>SystemAdmin!!!!!</h1>
+<h1>List of your accounts:</h1>
+<form action="sysadminpanel.do" method="post">
+    <table border="1">
+        <tr>
+            <td>accountID</td>
+            <td>userName</td>
+            <td>dateCreated</td>
+            <td>accountType</td>
+            <td>firstName</td>
+            <td>lastName</td>
+            <td>sex</td>
+            <td>phoneNumber</td>
+            <td>emailAddress</td>
+            <td>mailingAddress</td>
+            <td>zipCode</td>
+            <td>Delete</td>
+        </tr>
+
+        <c:forEach var="record" items="${requestScope.resultSet}">
+            <tr>
+                <td><input type="text" name= "accountID" value="${record.getListingID()}" readonly=""/></td>
+                <td><input type="text" name= "userName" value="${record.getListingType()}" readonly=""/></td>
+                <td><input type="text" name= "dateCreated" value="${record.getCombinedAccount().getAccountID()}" readonly=""/></td>
+                <td><input type="text" name= "accountType" value="${record.getAddress()}" readonly=""/></td>
+                <td><input type="text" name= "firstName" value="${record.getZipCode()}" readonly=""/></td>
+                <td><input type="text" name= "lastName" value="${record.getLatitude()}" readonly=""/></td>
+                <td><input type="text" name= "sex" value="${record.getLongitude()}" readonly=""/></td>
+                <td><input type="text" name= "phoneNumber" value="${record.getDescription()}" readonly=""/></td>
+                <td><input type="text" name= "emailAddress" value="${record.getNumberOfBeds()}" readonly=""/></td>
+                <td><input type="text" name= "mailingAddress" value="${record.getNumberOfBaths()}" readonly=""/></td>
+                <td><input type="text" name= "zipCode" value="${record.getSizeInSqft()}" readonly=""/></td>
+
+            </tr>
+        </c:forEach>
+    </table>
 </body>
 </html>

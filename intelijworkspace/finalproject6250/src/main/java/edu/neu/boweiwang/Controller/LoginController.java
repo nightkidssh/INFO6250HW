@@ -1,6 +1,7 @@
 package edu.neu.boweiwang.Controller;
 
 import edu.neu.boweiwang.Dao.CombinedAccountDao;
+import edu.neu.boweiwang.proj.AccountPkg.AccountType;
 import org.json.JSONObject;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -93,7 +94,12 @@ public class LoginController {
             if(passwordEncoder.matches(password, account.getPassword()) == true){
                 HttpSession session = request.getSession();
                 session.setAttribute("loggedInAccount", account);
-                response.sendRedirect("showmylisting.do");
+                if(account.getAccountType() == AccountType.SystemAdmin){
+                    response.sendRedirect("sysadminpanel.do");
+                }
+                else {
+                    response.sendRedirect("showmylisting.do");
+                }
             }
             else{
                 request.setAttribute("Error", "Login Failed! Please check your input!");
