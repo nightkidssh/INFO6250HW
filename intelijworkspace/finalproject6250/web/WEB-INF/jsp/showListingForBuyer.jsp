@@ -73,10 +73,9 @@
             <button onclick="location.href='salesListing.do'">Add New SalesListing</button>
         </c:when>
         <c:otherwise>
-            <%--<c:set var="Error" value="Please Login First!" scope="request"/>--%>
-            <c:redirect url="/realIndex.do">
-                <c:param name="Error"  value="Please Login First!"/>
-            </c:redirect>
+            <jsp:forward page="/realIndex.do">
+                <jsp:param name="loginError" value="Please Login First"/>
+            </jsp:forward>
         </c:otherwise>
     </c:choose>
 </div>
@@ -127,7 +126,6 @@
                 <c:if test="${record.getClass().simpleName =='SalesListing'}">
                     <td><input type="text" name= "price" value="${record.getListPrice()}" readonly=""/></td>
                 </c:if>
-                    <%--<td><input type="button" value="Remove" onclick="removeRow(this)"/></td>--%>
             </tr>
         </c:forEach>
     </table>

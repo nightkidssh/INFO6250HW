@@ -13,6 +13,6 @@
 
 </head>
 <body>
-  <c:redirect url="/realIndex.do"/>
+  <jsp:forward page="/realIndex.do"/>
 </body>
 </html>

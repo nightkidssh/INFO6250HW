@@ -17,11 +17,6 @@ import java.util.List;
 public class ListingDao extends DAO{
     public Listing createSales(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice){
         try{
-//            begin();
-//            SalesListing salesListing = new SalesListing( listingType,  combinedAccount,  address, zipCode, latitude,  longitude,  description,  numberOfBeds,  numberOfBaths,  sizeInSqft,  lotSize,  type,  yearOfBuilt,  heatingType,  propertyTax,  comments,  listPrice);
-//            getSession().save(salesListing);
-//            commit();
-
             if(listingType.equals(ListingType.forLease)){
 
             }
@@ -56,7 +51,6 @@ public class ListingDao extends DAO{
             q.setMaxResults(limit);
             result = q.list();
 
-            System.out.println(result.get(0).getAddress());
         } catch (HibernateException e) {
             rollback();
         }
@@ -84,8 +78,8 @@ public class ListingDao extends DAO{
             begin();
             Query q = getSession().createQuery("from Listing");
             result = q.list();
-
-            System.out.println(result.get(0).getAddress());
+//
+//            System.out.println(result.get(0).getAddress());
         } catch (HibernateException e) {
             rollback();
         }

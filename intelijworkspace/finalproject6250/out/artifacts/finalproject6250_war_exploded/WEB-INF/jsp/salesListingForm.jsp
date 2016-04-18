@@ -24,8 +24,9 @@
         </form>
     </c:when>
     <c:otherwise>
-        <c:set var="Error" value="Please Login First!" scope="request"/>
-        <c:redirect url="/realIndex.do"/>
+        <jsp:forward page="/realIndex.do">
+            <jsp:param name="loginError" value="Please Login First"/>
+        </jsp:forward>
     </c:otherwise>
 </c:choose>
 </div>

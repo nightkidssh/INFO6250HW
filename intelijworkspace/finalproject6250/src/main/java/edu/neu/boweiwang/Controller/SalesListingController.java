@@ -52,7 +52,7 @@ public class SalesListingController {
             System.out.println("Exception: " + e.getMessage());
         }
 
-        return "realIndex";
+        return "showMyListing";
     }
 
 

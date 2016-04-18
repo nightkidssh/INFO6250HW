@@ -22,6 +22,10 @@ public class RealIndexController {
         List resultSet = listingDao.getAllData();
         ModelAndView mv = new ModelAndView("realIndex");
         mv.addObject("resultSet", resultSet);
+
+        if(request.getParameter("loginError") != null){
+            mv.addObject("loginError", request.getParameter("loginError"));
+        }
         return  mv;
     }
 }

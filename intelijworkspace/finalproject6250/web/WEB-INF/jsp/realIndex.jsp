@@ -139,6 +139,7 @@
             <%--<input type="hidden" name="registerStatus" value="init">--%>
             <%--</form>--%>
             <label style="color: red">${requestScope.Error}</label>
+            <label style="color: red">${requestScope.loginError}</label>
             <label>${sessionScope.loggedInAccount.userName}</label>
         </c:otherwise>
     </c:choose>
