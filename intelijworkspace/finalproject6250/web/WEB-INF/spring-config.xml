@@ -7,10 +7,11 @@
 
     <!--<mvc:annotation-driven/>-->
     <beans>
-        <bean class="Controller.RegisterValidator"/>
-        <bean class="Controller.SalesListingValidator"/>
-        <bean class="service.MyUserDetailsService"/>
-        <bean class="Dao.CombinedAccountDao"/>
+        <bean class="edu.neu.boweiwang.Controller.RegisterValidator"/>
+        <bean class="edu.neu.boweiwang.Controller.SalesListingValidator"/>
+        <!--<bean id="MyUserDetailsService" class="edu.neu.boweiwang.service.MyUserDetailsService"/>-->
+        <bean id="combinedAccountDao" class="edu.neu.boweiwang.Dao.CombinedAccountDao"/>
+        <bean class="edu.neu.boweiwang.Dao.ListingDao"/>
         <context:annotation-config/>
     </beans>
 

@@ -125,7 +125,7 @@
                 <c:if test="${record.getClass().simpleName =='SalesListing'}">
                     <td><input type="text" name= "price" value="${record.getListPrice()}" readonly=""/></td>
                 </c:if>
-                <%--<td><input type="button" value="Remove" onclick="removeRow(this)"/></td>--%>
+                <td><input type="button" value="Remove" onclick="removeRow(this, ${record.getListingID()})"/></td>
             </tr>
         </c:forEach>
     </table>
@@ -142,6 +142,57 @@
 </form>
 
 <div id="map_container"></div>
+
+<script>
+    function removeRow(buttonNode, listingID){
+        var result = confirm("Are you sure you want to delete this listing?");
+        if(result == true){
+            if (xmlHttp == null)
+            {
+                alert("Your browser does not support AJAX!");
+                return;
+            }
+            var query = "listingID=" + listingID;
+            xmlHttp.onreadystatechange = function stateChanged()
+            {
+                if (xmlHttp.readyState == 4)
+                {
+                    trNode = buttonNode.parentNode.parentNode;
+                    trNode.parentNode.removeChild(trNode);
+                }
+            };
+            xmlHttp.open("GET", "/showmylisting.do/delete?", true);
+            xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlHttp.send(query);
+
+
+            trNode = buttonNode.parentNode.parentNode;
+            trNode.parentNode.removeChild(trNode);
+        }
+        return false;
+    }
+
+    function GetXmlHttpObject()
+    {
+        var xmlHttp = null;
+        try
+        {
+            // Firefox, Opera 8.0+, Safari
+            xmlHttp = new XMLHttpRequest();
+        } catch (e)
+        {
+            // Internet Explorer
+            try
+            {
+                xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e)
+            {
+                xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        return xmlHttp;
+    }
+</script>
 
 </body>
 </html>

@@ -126,6 +126,7 @@
             <%--<c:url value="/j_spring_security_check" var="loginURL"/>--%>
             <button onclick="location.href='registerAPI.do'" style="float:right">Register</button>
             <form method="post" action="/login.do" style="display: inline-block;">
+            <%--<form method="post" action="${loginURL}" style="display: inline-block;">--%>
                 <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
                 <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
                 <input type="submit" name="loginButton" value="login" />

@@ -11,7 +11,7 @@
 
     <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
-    <!-- Enables the Spring MVC @Controller programming model -->
+    <!-- Enables the Spring MVC @edu.neu.boweiwang.Controller programming model -->
     <annotation-driven />
 
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
@@ -23,8 +23,8 @@
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
 
-    <context:component-scan base-package="Controller" />
-    <!--<context:component-scan base-package="configFiles"/>-->
-    <!-- Imports user-defined @Controller beans that process client requests -->
+    <context:component-scan base-package="edu.neu.boweiwang" />
+    <!--<context:component-scan base-package="edu.neu.boweiwang.configFiles"/>-->
+    <!-- Imports user-defined @edu.neu.boweiwang.Controller beans that process client requests -->
     <!--<beans:import resource="controllers.xml" />-->
 </beans:beans>

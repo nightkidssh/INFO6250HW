@@ -14,11 +14,11 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.show_sql">true</property>
 
-    <mapping class="proj.AccountPkg.Account"/>
-    <mapping class="proj.PersonPkg.Person"/>
-    <mapping class="proj.AccountPkg.CombinedAccount"/>
-    <mapping class="proj.ListingPkg.Listing"/>
-    <mapping class="proj.ListingPkg.SalesListing"/>
+    <mapping class="edu.neu.boweiwang.proj.AccountPkg.Account"/>
+    <mapping class="edu.neu.boweiwang.proj.PersonPkg.Person"/>
+    <mapping class="edu.neu.boweiwang.proj.AccountPkg.CombinedAccount"/>
+    <mapping class="edu.neu.boweiwang.proj.ListingPkg.Listing"/>
+    <mapping class="edu.neu.boweiwang.proj.ListingPkg.SalesListing"/>
 
   </session-factory>
 </hibernate-configuration>
