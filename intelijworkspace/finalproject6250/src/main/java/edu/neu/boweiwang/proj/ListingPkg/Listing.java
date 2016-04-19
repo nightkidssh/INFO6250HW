@@ -72,6 +72,10 @@ public class Listing {
     @Column(name = "comments")
     private String comments;
 
+    private String fileLocation;
+
+
+
     public Listing() {
     }
 

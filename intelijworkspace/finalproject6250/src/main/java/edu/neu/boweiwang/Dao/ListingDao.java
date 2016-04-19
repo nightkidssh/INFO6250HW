@@ -38,6 +38,8 @@ public class ListingDao extends DAO{
         catch (HibernateException e){
             e.printStackTrace();
             rollback();
+        } finally {
+            close();
         }
 
         return null;
@@ -57,6 +59,8 @@ public class ListingDao extends DAO{
             close();
         } catch (HibernateException e) {
             rollback();
+        } finally {
+            close();
         }
 
         return result;
@@ -75,6 +79,8 @@ public class ListingDao extends DAO{
             return rowCount;
         } catch (HibernateException e) {
             rollback();
+        } finally {
+            close();
         }
         return rowCount;
     }
@@ -92,6 +98,8 @@ public class ListingDao extends DAO{
 //            System.out.println(result.get(0).getAddress());
         } catch (HibernateException e) {
             rollback();
+        } finally {
+            close();
         }
 
         return result;
@@ -113,6 +121,8 @@ public class ListingDao extends DAO{
         catch (HibernateException e){
             e.printStackTrace();
             rollback();
+        } finally {
+            close();
         }
 
         return rowAffacted;

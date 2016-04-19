@@ -32,6 +32,8 @@ public class CombinedAccountDao extends DAO{
             return combinedAccount;
         } catch (HibernateException e) {
             rollback();
+        } finally {
+            close();
         }
         return combinedAccount;
     }
@@ -49,6 +51,8 @@ public class CombinedAccountDao extends DAO{
             return combinedAccount;
         } catch (HibernateException e) {
             rollback();
+        }finally {
+            close();
         }
         return combinedAccount;
     }
@@ -67,6 +71,8 @@ public class CombinedAccountDao extends DAO{
             return combinedAccount;
         }catch (HibernateException e){
             rollback();
+        } finally {
+            close();
         }
         return null;
     }
@@ -83,6 +89,8 @@ public class CombinedAccountDao extends DAO{
             return accountList;
         } catch (HibernateException e) {
             rollback();
+        } finally {
+            close();
         }
         return null;
     }
@@ -100,6 +108,8 @@ public class CombinedAccountDao extends DAO{
             return accountList;
         } catch (HibernateException e) {
             rollback();
+        } finally {
+            close();
         }
         return null;
     }
@@ -116,6 +126,8 @@ public class CombinedAccountDao extends DAO{
             close();
         }catch (HibernateException e) {
             rollback();
+        } finally {
+            close();
         }
         return rowaffacted;
     }
