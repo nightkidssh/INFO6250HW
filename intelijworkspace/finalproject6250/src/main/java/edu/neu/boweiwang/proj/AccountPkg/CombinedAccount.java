@@ -3,6 +3,7 @@ package edu.neu.boweiwang.proj.AccountPkg;
 import edu.neu.boweiwang.proj.ListingPkg.Listing;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +15,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "combinedAccounttable")
-public class CombinedAccount {
+public class CombinedAccount implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="accountID", unique=true, nullable=false)

@@ -4,6 +4,7 @@ import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 /**
@@ -17,7 +18,7 @@ import javax.persistence.*;
         discriminatorType=DiscriminatorType.STRING
 )
 @DiscriminatorValue(value="P")
-public class Listing {
+public class Listing implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "listingID")
@@ -73,11 +74,29 @@ public class Listing {
     @Column(name = "comments")
     private String comments;
 
-    @Column(name = "filePath")
-    private String fileLocation;
+    @Column(name = "filePath1")
+    private String fileLocation1;
+
+    @Column(name = "filePath2")
+    private String fileLocation2;
+
+    @Column(name = "filePath3")
+    private String fileLocation3;
+
+    @Column(name = "filePath4")
+    private String fileLocation4;
 
     @Transient
-    private MultipartFile file;
+    private MultipartFile file1;
+
+    @Transient
+    private MultipartFile file2;
+
+    @Transient
+    private MultipartFile file3;
+
+    @Transient
+    private MultipartFile file4;
 
     public Listing() {
     }
@@ -253,12 +272,36 @@ public class Listing {
         this.propertyTax = propertyTax;
     }
 
-    public String getFileLocation() {
-        return fileLocation;
+    public String getFileLocation1() {
+        return fileLocation1;
     }
 
-    public void setFileLocation(String fileLocation) {
-        this.fileLocation = fileLocation;
+    public void setFileLocation1(String fileLocation1) {
+        this.fileLocation1 = fileLocation1;
+    }
+
+    public String getFileLocation2() {
+        return fileLocation2;
+    }
+
+    public void setFileLocation2(String fileLocation2) {
+        this.fileLocation2 = fileLocation2;
+    }
+
+    public String getFileLocation3() {
+        return fileLocation3;
+    }
+
+    public void setFileLocation3(String fileLocation3) {
+        this.fileLocation3 = fileLocation3;
+    }
+
+    public String getFileLocation4() {
+        return fileLocation4;
+    }
+
+    public void setFileLocation4(String fileLocation4) {
+        this.fileLocation4 = fileLocation4;
     }
 
     public MultipartFile getFile() {

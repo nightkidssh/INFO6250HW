@@ -3,6 +3,7 @@ package edu.neu.boweiwang.proj.AccountPkg;
 import edu.neu.boweiwang.proj.PersonPkg.Person;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "accounttable")
-public class Account {
+public class Account implements Serializable {
 
     @Id
     @GeneratedValue

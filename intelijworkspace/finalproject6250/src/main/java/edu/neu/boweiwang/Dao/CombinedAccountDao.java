@@ -123,7 +123,7 @@ public class CombinedAccountDao extends DAO{
             q1.executeUpdate();
             commit();
             close();
-            
+
             begin();
             Query q = getSession().createQuery("delete from CombinedAccount where accountID = :accID");
             q.setInteger("accID", userID);

@@ -127,4 +127,24 @@ public class ListingDao extends DAO{
 
         return rowAffacted;
     }
+
+    public Listing findRecordByID(int rowNumber){
+        Listing listing = null;
+
+        try{
+            begin();
+            Query q = getSession().createQuery("from Listing where listingID = :listingID");
+            q.setInteger("listingID", rowNumber);
+            listing = (Listing) q.uniqueResult();
+            commit();
+//            getSession().flush();
+            close();
+        }catch (HibernateException e){
+            e.printStackTrace();
+            rollback();
+        } finally {
+            close();
+        }
+        return listing;
+    }
 }

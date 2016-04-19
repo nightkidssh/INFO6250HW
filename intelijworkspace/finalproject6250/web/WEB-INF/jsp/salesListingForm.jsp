@@ -33,7 +33,7 @@
 
 
 <div id="globalContainer" class="global" style="background-color: white; opacity: 0.9">
-    <form:form action="salesListing.do" method="post" commandName="salesListing">
+    <form:form action="salesListing.do" enctype="multipart/form-data" method="post" commandName="salesListing">
         <h1>List my own house</h1>
         <div id="listingDetailSection" class="default" style="background-color: white">
             <h3>Listing Detail</h3>&nbsp&nbsp

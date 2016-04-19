@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * Created by kym-1992 on 4/4/16.
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="listing")
 @DiscriminatorValue("S")
-public class SalesListing extends Listing{
+public class SalesListing extends Listing implements Serializable {
     @Column(name = "listPrice")
     private String listPrice;
 
