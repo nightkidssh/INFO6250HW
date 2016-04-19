@@ -27,7 +27,7 @@ public class CombinedAccountDao extends DAO{
             q.setString("username", username);
             combinedAccount = (CombinedAccount) q.uniqueResult();
             commit();
-            getSession().flush();
+//            getSession().flush();
             close();
             return combinedAccount;
         } catch (HibernateException e) {
@@ -46,7 +46,7 @@ public class CombinedAccountDao extends DAO{
             q.setString("emailAddress", emailAddress);
             combinedAccount = (CombinedAccount) q.uniqueResult();
             commit();
-            getSession().flush();
+//            getSession().flush();
             close();
             return combinedAccount;
         } catch (HibernateException e) {
@@ -66,7 +66,7 @@ public class CombinedAccountDao extends DAO{
             getSession().save(combinedAccount);
 
             commit();
-            getSession().flush();
+//            getSession().flush();
             close();
             return combinedAccount;
         }catch (HibernateException e){
@@ -84,7 +84,7 @@ public class CombinedAccountDao extends DAO{
             Query q = getSession().createQuery("from CombinedAccount");
             accountList = q.list();
             commit();
-            getSession().flush();
+//            getSession().flush();
             close();
             return accountList;
         } catch (HibernateException e) {
@@ -103,7 +103,7 @@ public class CombinedAccountDao extends DAO{
             q.setParameter("type", AccountType.SystemAdmin);
             accountList = q.list();
             commit();
-            getSession().flush();
+//            getSession().flush();
             close();
             return accountList;
         } catch (HibernateException e) {
@@ -118,11 +118,18 @@ public class CombinedAccountDao extends DAO{
         int rowaffacted = 0;
         try{
             begin();
+            Query q1 = getSession().createQuery("delete from Listing where combinedAccount.accountID = :accID");
+            q1.setInteger("accID", userID);
+            q1.executeUpdate();
+            commit();
+            close();
+            
+            begin();
             Query q = getSession().createQuery("delete from CombinedAccount where accountID = :accID");
             q.setInteger("accID", userID);
             rowaffacted = q.executeUpdate();
             commit();
-            getSession().flush();
+//            getSession().flush();
             close();
         }catch (HibernateException e) {
             rollback();

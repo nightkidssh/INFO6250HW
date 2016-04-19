@@ -26,7 +26,7 @@ public class ListingDao extends DAO{
                 SalesListing salesListing = new SalesListing( listingType,  combinedAccount,  address, zipCode, latitude,  longitude,  description,  numberOfBeds,  numberOfBaths,  sizeInSqft,  lotSize,  type,  yearOfBuilt,  heatingType,  propertyTax,  comments,  listPrice);
                 getSession().save(salesListing);
                 commit();
-                getSession().flush();
+//                getSession().flush();
                 close();
                 return salesListing;
             }
@@ -55,7 +55,7 @@ public class ListingDao extends DAO{
             q.setMaxResults(limit);
             result = q.list();
             commit();
-            getSession().flush();
+//            getSession().flush();
             close();
         } catch (HibernateException e) {
             rollback();
@@ -74,7 +74,7 @@ public class ListingDao extends DAO{
             q.setParameter("combinedAccount", combinedAccount);
             rowCount = (Number) q.uniqueResult();
             commit();
-            getSession().flush();
+//            getSession().flush();
             close();
             return rowCount;
         } catch (HibernateException e) {
@@ -92,7 +92,7 @@ public class ListingDao extends DAO{
             Query q = getSession().createQuery("from Listing");
             result = q.list();
             commit();
-            getSession().flush();
+//            getSession().flush();
             close();
 //
 //            System.out.println(result.get(0).getAddress());
@@ -115,7 +115,7 @@ public class ListingDao extends DAO{
             q.setInteger("listingID", rowNumber);
             rowAffacted = q.executeUpdate();
             commit();
-            getSession().flush();
+//            getSession().flush();
             close();
         }
         catch (HibernateException e){

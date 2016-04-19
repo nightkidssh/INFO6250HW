@@ -1,6 +1,7 @@
 package edu.neu.boweiwang.proj.ListingPkg;
 
 import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 
@@ -26,7 +27,7 @@ public class Listing {
     @Enumerated(EnumType.STRING)
     private ListingType listingType;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @ManyToOne
     @JoinColumn(name = "accountID")
     private CombinedAccount combinedAccount;
 
@@ -72,9 +73,11 @@ public class Listing {
     @Column(name = "comments")
     private String comments;
 
+    @Column(name = "filePath")
     private String fileLocation;
 
-
+    @Transient
+    private MultipartFile file;
 
     public Listing() {
     }
@@ -250,5 +253,19 @@ public class Listing {
         this.propertyTax = propertyTax;
     }
 
+    public String getFileLocation() {
+        return fileLocation;
+    }
 
+    public void setFileLocation(String fileLocation) {
+        this.fileLocation = fileLocation;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
 }

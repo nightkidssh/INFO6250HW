@@ -2,13 +2,13 @@ package edu.neu.boweiwang.Controller;
 
 import edu.neu.boweiwang.Dao.CombinedAccountDao;
 import edu.neu.boweiwang.proj.AccountPkg.AccountType;
+import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
 import org.json.JSONObject;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

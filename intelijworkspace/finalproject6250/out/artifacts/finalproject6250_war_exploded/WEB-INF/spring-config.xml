@@ -7,6 +7,7 @@
 
     <!--<mvc:annotation-driven/>-->
     <beans>
+        <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
         <bean class="edu.neu.boweiwang.Controller.RegisterValidator"/>
         <bean class="edu.neu.boweiwang.Controller.SalesListingValidator"/>
         <!--<bean id="MyUserDetailsService" class="edu.neu.boweiwang.service.MyUserDetailsService"/>-->

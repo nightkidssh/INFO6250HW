@@ -61,7 +61,7 @@ public class CombinedAccount {
     @Column(name = "zipCode")
     private String zipCode;
 
-    @OneToMany(mappedBy = "combinedAccount", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "combinedAccount", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private Set<Listing> listings;
 
     public CombinedAccount(String userName, String password, Date dateCreated, AccountType accountType, String firstName, String lastName, String sex, String phoneNumber, String emailAddress, String mailingAddress, String zipCode) {
