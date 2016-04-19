@@ -26,7 +26,7 @@ public class Listing {
     @Enumerated(EnumType.STRING)
     private ListingType listingType;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "accountID")
     private CombinedAccount combinedAccount;
 

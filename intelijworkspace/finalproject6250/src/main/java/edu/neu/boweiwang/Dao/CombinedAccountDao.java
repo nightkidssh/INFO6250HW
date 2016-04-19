@@ -27,6 +27,8 @@ public class CombinedAccountDao extends DAO{
             q.setString("username", username);
             combinedAccount = (CombinedAccount) q.uniqueResult();
             commit();
+            getSession().flush();
+            close();
             return combinedAccount;
         } catch (HibernateException e) {
             rollback();
@@ -42,6 +44,8 @@ public class CombinedAccountDao extends DAO{
             q.setString("emailAddress", emailAddress);
             combinedAccount = (CombinedAccount) q.uniqueResult();
             commit();
+            getSession().flush();
+            close();
             return combinedAccount;
         } catch (HibernateException e) {
             rollback();
@@ -58,6 +62,8 @@ public class CombinedAccountDao extends DAO{
             getSession().save(combinedAccount);
 
             commit();
+            getSession().flush();
+            close();
             return combinedAccount;
         }catch (HibernateException e){
             rollback();
@@ -71,7 +77,9 @@ public class CombinedAccountDao extends DAO{
             begin();
             Query q = getSession().createQuery("from CombinedAccount");
             accountList = q.list();
-
+            commit();
+            getSession().flush();
+            close();
             return accountList;
         } catch (HibernateException e) {
             rollback();
@@ -86,7 +94,9 @@ public class CombinedAccountDao extends DAO{
             Query q = getSession().createQuery("from CombinedAccount where accountType != :type");
             q.setParameter("type", AccountType.SystemAdmin);
             accountList = q.list();
-
+            commit();
+            getSession().flush();
+            close();
             return accountList;
         } catch (HibernateException e) {
             rollback();
@@ -102,6 +112,8 @@ public class CombinedAccountDao extends DAO{
             q.setInteger("accID", userID);
             rowaffacted = q.executeUpdate();
             commit();
+            getSession().flush();
+            close();
         }catch (HibernateException e) {
             rollback();
         }

@@ -15,6 +15,7 @@ import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
 import edu.neu.boweiwang.proj.ListingPkg.SalesListing;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by kym-1992 on 4/5/16.
@@ -31,7 +32,7 @@ public class SalesListingController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String doSubmitAction(@ModelAttribute("salesListing") SalesListing salesListing, BindingResult result, HttpServletRequest request) throws Exception {
+    public String doSubmitAction(@ModelAttribute("salesListing") SalesListing salesListing, BindingResult result, HttpServletRequest request, HttpServletResponse response) throws Exception {
         salesListingValidator.validate(salesListing, result);
         if (result.hasErrors()) {
             return "salesListingForm";
@@ -52,7 +53,8 @@ public class SalesListingController {
             System.out.println("Exception: " + e.getMessage());
         }
 
-        return "showMyListing";
+        response.sendRedirect("showmylisting.do");
+        return null;
     }
 
 
