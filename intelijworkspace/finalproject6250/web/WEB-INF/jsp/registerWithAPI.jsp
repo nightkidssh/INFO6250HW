@@ -24,7 +24,7 @@
     <label>Account Type:</label>&nbsp&nbsp
     <form:select path="accountType">
         <option value="Landlord">Landlord Account</option>
-        <option value="HomeBuyer">Home Buyer Account</option><option value="Lessor">Leassor Account</option>
+        <option value="HomeBuyer">Home Buyer Account</option>
         <option value="Lessee">Lessee Account</option>
     </form:select><br/><br/>&nbsp&nbsp
     <form:errors path="accountType"/><br/>&nbsp&nbsp

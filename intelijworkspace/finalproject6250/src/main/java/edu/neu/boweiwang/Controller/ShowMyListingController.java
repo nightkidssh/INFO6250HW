@@ -10,6 +10,7 @@ import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -56,7 +57,7 @@ public class ShowMyListingController {
     }
 
     @RequestMapping(value = "/showmylisting.do", method = RequestMethod.POST)
-    public ModelAndView deleteRecord(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView deleteRecord(HttpServletRequest request, HttpServletResponse response) throws IOException {
         CombinedAccount combinedAccount;
         if(request.getSession().getAttribute("loggedInAccount") != null) {
             combinedAccount = (CombinedAccount) request.getSession().getAttribute("loggedInAccount");
@@ -64,7 +65,7 @@ public class ShowMyListingController {
             listingDao.deleteRecord(listingID, combinedAccount);
         }
         else{
-            return new ModelAndView("realIndex");
+            response.sendRedirect("realIndex.do");
         }
 
         return null;

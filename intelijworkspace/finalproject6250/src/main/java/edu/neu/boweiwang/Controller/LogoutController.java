@@ -17,7 +17,7 @@ public class LogoutController {
     @RequestMapping(method= RequestMethod.POST)
     protected ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
         request.getSession().invalidate();
-        ModelAndView model = new ModelAndView("realIndex");
-        return model;
+        response.sendRedirect("realIndex.do");
+        return null;
     }
 }

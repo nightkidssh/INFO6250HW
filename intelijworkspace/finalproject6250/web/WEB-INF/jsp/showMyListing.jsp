@@ -69,6 +69,7 @@
                 <input type="submit" name="Logout" value="Logout"/>
             </form>
             <button onclick="location.href='salesListing.do'">Add New SalesListing</button>
+            <button onclick="location.href='realIndex.do'">Return to HomePage</button>
         </c:when>
         <c:otherwise>
             <jsp:forward page="/realIndex.do">

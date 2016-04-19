@@ -5,7 +5,7 @@ package edu.neu.boweiwang.proj.AccountPkg;
  */
 public enum AccountType {
     SystemAdmin("System Admin Account"), Landlord("Landlord Account"), HomeBuyer("Home Buyer Account"),
-    Lessor("Leassor Account"), Lessee("Lessee Account"), SpecialAdmin("Special Admin Account");
+    Lessee("Lessee Account"), SpecialAdmin("Special Admin Account");
 
 
     private String value;

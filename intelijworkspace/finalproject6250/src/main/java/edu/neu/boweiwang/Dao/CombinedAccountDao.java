@@ -78,4 +78,33 @@ public class CombinedAccountDao extends DAO{
         }
         return null;
     }
+
+    public List<CombinedAccount> getAllUserWithoutAdmin(){
+        List<CombinedAccount> accountList;
+        try {
+            begin();
+            Query q = getSession().createQuery("from CombinedAccount where accountType != :type");
+            q.setParameter("type", AccountType.SystemAdmin);
+            accountList = q.list();
+
+            return accountList;
+        } catch (HibernateException e) {
+            rollback();
+        }
+        return null;
+    }
+
+    public int deleteUser(int userID){
+        int rowaffacted = 0;
+        try{
+            begin();
+            Query q = getSession().createQuery("delete from CombinedAccount where accountID = :accID");
+            q.setInteger("accID", userID);
+            rowaffacted = q.executeUpdate();
+            commit();
+        }catch (HibernateException e) {
+            rollback();
+        }
+        return rowaffacted;
+    }
 }
