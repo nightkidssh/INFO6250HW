@@ -101,7 +101,7 @@ public class Listing implements Serializable {
     public Listing() {
     }
 
-    public Listing(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments) {
+    public Listing(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String fileLocation1, String fileLocation2, String fileLocation3, String fileLocation4) {
         this.listingType = listingType;
         this.combinedAccount = combinedAccount;
         this.address = address;
@@ -118,6 +118,10 @@ public class Listing implements Serializable {
         this.heatingType = heatingType;
         this.propertyTax = propertyTax;
         this.comments = comments;
+        this.fileLocation1 = fileLocation1;
+        this.fileLocation2 = fileLocation2;
+        this.fileLocation3 = fileLocation3;
+        this.fileLocation4 = fileLocation4;
     }
 
     public int getListingID() {
@@ -304,11 +308,35 @@ public class Listing implements Serializable {
         this.fileLocation4 = fileLocation4;
     }
 
-    public MultipartFile getFile() {
-        return file;
+    public MultipartFile getFile1() {
+        return file1;
     }
 
-    public void setFile(MultipartFile file) {
-        this.file = file;
+    public void setFile1(MultipartFile file1) {
+        this.file1 = file1;
+    }
+
+    public MultipartFile getFile2() {
+        return file2;
+    }
+
+    public void setFile2(MultipartFile file2) {
+        this.file2 = file2;
+    }
+
+    public MultipartFile getFile3() {
+        return file3;
+    }
+
+    public void setFile3(MultipartFile file3) {
+        this.file3 = file3;
+    }
+
+    public MultipartFile getFile4() {
+        return file4;
+    }
+
+    public void setFile4(MultipartFile file4) {
+        this.file4 = file4;
     }
 }

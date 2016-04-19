@@ -15,7 +15,8 @@ import java.util.List;
  */
 @Component
 public class ListingDao extends DAO{
-    public Listing createSales(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice){
+    public Listing createSales(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice,
+                               String filelocation1, String filelocation2, String filelocation3, String filelocation4){
         try{
             if(listingType.equals(ListingType.forLease)){
 
@@ -23,7 +24,7 @@ public class ListingDao extends DAO{
 
             else if(listingType.equals(ListingType.forSales)){
                 begin();
-                SalesListing salesListing = new SalesListing( listingType,  combinedAccount,  address, zipCode, latitude,  longitude,  description,  numberOfBeds,  numberOfBaths,  sizeInSqft,  lotSize,  type,  yearOfBuilt,  heatingType,  propertyTax,  comments,  listPrice);
+                SalesListing salesListing = new SalesListing( listingType,  combinedAccount,  address, zipCode, latitude,  longitude,  description,  numberOfBeds,  numberOfBaths,  sizeInSqft,  lotSize,  type,  yearOfBuilt,  heatingType,  propertyTax,  comments,  listPrice, filelocation1, filelocation2, filelocation3, filelocation4);
                 getSession().save(salesListing);
                 commit();
 //                getSession().flush();

@@ -93,7 +93,17 @@
 
         <div id="fileUploadSection" class="default" style="background-color: white">
             <h3>Photo upload</h3>&nbsp&nbsp
+            <form:input path="file1" id="file1" type="file"/><br/>&nbsp&nbsp
+            <form:errors path="file1"/>
 
+            <form:input path="file2" id="file2" type="file"/><br/>&nbsp&nbsp
+            <form:errors path="file2"/>
+
+            <form:input path="file3" id="file3" type="file"/><br/>&nbsp&nbsp
+            <form:errors path="file3"/>
+
+            <form:input path="file4" id="file4" type="file"/><br/>&nbsp&nbsp
+            <form:errors path="file4"/>
         </div>
 
         <%--<div id="reCAPTCHA" class="g-recaptcha" data-sitekey="6LeqjBwTAAAAAGXXIHRlQipbogvJCSJvo5FnoKDB" style="background-color: white">--%>

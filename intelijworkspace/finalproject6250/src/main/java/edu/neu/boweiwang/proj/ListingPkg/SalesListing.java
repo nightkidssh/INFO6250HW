@@ -21,8 +21,9 @@ public class SalesListing extends Listing implements Serializable {
     public SalesListing() {
     }
 
-    public SalesListing(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice) {
-        super(listingType, combinedAccount, address, zipCode, latitude, longitude, description, numberOfBeds, numberOfBaths, sizeInSqft, lotSize, type, yearOfBuilt, heatingType, propertyTax, comments);
+    public SalesListing(ListingType listingType, CombinedAccount combinedAccount, String address, String zipCode, String latitude, String longitude, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice
+    ,String fileLocation1, String fileLoation2, String fileLocation3, String fileLocation4) {
+        super(listingType, combinedAccount, address, zipCode, latitude, longitude, description, numberOfBeds, numberOfBaths, sizeInSqft, lotSize, type, yearOfBuilt, heatingType, propertyTax, comments, fileLocation1, fileLoation2, fileLocation3, fileLocation4);
         this.listPrice = listPrice;
     }
 
