@@ -16,7 +16,7 @@
         <option name="password" value="snqRBggN1" />
         <option name="secured" value="true" />
         <option name="stagingRemotePath" value="" />
-        <option name="transportHostId" />
+        <option name="transportHostId" value="" />
         <option name="transportStagingTarget">
           <TransportTarget>
             <option name="id" value="b0ad7cd4-12fd-4ae5-8eca-60b9b928c835" />

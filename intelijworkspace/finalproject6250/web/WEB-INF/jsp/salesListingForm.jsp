@@ -9,7 +9,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html5>
 <head>
     <title>List my own house</title>
     <link rel="stylesheet" href="/css/registerCSS.css">
@@ -161,4 +161,4 @@
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
         async defer></script>
 </body>
-</html>
+</html5>

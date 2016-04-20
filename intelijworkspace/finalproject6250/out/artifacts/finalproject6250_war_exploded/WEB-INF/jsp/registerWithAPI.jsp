@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<html>
+<html5>
 <head>
     <title>Register for Easy Hosing system!</title>
     <link rel="stylesheet" href="/css/registerCSS.css">
@@ -117,4 +117,4 @@
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"
         async defer></script>
 </body>
-</html>
+</html5>

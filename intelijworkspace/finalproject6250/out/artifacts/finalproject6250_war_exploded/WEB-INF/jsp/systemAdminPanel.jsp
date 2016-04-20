@@ -7,7 +7,7 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html5>
 <head>
     <title>System Admin Panel</title>
     <link rel="stylesheet" href="/css/showResultCSS.css">
@@ -118,4 +118,4 @@
     </script>
 
 </body>
-</html>
+</html5>

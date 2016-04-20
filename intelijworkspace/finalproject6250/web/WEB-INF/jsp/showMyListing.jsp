@@ -9,7 +9,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html5>
 <head>
     <title>My Listing</title>
     <style type="text/css">
@@ -195,4 +195,4 @@
 </script>
 
 </body>
-</html>
+</html5>
