@@ -24,6 +24,11 @@ public class SendEmailController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView handleGET(HttpServletRequest request, HttpServletResponse response){
+        return null;
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ModelAndView handlePOST(HttpServletRequest request, HttpServletResponse response){
         String pass = "j-epyppsC5Qg";
         String toAddress = "806874@gmail.com";
         String fromAddress = "wangbowei92@yahoo.com";
@@ -61,17 +66,10 @@ public class SendEmailController {
             transport.connect(host, fromAddress, pass);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-//            Transport.send(message);
             System.out.println("Sent message successfully....");
         }catch (MessagingException mex) {
             mex.printStackTrace();
         }
-
-        return null;
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView handlePOST(HttpServletRequest request, HttpServletResponse response){
 
         return null;
     }
