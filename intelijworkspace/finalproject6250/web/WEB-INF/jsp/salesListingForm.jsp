@@ -14,7 +14,7 @@
     <title>List my own house</title>
     <link rel="stylesheet" href="/css/registerCSS.css">
 </head>
-<body>
+<body background="ImageResources/o-BOSTON-facebook.jpg">
 <div id="logoutContainer" class="global" style="background-color: white; opacity: 0.9">
 <c:choose>
     <c:when test="${sessionScope.loggedInAccount.userName != null}">
@@ -40,7 +40,7 @@
             <label>Listing type:</label><br/>&nbsp&nbsp
             <form:select path="listingType">
                 <option value="forSales">Sales Listing</option>
-                <option value="forLease">Lease Listing</option>
+                <%--<option value="forLease">Lease Listing</option>--%>
             </form:select><br/>&nbsp&nbsp
             <form:errors path="listingType"/><br/>&nbsp&nbsp
 

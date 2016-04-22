@@ -81,7 +81,7 @@
     </c:choose>
 </div>
 
-<h1>List of your listing:</h1>
+<h1>All our listing:</h1>
 <form action="buyerlisting.do" method="post">
     <table border="1">
         <tr>
@@ -103,7 +103,7 @@
             <td>propertyTax</td>
             <td>comments</td>
             <td>price</td>
-            <td>Send Email</td>
+            <td>Show Detail</td>
         </tr>
 
         <c:forEach var="record" items="${requestScope.resultSet}">
@@ -128,7 +128,7 @@
                 <c:if test="${record.getClass().simpleName =='SalesListing'}">
                     <td><input type="text" name= "price" value="${record.getListPrice()}" readonly=""/></td>
                 </c:if>
-
+                <td><button name= "emailbutton" onclick="openEmailWindow(${record.getListingID()}); return false;">Show Detail</button></td>
             </tr>
         </c:forEach>
     </table>
@@ -145,5 +145,11 @@
 </form>
 
 <div id="map_container"></div>
+
+<script>
+    function openEmailWindow(listingID) {
+        window.open("sendEmail.do?listingID=" + listingID, "emailWindow", "width=1024,height=768");
+    }
+</script>
 </body>
 </html5>

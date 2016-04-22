@@ -16,7 +16,7 @@ import java.util.List;
  * Created by kym-1992 on 4/21/16.
  */
 @Controller
-@RequestMapping(name = "/buyerlisting.do")
+@RequestMapping("/buyerlisting.do")
 public class ShowListingForBuyerController {
     @Autowired
     ListingDao listingDao;

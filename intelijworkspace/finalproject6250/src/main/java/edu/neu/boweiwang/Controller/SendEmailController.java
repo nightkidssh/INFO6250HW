@@ -1,5 +1,8 @@
 package edu.neu.boweiwang.Controller;
 
+import edu.neu.boweiwang.Dao.ListingDao;
+import edu.neu.boweiwang.proj.ListingPkg.Listing;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,10 +24,26 @@ import java.util.Properties;
 @Controller
 @RequestMapping("/sendEmail.do")
 public class SendEmailController {
+    @Autowired
+    ListingDao listingDao;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView handleGET(HttpServletRequest request, HttpServletResponse response){
-        return null;
+        String listingID = request.getParameter("listingID");
+        if(listingID != null) {
+            Listing listing = listingDao.findRecordByID(Integer.parseInt(listingID));
+            if(listing.getCombinedAccount().getEmailAddress()!=null) {
+                ModelAndView mv = new ModelAndView("sendEmail", "emailAddress", listing.getCombinedAccount().getEmailAddress());
+
+                return mv;
+            }
+            else{
+                return new ModelAndView("buyerlisting.do");
+            }
+        }
+        else{
+            return new ModelAndView("buyerlisting.do");
+        }
     }
 
     @RequestMapping(method = RequestMethod.POST)

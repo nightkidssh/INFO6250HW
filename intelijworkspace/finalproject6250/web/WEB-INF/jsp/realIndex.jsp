@@ -124,8 +124,13 @@
                 <c:when test="${accountTypee == 'SystemAdmin'}">
                     <button onclick="location.href='sysadminpanel.do'">Show Admin Control Panel</button>
                 </c:when>
-                <c:otherwise>
+                <c:when test="${accountTypee == 'Landlord'}">
                     <button onclick="location.href='showmylisting.do'">Show my Listing</button>
+                </c:when>
+                <c:when test="${accountTypee == 'HomeBuyer'}">
+                    <button onclick="location.href='buyerlisting.do'">Show all Listing</button>
+                </c:when>
+                <c:otherwise>
                 </c:otherwise>
             </c:choose>
         </c:when>

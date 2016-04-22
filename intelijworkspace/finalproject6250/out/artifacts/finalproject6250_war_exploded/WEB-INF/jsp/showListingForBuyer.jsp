@@ -64,13 +64,13 @@
 
 <body onload="loadMap()">
 <div id="logoutContainer" class="global" style="background-color: white; opacity: 0.9">
+    <c:set var="accountTypee">${sessionScope.loggedInAccount.accountType}</c:set>
     <c:choose>
-        <c:when test="${sessionScope.loggedInAccount.userName != null}">
+        <c:when test="${sessionScope.loggedInAccount.userName != null && accountTypee == 'HomeBuyer'}">
             <form method = "post" action="/logout.do" style="display: inline-block;">
                 <label>Welcome ${sessionScope.loggedInAccount.accountType} ${sessionScope.loggedInAccount.userName}</label>
                 <input type="submit" name="Logout" value="Logout"/>
             </form>
-            <button onclick="location.href='salesListing.do'">Add New SalesListing</button>
             <button onclick="location.href='realIndex.do'">Return to HomePage</button>
         </c:when>
         <c:otherwise>
@@ -81,8 +81,8 @@
     </c:choose>
 </div>
 
-<h1>List of your listing:</h1>
-<form action="showmylisting.do" method="post">
+<h1>All our listing:</h1>
+<form action="buyerlisting.do" method="post">
     <table border="1">
         <tr>
             <td>listingID</td>
@@ -103,6 +103,7 @@
             <td>propertyTax</td>
             <td>comments</td>
             <td>price</td>
+            <td>Show Detail</td>
         </tr>
 
         <c:forEach var="record" items="${requestScope.resultSet}">
@@ -127,6 +128,7 @@
                 <c:if test="${record.getClass().simpleName =='SalesListing'}">
                     <td><input type="text" name= "price" value="${record.getListPrice()}" readonly=""/></td>
                 </c:if>
+                <td><button name= "emailbutton" onclick="openEmailWindow(${record.getListingID()}); return false;">Show Detail</button></td>
             </tr>
         </c:forEach>
     </table>
@@ -143,5 +145,11 @@
 </form>
 
 <div id="map_container"></div>
+
+<script>
+    function openEmailWindow(listingID) {
+        window.open("sendEmail.do?listingID=" + listingID, "emailWindow", "width=1024,height=768");
+    }
+</script>
 </body>
 </html5>
