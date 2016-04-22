@@ -16,6 +16,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Properties;
 
 /**
@@ -47,9 +49,14 @@ public class SendEmailController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView handlePOST(HttpServletRequest request, HttpServletResponse response){
+    public ModelAndView handlePOST(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+        String title = request.getParameter("title");
+        String content = request.getParameter("Content");
+        String email = request.getParameter("email");
+
         String pass = "j-epyppsC5Qg";
-        String toAddress = "806874@gmail.com";
+        String toAddress = email;
         String fromAddress = "wangbowei92@yahoo.com";
         String host = "smtp.mail.yahoo.com";
         Properties properties = System.getProperties();
@@ -75,19 +82,31 @@ public class SendEmailController {
                     new InternetAddress(toAddress));
 
             // Set Subject: header field
-            message.setSubject("This is the Subject Line!");
+            message.setSubject(title);
 
             // Now set the actual message
-            message.setText("This is actual message");
+            message.setText(content);
 
             // Send message
             Transport transport = session.getTransport("smtp");
             transport.connect(host, fromAddress, pass);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-            System.out.println("Sent message successfully....");
+
+            out.println("<html>");
+            out.println("<body>");
+            out.println("<script>alert('Email send successfully!')</script>");
+            out.println("<script>window.close();</script>");
+            out.println("</body>");
+            out.println("</html>");
         }catch (MessagingException mex) {
             mex.printStackTrace();
+            out.println("<html>");
+            out.println("<body>");
+            out.println("<script>alert('Email System down, please try again later!')</script>");
+            out.println("<script>window.close();</script>");
+            out.println("</body>");
+            out.println("</html>");
         }
 
         return null;
