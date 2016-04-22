@@ -36,7 +36,7 @@ public class SendEmailController {
             Listing listing = listingDao.findRecordByID(Integer.parseInt(listingID));
             if(listing.getCombinedAccount().getEmailAddress()!=null) {
                 ModelAndView mv = new ModelAndView("sendEmail", "emailAddress", listing.getCombinedAccount().getEmailAddress());
-
+                mv.addObject("listingObj", listing);
                 return mv;
             }
             else{

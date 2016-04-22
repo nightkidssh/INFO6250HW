@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.filechooser.FileSystemView;
 import java.io.File;
 
 /**
@@ -62,12 +63,14 @@ public class SalesListingController {
             String path = null;
 
             if(check.equalsIgnoreCase("\\")) {
-                path = servletContext.getRealPath("").replace("build\\",""); //Netbeans projects gives real path as Lab6/build/web/ so we need to replace build in the path.
+//                path = servletContext.getRealPath("").replace("build\\",""); //Netbeans projects gives real path as Lab6/build/web/ so we need to replace build in the path.
+                path = System.getProperty("user.dir");
           }
 
             if(check.equalsIgnoreCase("/")) {
-                path = servletContext.getRealPath("").replace("build/","");
-                path += "/"; //Adding trailing slash for Mac systems.
+//                path = servletContext.getRealPath("").replace("build/","");
+//                path += "/"; //Adding trailing slash for Mac systems.
+                path = FileSystemView.getFileSystemView().getHomeDirectory() + check + "uploadedphoto" + check;
             }
 
             if(salesListing.getFile1()!=null){
@@ -76,8 +79,8 @@ public class SalesListingController {
                 String context = servletContext.getContextPath();
 
                 salesListing.getFile1().transferTo(file1);
-                salesListing.setFileLocation1(context + "/" + fileNameWithExt);
-
+//                salesListing.setFileLocation1(context + "/" + fileNameWithExt);
+                salesListing.setFileLocation1(fileNameWithExt);
             }
 
             if(salesListing.getFile2()!=null){
@@ -86,8 +89,8 @@ public class SalesListingController {
                 String context = servletContext.getContextPath();
 
                 salesListing.getFile2().transferTo(file2);
-                salesListing.setFileLocation2(context + "/" + fileNameWithExt);
-
+//                salesListing.setFileLocation2(context + "/" + fileNameWithExt);
+                salesListing.setFileLocation2(fileNameWithExt);
             }
 
             if(salesListing.getFile3()!=null){
@@ -96,8 +99,8 @@ public class SalesListingController {
                 String context = servletContext.getContextPath();
 
                 salesListing.getFile3().transferTo(file3);
-                salesListing.setFileLocation3(context + "/" + fileNameWithExt);
-
+//                salesListing.setFileLocation3(context + "/" + fileNameWithExt);
+                salesListing.setFileLocation3(fileNameWithExt);
             }
 
             if(salesListing.getFile4()!=null){
@@ -106,8 +109,8 @@ public class SalesListingController {
                 String context = servletContext.getContextPath();
 
                 salesListing.getFile4().transferTo(file4);
-                salesListing.setFileLocation4(context + "/" + fileNameWithExt);
-
+//                salesListing.setFileLocation4(context + "/" + fileNameWithExt);
+                salesListing.setFileLocation4(fileNameWithExt);
             }
 
             Listing listing = listingDao.createSales(salesListing.getListingType(), combinedAccount, salesListing.getAddress(), salesListing.getZipCode(), salesListing.getLatitude(), salesListing.getLongitude(),
