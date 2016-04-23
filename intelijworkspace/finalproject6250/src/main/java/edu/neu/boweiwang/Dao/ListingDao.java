@@ -1,12 +1,12 @@
 package edu.neu.boweiwang.Dao;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.springframework.stereotype.Component;
 import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
 import edu.neu.boweiwang.proj.ListingPkg.Listing;
 import edu.neu.boweiwang.proj.ListingPkg.ListingType;
 import edu.neu.boweiwang.proj.ListingPkg.SalesListing;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -44,6 +44,27 @@ public class ListingDao extends DAO{
         }
 
         return null;
+    }
+
+    public int updateListing(int listingID, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice,
+                             String filelocation1, String filelocation2, String filelocation3, String filelocation4){
+        int rowsAffacted = 0;
+        try{
+                begin();
+//                Query q = getSession().createQuery("update SalesListing set description = :description, numberOfBeds = :numberOfBeds, numberOfBaths=:numberOfBaths," +
+//                        "sizeInSqft = :sizeInSqft, lotSize = :lotSize, yearOfBuilt = :yearOfBuilt")
+                commit();
+//                getSession().flush();
+                close();
+        }
+        catch (HibernateException e){
+            e.printStackTrace();
+            rollback();
+        } finally {
+            close();
+        }
+
+        return rowsAffacted;
     }
 
     public List getData(CombinedAccount combinedAccount, int limit, int offset){

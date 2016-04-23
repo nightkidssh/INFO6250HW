@@ -9,7 +9,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html5>
 <head>
     <title>Change your password</title>
     <!-- Latest compiled and minified CSS -->
@@ -53,4 +53,4 @@
     <button onclick="location.href='realIndex.do'" class="btn btn-default">Back to Home Page</button>
 </div>
 </body>
-</html>
+</html5>

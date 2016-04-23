@@ -103,6 +103,7 @@
             <td>comments</td>
             <td>price</td>
             <td>Delete</td>
+            <td>Update</td>
         </tr>
 
         <c:forEach var="record" items="${requestScope.resultSet}">
@@ -128,6 +129,7 @@
                     <td><input type="text" name= "price" value="${record.getListPrice()}" readonly=""/></td>
                 </c:if>
                 <td><input type="button" value="Remove" onclick="removeRow(this, ${record.getListingID()})"/></td>
+                <td><button onclick="location.href='updateListing.do?listingID=${record.getListingID()}'; return false;">Updata Record</button></td>
             </tr>
         </c:forEach>
     </table>

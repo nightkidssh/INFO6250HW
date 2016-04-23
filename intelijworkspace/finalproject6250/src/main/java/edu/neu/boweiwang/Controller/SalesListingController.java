@@ -101,7 +101,7 @@ public class SalesListingController {
 
                 salesListing.getFile1().transferTo(file1);
                 inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
-                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel = new FileOutputStream(path2 + fileNameWithExt).getChannel();
                 outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
 
 //                salesListing.getFile1().transferTo(filee1);
@@ -117,7 +117,7 @@ public class SalesListingController {
 
                 salesListing.getFile2().transferTo(file2);
                 inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
-                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel = new FileOutputStream(path2 + fileNameWithExt).getChannel();
                 outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
 //                salesListing.getFile2().transferTo(filee2);
 //                salesListing.setFileLocation2(context + "/" + fileNameWithExt);
@@ -132,7 +132,7 @@ public class SalesListingController {
 
                 salesListing.getFile3().transferTo(file3);
                 inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
-                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel = new FileOutputStream(path2 + fileNameWithExt).getChannel();
                 outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
 //                salesListing.getFile3().transferTo(filee3);
 //                salesListing.setFileLocation3(context + "/" + fileNameWithExt);
@@ -147,7 +147,7 @@ public class SalesListingController {
 
                 salesListing.getFile4().transferTo(file4);
                 inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
-                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel = new FileOutputStream(path2 + fileNameWithExt).getChannel();
                 outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
 //                salesListing.getFile4().transferTo(filee4);
 //                salesListing.setFileLocation4(context + "/" + fileNameWithExt);

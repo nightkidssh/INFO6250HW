@@ -14,6 +14,10 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.show_sql">true</property>
 
+    <property name="cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</property>
+    <property name="hibernate.cache.use_second_level_cache">true</property>
+    <property name="hibernate.cache.use_query_cache">true</property>
+
     <mapping class="edu.neu.boweiwang.proj.AccountPkg.Account"/>
     <mapping class="edu.neu.boweiwang.proj.PersonPkg.Person"/>
     <mapping class="edu.neu.boweiwang.proj.AccountPkg.CombinedAccount"/>

@@ -12,6 +12,7 @@
         <!--<bean id="MyUserDetailsService" class="edu.neu.boweiwang.service.MyUserDetailsService"/>-->
         <bean id="combinedAccountDao" class="edu.neu.boweiwang.Dao.CombinedAccountDao"/>
         <bean class="edu.neu.boweiwang.Dao.ListingDao"/>
+        <bean class="edu.neu.boweiwang.Controller.UpdateListingValidator"/>
         <context:annotation-config/>
     </beans>
 </beans>

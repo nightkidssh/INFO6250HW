@@ -16,8 +16,9 @@
 </head>
 <body background="ImageResources/o-BOSTON-facebook.jpg">
 <div id="logoutContainer" class="global" style="background-color: white; opacity: 0.9">
+<c:set var="accountTypee">${sessionScope.loggedInAccount.accountType}</c:set>
 <c:choose>
-    <c:when test="${sessionScope.loggedInAccount.userName != null}">
+    <c:when test="${sessionScope.loggedInAccount.userName != null && accountTypee == 'Landlord'}">
         <form method = "post" action="/logout.do" style="display: inline-block;">
             <label>Welcome ${sessionScope.loggedInAccount.accountType} ${sessionScope.loggedInAccount.userName}</label>
             <input type="submit" name="Logout" value="Logout"/>

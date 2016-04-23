@@ -9,7 +9,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html5>
 <head>
     <title>Change your password</title>
     <!-- Latest compiled and minified CSS -->
@@ -35,7 +35,7 @@
         <div class="form-group">
             <label for="oldPass">Old password</label>
             <label>Password Requirement: #must contains one digit from 0-9 <br/>#must contains one lowercase characters <br/>#must contains one uppercase characters
-                <br/>#must contains one special symbols "@#$%" <br/>#length at least 6 characters and maximum of 20<br/></label>
+                <br/>#must contains one special symbols "@#$%" <br/>#length at least 6 characters and maximum of 20<br/></label><br/>
             <input type="password" class="form-control" id="oldPass" placeholder="old Password" name="oldPass" required/>
             <label style="color: red">${requestScope.oldPassError}</label>
         </div>
@@ -53,4 +53,4 @@
     <button onclick="location.href='realIndex.do'" class="btn btn-default">Back to Home Page</button>
 </div>
 </body>
-</html>
+</html5>
