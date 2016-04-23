@@ -1,6 +1,7 @@
 package edu.neu.boweiwang.Controller;
 
 import edu.neu.boweiwang.Dao.ListingDao;
+import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
 import edu.neu.boweiwang.proj.ListingPkg.Listing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,12 @@ public class SendEmailController {
     ListingDao listingDao;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView handleGET(HttpServletRequest request, HttpServletResponse response){
+    public ModelAndView handleGET(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        CombinedAccount combinedAccount = (CombinedAccount) request.getSession().getAttribute("loggedInAccount");
+        if(combinedAccount == null){
+            response.sendRedirect("realIndex.do");
+        }
+
         String listingID = request.getParameter("listingID");
         if(listingID != null) {
             Listing listing = listingDao.findRecordByID(Integer.parseInt(listingID));
@@ -53,6 +59,11 @@ public class SendEmailController {
 
     @RequestMapping(method = RequestMethod.POST)
     public ModelAndView handlePOST(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        CombinedAccount combinedAccount = (CombinedAccount) request.getSession().getAttribute("loggedInAccount");
+        if(combinedAccount == null){
+            response.sendRedirect("realIndex.do");
+        }
+
         PrintWriter out = response.getWriter();
         String title = request.getParameter("title");
         String content = request.getParameter("Content");

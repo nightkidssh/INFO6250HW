@@ -60,6 +60,19 @@ public class UpdateListingController {
             response.sendRedirect("realIndex.do");
         }
 
+        //set unchanged attribute
+        salesListing.setListingType(oldListing.getListingType());
+        salesListing.setAddress(oldListing.getAddress());
+        salesListing.setZipCode(oldListing.getZipCode());
+        salesListing.setLatitude(oldListing.getLatitude());
+        salesListing.setLongitude(oldListing.getLongitude());
+        salesListing.setCombinedAccount(oldListing.getCombinedAccount());
+        salesListing.setListingID(oldListing.getListingID());
+        salesListing.setFileLocation1(oldListing.getFileLocation1());
+        salesListing.setFileLocation2(oldListing.getFileLocation2());
+        salesListing.setFileLocation3(oldListing.getFileLocation3());
+        salesListing.setFileLocation4(oldListing.getFileLocation4());
+
         try {
             System.out.println(salesListing.getFile1().getOriginalFilename().toString());
 
@@ -107,7 +120,7 @@ public class UpdateListingController {
 
                 salesListing.getFile1().transferTo(file1);
                 inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
-                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel = new FileOutputStream(path2 + fileNameWithExt).getChannel();
                 outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
 
 //                salesListing.getFile1().transferTo(filee1);
@@ -123,7 +136,7 @@ public class UpdateListingController {
 
                 salesListing.getFile2().transferTo(file2);
                 inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
-                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel = new FileOutputStream(path2 + fileNameWithExt).getChannel();
                 outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
 //                salesListing.getFile2().transferTo(filee2);
 //                salesListing.setFileLocation2(context + "/" + fileNameWithExt);
@@ -138,7 +151,7 @@ public class UpdateListingController {
 
                 salesListing.getFile3().transferTo(file3);
                 inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
-                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel = new FileOutputStream(path2 + fileNameWithExt).getChannel();
                 outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
 //                salesListing.getFile3().transferTo(filee3);
 //                salesListing.setFileLocation3(context + "/" + fileNameWithExt);
@@ -153,14 +166,14 @@ public class UpdateListingController {
 
                 salesListing.getFile4().transferTo(file4);
                 inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
-                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel = new FileOutputStream(path2 + fileNameWithExt).getChannel();
                 outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
 //                salesListing.getFile4().transferTo(filee4);
 //                salesListing.setFileLocation4(context + "/" + fileNameWithExt);
                 salesListing.setFileLocation4(fileNameWithExt);
             }
 
-
+            listingDao.updateListing(salesListing);
         } catch (HibernateException e) {
             System.out.println("Exception: " + e.getMessage());
         }

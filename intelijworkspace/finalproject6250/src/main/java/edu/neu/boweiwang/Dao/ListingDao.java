@@ -46,13 +46,13 @@ public class ListingDao extends DAO{
         return null;
     }
 
-    public int updateListing(int listingID, String description, int numberOfBeds, int numberOfBaths, double sizeInSqft, double lotSize, String type, int yearOfBuilt, String heatingType, String propertyTax, String comments, String listPrice,
-                             String filelocation1, String filelocation2, String filelocation3, String filelocation4){
+    public int updateListing(SalesListing salesListing){
         int rowsAffacted = 0;
         try{
                 begin();
 //                Query q = getSession().createQuery("update SalesListing set description = :description, numberOfBeds = :numberOfBeds, numberOfBaths=:numberOfBaths," +
 //                        "sizeInSqft = :sizeInSqft, lotSize = :lotSize, yearOfBuilt = :yearOfBuilt")
+                getSession().update(salesListing);
                 commit();
 //                getSession().flush();
                 close();
