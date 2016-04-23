@@ -138,4 +138,22 @@ public class CombinedAccountDao extends DAO{
         }
         return rowaffacted;
     }
+
+    public int changePassoword(int userID, String newPassword){
+        int rowaffacted = 0;
+        try{
+            begin();
+            Query q1 = getSession().createQuery("update CombinedAccount set password = :newPassword where accountID= :userID");
+            q1.setInteger("userID", userID);
+            q1.setString("newPassword", newPassword);
+            rowaffacted = q1.executeUpdate();
+            commit();
+            close();
+        }catch (HibernateException e) {
+            rollback();
+        } finally {
+            close();
+        }
+        return rowaffacted;
+    }
 }

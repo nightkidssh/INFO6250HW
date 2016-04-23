@@ -120,6 +120,7 @@
                 <label>Welcome ${sessionScope.loggedInAccount.accountType} ${sessionScope.loggedInAccount.userName}</label>
                 <input type="submit" name="Logout" value="Logout"/>
             </form>
+            <button onclick="location.href='changePassword.do'">Change my password</button>
             <c:choose>
                 <c:when test="${accountTypee == 'SystemAdmin'}">
                     <button onclick="location.href='sysadminpanel.do'">Show Admin Control Panel</button>

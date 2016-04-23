@@ -34,11 +34,15 @@
     <form action="changePassword.do" method="post">
         <div class="form-group">
             <label for="oldPass">Old password</label>
+            <label>Password Requirement: #must contains one digit from 0-9 <br/>#must contains one lowercase characters <br/>#must contains one uppercase characters
+                <br/>#must contains one special symbols "@#$%" <br/>#length at least 6 characters and maximum of 20<br/></label><br/>
             <input type="password" class="form-control" id="oldPass" placeholder="old Password" name="oldPass" required/>
+            <label style="color: red">${requestScope.oldPassError}</label>
         </div>
         <div class="form-group">
             <label for="newPass">New password</label>
             <input type="password" class="form-control" id="newPass" placeholder="new Password" name="newPass" required/>
+            <label style="color: red">${requestScope.newPassError}</label>
         </div>
         <div class="form-group">
             <label for="confirmPass">Confirm password</label>
