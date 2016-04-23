@@ -31,6 +31,13 @@
         </c:otherwise>
     </c:choose>
 
+    <div>
+        <img src="uploadedphoto/${requestScope.listingObj.fileLocation1}" class="img-responsive" alt="Responsive image">
+        <img src="uploadedphoto/${requestScope.listingObj.fileLocation2}" class="img-responsive" alt="Responsive image">
+        <img src="uploadedphoto/${requestScope.listingObj.fileLocation3}" class="img-responsive" alt="Responsive image">
+        <img src="uploadedphoto/${requestScope.listingObj.fileLocation4}" class="img-responsive" alt="Responsive image">
+    </div>
+
     <h1>Send Email</h1>
     <form action="sendEmail.do" method="post">
         <div class="form-group">

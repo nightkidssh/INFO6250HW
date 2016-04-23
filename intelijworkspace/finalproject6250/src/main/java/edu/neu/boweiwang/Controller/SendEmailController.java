@@ -37,6 +37,9 @@ public class SendEmailController {
             if(listing.getCombinedAccount().getEmailAddress()!=null) {
                 ModelAndView mv = new ModelAndView("sendEmail", "emailAddress", listing.getCombinedAccount().getEmailAddress());
                 mv.addObject("listingObj", listing);
+//                String check = File.separator;
+//                String path = System.getProperty("user.home") + check + "uploadedphoto" + check;
+//                mv.addObject("prefix", path);
                 return mv;
             }
             else{

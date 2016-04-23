@@ -16,8 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.filechooser.FileSystemView;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.nio.channels.FileChannel;
 
 /**
  * Created by kym-1992 on 4/5/16.
@@ -49,66 +51,105 @@ public class SalesListingController {
 
         CombinedAccount combinedAccount = (CombinedAccount) request.getSession().getAttribute("loggedInAccount");
         if(combinedAccount == null){
-            return "realIndex";
+            response.sendRedirect("realIndex.do");
         }
 
         try {
+            System.out.println(salesListing.getFile1().getOriginalFilename().toString());
+
             //For File Uploader:
             File file1;
             File file2;
             File file3;
             File file4;
+            File filee1;
+            File filee2;
+            File filee3;
+            File filee4;
+
+
+            FileChannel inputChannel = null;
+            FileChannel outputChannel = null;
+
             String check = File.separator; //Checking if system is linux based or windows based by checking seprator used.
 
+            String rootPath = null;
             String path = null;
+            String path2 = null;
 
             if(check.equalsIgnoreCase("\\")) {
-//                path = servletContext.getRealPath("").replace("build\\",""); //Netbeans projects gives real path as Lab6/build/web/ so we need to replace build in the path.
-                path = System.getProperty("user.dir");
+                rootPath = servletContext.getRealPath("").replace("build\\",""); //Netbeans projects gives real path as Lab6/build/web/ so we need to replace build in the path.
+//                path = FileSystemView.getFileSystemView().getHomeDirectory() + check + "uploadedphoto" + check;
+                path = "/STUDY/NEU/INFO6250/INFO6250HW/intelijworkspace/finalproject6250/web/uploadedphoto/";
+                path2 = rootPath+ check + "uploadedphoto" + check;
+                System.out.println(path2);
           }
 
             if(check.equalsIgnoreCase("/")) {
-//                path = servletContext.getRealPath("").replace("build/","");
-//                path += "/"; //Adding trailing slash for Mac systems.
-                path = FileSystemView.getFileSystemView().getHomeDirectory() + check + "uploadedphoto" + check;
+                rootPath = servletContext.getRealPath("").replace("build/","");
+                rootPath += "/"; //Adding trailing slash for Mac systems.
+//                path = System.getProperty("user.home") + check + "uploadedphoto" + check;
+                path = "/STUDY/NEU/INFO6250/INFO6250HW/intelijworkspace/finalproject6250/web/uploadedphoto/";
+                path2 = rootPath+ check + "uploadedphoto" + check;
             }
 
-            if(salesListing.getFile1()!=null){
+            if(!salesListing.getFile1().isEmpty()){
                 String fileNameWithExt = System.currentTimeMillis() + salesListing.getFile1().getOriginalFilename();
                 file1 = new File(path + fileNameWithExt);
-                String context = servletContext.getContextPath();
+//                filee1 = new File(path2 + fileNameWithExt);
+//                String context = servletContext.getContextPath();
 
                 salesListing.getFile1().transferTo(file1);
+                inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
+                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
+
+//                salesListing.getFile1().transferTo(filee1);
 //                salesListing.setFileLocation1(context + "/" + fileNameWithExt);
                 salesListing.setFileLocation1(fileNameWithExt);
             }
 
-            if(salesListing.getFile2()!=null){
-                String fileNameWithExt = System.currentTimeMillis() + salesListing.getFile1().getOriginalFilename();
+            if(!salesListing.getFile2().isEmpty()){
+                String fileNameWithExt = System.currentTimeMillis() + salesListing.getFile2().getOriginalFilename();
                 file2 = new File(path + fileNameWithExt);
-                String context = servletContext.getContextPath();
+//                filee2 = new File(path2 + fileNameWithExt);
+//                String context = servletContext.getContextPath();
 
                 salesListing.getFile2().transferTo(file2);
+                inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
+                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
+//                salesListing.getFile2().transferTo(filee2);
 //                salesListing.setFileLocation2(context + "/" + fileNameWithExt);
                 salesListing.setFileLocation2(fileNameWithExt);
             }
 
-            if(salesListing.getFile3()!=null){
-                String fileNameWithExt = System.currentTimeMillis() + salesListing.getFile1().getOriginalFilename();
+            if(!salesListing.getFile3().isEmpty()){
+                String fileNameWithExt = System.currentTimeMillis() + salesListing.getFile3().getOriginalFilename();
                 file3 = new File(path + fileNameWithExt);
-                String context = servletContext.getContextPath();
+//                filee3 = new File(path2 + fileNameWithExt);
+//                String context = servletContext.getContextPath();
 
                 salesListing.getFile3().transferTo(file3);
+                inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
+                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
+//                salesListing.getFile3().transferTo(filee3);
 //                salesListing.setFileLocation3(context + "/" + fileNameWithExt);
                 salesListing.setFileLocation3(fileNameWithExt);
             }
 
-            if(salesListing.getFile4()!=null){
-                String fileNameWithExt = System.currentTimeMillis() + salesListing.getFile1().getOriginalFilename();
+            if(!salesListing.getFile4().isEmpty()){
+                String fileNameWithExt = System.currentTimeMillis() + salesListing.getFile4().getOriginalFilename();
                 file4 = new File(path + fileNameWithExt);
-                String context = servletContext.getContextPath();
+//                filee4 = new File(path2 + fileNameWithExt);
+//                String context = servletContext.getContextPath();
 
                 salesListing.getFile4().transferTo(file4);
+                inputChannel = new FileInputStream(path + fileNameWithExt).getChannel();
+                outputChannel = new FileOutputStream(path2).getChannel();
+                outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
+//                salesListing.getFile4().transferTo(filee4);
 //                salesListing.setFileLocation4(context + "/" + fileNameWithExt);
                 salesListing.setFileLocation4(fileNameWithExt);
             }
