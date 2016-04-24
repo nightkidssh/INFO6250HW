@@ -44,6 +44,14 @@
           <element id="library" level="project" name="Maven: org.bouncycastle:bcmail-jdk14:1.38" />
           <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk14:1.38" />
           <element id="library" level="project" name="Maven: org.bouncycastle:bctsp-jdk14:1.38" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.6.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.6.1" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.6.1" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+          <element id="library" level="project" name="Maven: org.springframework.social:spring-social-config:1.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.social:spring-social-core:1.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.social:spring-social-facebook:2.0.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.social:spring-social-web:1.1.4.RELEASE" />
         </element>
       </element>
     </root>

@@ -11,12 +11,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html5>
 <head>
-    <title>Show detail and send email</title>
+    <title>Beautiful real estate listing at ${requestScope.listingObj.getAddress()}</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script>document.write("<meta property='og:url' content= '" + window.location.href + "'/>");</script>
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Beautiful real estate listing at ${requestScope.listingObj.getAddress()}" />
     <meta property="og:description" content="${requestScope.listingObj.getDescription()}" />
@@ -153,6 +154,9 @@
     <script>
         document.write("<div class='fb-share-button' data-href='" + window.location.href + "' data-layout='button_count' data-mobile-iframe='true'></div>");
     </script>
+
+    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 
     <c:if test="${accountTypee == 'HomeBuyer'}">
