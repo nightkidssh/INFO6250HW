@@ -94,19 +94,9 @@
             <td>accountID</td>
             <td>address</td>
             <td>zipCode</td>
-            <td>latitude</td>
-            <td>longitude</td>
             <td>description</td>
-            <td>numberOfBeds</td>
-            <td>numberOfBaths</td>
-            <td>sizeInSqft</td>
-            <td>lotSize</td>
-            <td>type</td>
-            <td>yearOfBuilt</td>
-            <td>heatingType</td>
-            <td>propertyTax</td>
-            <td>comments</td>
             <td>price</td>
+            <td>Show Detail</td>
             <td>Delete</td>
             <td>Update</td>
         </tr>
@@ -118,21 +108,11 @@
                 <td><input type="text" name= "accountID" value="${record.getCombinedAccount().getAccountID()}" readonly=""/></td>
                 <td><input type="text" name= "address" value="${record.getAddress()}" readonly=""/></td>
                 <td><input type="text" name= "zipCode" value="${record.getZipCode()}" readonly=""/></td>
-                <td><input type="text" name= "latitude" value="${record.getLatitude()}" readonly=""/></td>
-                <td><input type="text" name= "longitude" value="${record.getLongitude()}" readonly=""/></td>
                 <td><input type="text" name= "description" value="${record.getDescription()}" readonly=""/></td>
-                <td><input type="text" name= "numberOfBeds" value="${record.getNumberOfBeds()}" readonly=""/></td>
-                <td><input type="text" name= "numberOfBaths" value="${record.getNumberOfBaths()}" readonly=""/></td>
-                <td><input type="text" name= "sizeInSqft" value="${record.getSizeInSqft()}" readonly=""/></td>
-                <td><input type="text" name= "lotSize" value="${record.getLotSize()}" readonly=""/></td>
-                <td><input type="text" name= "type" value="${record.getType()}" readonly=""/></td>
-                <td><input type="text" name= "yearOfBuilt" value="${record.getYearOfBuilt()}" readonly=""/></td>
-                <td><input type="text" name= "heatingType" value="${record.getHeatingType()}" readonly=""/></td>
-                <td><input type="text" name= "propertyTax" value="${record.getPropertyTax()}" readonly=""/></td>
-                <td><input type="text" name= "comments" value="${record.getComments()}" readonly=""/></td>
                 <c:if test="${record.getClass().simpleName =='SalesListing'}">
                     <td><input type="text" name= "price" value="${record.getListPrice()}" readonly=""/></td>
                 </c:if>
+                <td><button name= "emailbutton" onclick="openEmailWindow(${record.getListingID()}); return false;">Show Detail</button></td>
                 <td><input type="button" value="Remove" onclick="removeRow(this, ${record.getListingID()})"/></td>
                 <td><button onclick="location.href='updateListing.do?listingID=${record.getListingID()}'; return false;">Updata Record</button></td>
             </tr>
@@ -153,6 +133,9 @@
 <div id="map_container"></div>
 
 <script>
+    function openEmailWindow(listingID) {
+        window.open("sendEmail.do?listingID=" + listingID, "emailWindow", "width=1024,height=768");
+    }
     var xmlHttp;
     xmlHttp = GetXmlHttpObject();
     function removeRow(buttonNode, listingID){

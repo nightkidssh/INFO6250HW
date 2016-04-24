@@ -14,9 +14,9 @@
     <title>Show All Listing</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
     <style type="text/css">
         div#map_container{
             width:60%;
@@ -31,8 +31,8 @@
         function loadMap() {
             //Put data in array
             var dataArray = [
-                <c:forEach var="record" items="${requestScope.resultSet}">
-                [ '<c:out value="${record.getAddress()}"/>', <c:out value="${record.getLatitude()}"/>, <c:out value="${record.getLongitude()}"/> ],
+                <c:forEach var="record" items="${requestScope.resultSet}" varStatus="loop">
+                [ '<c:out value="${record.getAddress()}"/>', <c:out value="${record.getLatitude()}"/>, <c:out value="${record.getLongitude()}"/>, <c:out value="${loop.index}"/>],
                 </c:forEach>
 
             ];
@@ -55,6 +55,9 @@
                     });
                     google.maps.event.addListener(marker, 'click', (function (marker, i) {
                         return function () {
+                            document.getElementById("listTable").style.backgroundColor="white";
+                            document.getElementById("listTable").rows[dataArray[i + 1][3]].style.backgroundColor = 'green';
+                            document.getElementById("listTable").rows[dataArray[i + 1][3]].focus();
                             infowindow.setContent(dataArray[i][0]);
                             infowindow.open(map, marker);
                         }
@@ -88,25 +91,16 @@
 
 <h1>All our listing:</h1>
 <form action="buyerlisting.do" method="post">
-    <table border="1" class="table">
+    <table border="1" class="table" id="listTable">
         <tr>
             <td>listingID</td>
             <td>listingType</td>
-            <td>accountID</td>
             <td>address</td>
             <td>zipCode</td>
-            <td>latitude</td>
-            <td>longitude</td>
             <td>description</td>
             <td>numberOfBeds</td>
             <td>numberOfBaths</td>
             <td>sizeInSqft</td>
-            <td>lotSize</td>
-            <td>type</td>
-            <td>yearOfBuilt</td>
-            <td>heatingType</td>
-            <td>propertyTax</td>
-            <td>comments</td>
             <td>price</td>
             <td>Show Detail</td>
             <td>Download PDF</td>
@@ -116,21 +110,12 @@
             <tr>
                 <td><input type="text" name= "listingID" value="${record.getListingID()}" readonly=""/></td>
                 <td><input type="text" name= "listingType" value="${record.getListingType()}" readonly=""/></td>
-                <td><input type="text" name= "accountID" value="${record.getCombinedAccount().getAccountID()}" readonly=""/></td>
                 <td><input type="text" name= "address" value="${record.getAddress()}" readonly=""/></td>
                 <td><input type="text" name= "zipCode" value="${record.getZipCode()}" readonly=""/></td>
-                <td><input type="text" name= "latitude" value="${record.getLatitude()}" readonly=""/></td>
-                <td><input type="text" name= "longitude" value="${record.getLongitude()}" readonly=""/></td>
                 <td><input type="text" name= "description" value="${record.getDescription()}" readonly=""/></td>
                 <td><input type="text" name= "numberOfBeds" value="${record.getNumberOfBeds()}" readonly=""/></td>
                 <td><input type="text" name= "numberOfBaths" value="${record.getNumberOfBaths()}" readonly=""/></td>
                 <td><input type="text" name= "sizeInSqft" value="${record.getSizeInSqft()}" readonly=""/></td>
-                <td><input type="text" name= "lotSize" value="${record.getLotSize()}" readonly=""/></td>
-                <td><input type="text" name= "type" value="${record.getType()}" readonly=""/></td>
-                <td><input type="text" name= "yearOfBuilt" value="${record.getYearOfBuilt()}" readonly=""/></td>
-                <td><input type="text" name= "heatingType" value="${record.getHeatingType()}" readonly=""/></td>
-                <td><input type="text" name= "propertyTax" value="${record.getPropertyTax()}" readonly=""/></td>
-                <td><input type="text" name= "comments" value="${record.getComments()}" readonly=""/></td>
                 <c:if test="${record.getClass().simpleName =='SalesListing'}">
                     <td><input type="text" name= "price" value="${record.getListPrice()}" readonly=""/></td>
                 </c:if>
