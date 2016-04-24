@@ -53,7 +53,7 @@ public class PDFController {
         mapData.put("listing", listing);
         String check = File.separator;
         String rootPath = servletContext.getRealPath("").replace("build\\","");
-        String path2 = rootPath+ check + "uploadedphoto";
+        String path2 = rootPath+ check + "uploadedphoto" + check;
 
         mapData.put("path2", path2);
 
