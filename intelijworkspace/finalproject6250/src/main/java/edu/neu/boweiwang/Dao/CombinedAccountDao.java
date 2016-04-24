@@ -25,6 +25,7 @@ public class CombinedAccountDao extends DAO{
             begin();
             Query q = getSession().createQuery("from CombinedAccount where userName = :username");
             q.setString("username", username);
+            q.setCacheable(true);
             combinedAccount = (CombinedAccount) q.uniqueResult();
             commit();
 //            getSession().flush();
@@ -44,6 +45,7 @@ public class CombinedAccountDao extends DAO{
             begin();
             Query q = getSession().createQuery("from CombinedAccount where emailAddress = :emailAddress");
             q.setString("emailAddress", emailAddress);
+            q.setCacheable(true);
             combinedAccount = (CombinedAccount) q.uniqueResult();
             commit();
 //            getSession().flush();
@@ -82,6 +84,7 @@ public class CombinedAccountDao extends DAO{
         try {
             begin();
             Query q = getSession().createQuery("from CombinedAccount");
+            q.setCacheable(true);
             accountList = q.list();
             commit();
 //            getSession().flush();
@@ -101,6 +104,7 @@ public class CombinedAccountDao extends DAO{
             begin();
             Query q = getSession().createQuery("from CombinedAccount where accountType != :type");
             q.setParameter("type", AccountType.SystemAdmin);
+            q.setCacheable(true);
             accountList = q.list();
             commit();
 //            getSession().flush();
