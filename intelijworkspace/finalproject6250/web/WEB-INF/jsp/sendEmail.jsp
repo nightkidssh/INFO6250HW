@@ -17,25 +17,59 @@
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Beautiful real estate listing at ${requestScope.listingObj.getAddress()}" />
+    <meta property="og:description" content="${requestScope.listingObj.getDescription()}" />
 </head>
 <body>
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1702383136679634',
+            xfbml      : true,
+            version    : 'v2.6'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    FB.ui({
+        method: 'share',
+        href: 'https://developers.facebook.com/docs/',
+    }, function(response){});
+</script>
 <div class="container-fluid">
     <c:set var="accountTypee">${sessionScope.loggedInAccount.accountType}</c:set>
-    <c:choose>
-        <c:when test="${sessionScope.loggedInAccount.userName != null && requestScope.emailAddress!=null}">
-        </c:when>
-        <c:otherwise>
-            <jsp:forward page="/realIndex.do">
-                <jsp:param name="loginError" value="Please Login First"/>
-            </jsp:forward>
-        </c:otherwise>
-    </c:choose>
+    <%--<c:choose>--%>
+        <%--<c:when test="${sessionScope.loggedInAccount.userName != null && requestScope.emailAddress!=null}">--%>
+        <%--</c:when>--%>
+        <%--<c:otherwise>--%>
+            <%--<jsp:forward page="/realIndex.do">--%>
+                <%--<jsp:param name="loginError" value="Please Login First"/>--%>
+            <%--</jsp:forward>--%>
+        <%--</c:otherwise>--%>
+    <%--</c:choose>--%>
 
     <div>
+        <c:if test="${requestScope.listingObj.fileLocation1!=null}">
         <img src="uploadedphoto/${requestScope.listingObj.fileLocation1}" class="img-responsive" alt="Responsive image">
+        </c:if>
+        <c:if test="${requestScope.listingObj.fileLocation2!=null}">
         <img src="uploadedphoto/${requestScope.listingObj.fileLocation2}" class="img-responsive" alt="Responsive image">
+        </c:if>
+        <c:if test="${requestScope.listingObj.fileLocation3!=null}">
         <img src="uploadedphoto/${requestScope.listingObj.fileLocation3}" class="img-responsive" alt="Responsive image">
+        </c:if>
+        <c:if test="${requestScope.listingObj.fileLocation4!=null}">
         <img src="uploadedphoto/${requestScope.listingObj.fileLocation4}" class="img-responsive" alt="Responsive image">
+        </c:if>
     </div>
 
     <table border="1" class="table">
@@ -115,6 +149,11 @@
         </tr>
 
     </table>
+
+    <script>
+        document.write("<div class='fb-share-button' data-href='" + window.location.href + "' data-layout='button_count' data-mobile-iframe='true'></div>");
+    </script>
+
 
     <c:if test="${accountTypee == 'HomeBuyer'}">
     <h1>Send Email</h1>

@@ -44,7 +44,7 @@ public class Listing implements Serializable {
     @Column(name = "longitude")
     private String longitude;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition="LONGTEXT")
     private String description;
 
     @Column(name = "numberOfBeds")

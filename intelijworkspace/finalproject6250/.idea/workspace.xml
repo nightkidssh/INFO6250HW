@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7850bf76-a03e-4bc3-a996-017bb9400c79" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/passwordChanger.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/passwordChanger.jsp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/FileUploadController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/fileUploader.jsp" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/SendEmailController.java" afterPath="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/SendEmailController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/proj/ListingPkg/Listing.java" afterPath="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/proj/ListingPkg/Listing.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/salesListingForm.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/salesListingForm.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/sendEmail.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/sendEmail.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/showListingForBuyer.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/showListingForBuyer.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/showMyListing.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/showMyListing.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/updateMyListing.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/jsp/updateMyListing.jsp" />
     </list>
     <ignored path="finalproject6250.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,28 +38,7 @@
     <favorites_list name="finalproject6250" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="showMyListing.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/showMyListing.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="110" column="112" selection-start-line="110" selection-start-column="112" selection-end-line="110" selection-end-column="112" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SendEmailController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/SendEmailController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -105,7 +86,6 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/proj/ListingPkg/LeaseListing.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/proj/AccountPkg/Account.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/FileUploadController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/proj/ListingPkg/Listing.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/proj/ListingPkg/SalesListing.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/fileUploader.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/register.jsp" />
@@ -113,17 +93,14 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/ShowListingForBuyerController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/realIndex.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/passwordChangerController.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/salesListingForm.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/UpdateListingValidator.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/updateMyListing.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Dao/ListingDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/UpdateListingController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/registerWithAPI.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/SendEmailController.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/SalesListingController.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/PDFView.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/spring-config.xml" />
@@ -132,8 +109,12 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/PDFController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/passwordChanger.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/showListingForBuyer.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/sendEmail.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/jsp/showMyListing.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/updateMyListing.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/salesListingForm.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/proj/ListingPkg/Listing.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/SendEmailController.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/jsp/sendEmail.jsp" />
       </list>
     </option>
   </component>
@@ -1011,12 +992,12 @@
       <workItem from="1461444377887" duration="845000" />
       <workItem from="1461446853658" duration="12820000" />
       <workItem from="1461470660545" duration="781000" />
-      <workItem from="1461518887427" duration="4858000" />
+      <workItem from="1461518887427" duration="12671000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291032000" />
+    <option name="totallyTimeSpent" value="298845000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1028,8 +1009,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="991" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1920" height="991" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6807564" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1045,7 +1026,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21192758" sideWeight="0.49610677" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21192758" sideWeight="0.49610677" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.124068156" sideWeight="0.5038932" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1134,13 +1115,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1258,13 +1232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/proj/ListingPkg/Listing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="73" column="28" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/RegisterControllerWithAPI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -1292,13 +1259,6 @@
         <state relative-caret-position="330">
           <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="58" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/FileUploadController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1388,14 +1348,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/UpdateListingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1332">
-          <caret line="63" column="63" selection-start-line="63" selection-start-column="63" selection-end-line="63" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/RealIndexController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1408,7 +1360,7 @@
         <state relative-caret-position="699">
           <caret line="55" column="64" selection-start-line="55" selection-start-column="64" selection-end-line="55" selection-end-column="64" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1417,14 +1369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/updateMyListing.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="52" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1445,42 +1389,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/salesListingForm.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/UpdateListingController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1740">
-          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="77" />
+        <state relative-caret-position="15">
+          <caret line="63" column="63" selection-start-line="63" selection-start-column="63" selection-end-line="63" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/sendEmail.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/proj/ListingPkg/Listing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/SendEmailController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/showListingForBuyer.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="145" column="40" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
+        <state relative-caret-position="210">
+          <caret line="46" column="61" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/showMyListing.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="485">
           <caret line="110" column="112" selection-start-line="110" selection-start-column="112" selection-end-line="110" selection-end-column="112" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/salesListingForm.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="105" column="76" selection-start-line="105" selection-start-column="76" selection-end-line="105" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/showListingForBuyer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="145" column="40" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/SendEmailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="42" column="70" selection-start-line="42" selection-start-column="70" selection-end-line="42" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/updateMyListing.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="94" column="80" selection-start-line="94" selection-start-column="80" selection-end-line="94" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/sendEmail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="686">
+          <caret line="60" column="68" selection-start-line="60" selection-start-column="68" selection-end-line="60" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/boweiwang/Controller/FileUploadController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/jsp/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
           <folding />
         </state>
       </provider>
