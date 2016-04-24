@@ -62,10 +62,6 @@ public class SalesListingController {
             File file2;
             File file3;
             File file4;
-            File filee1;
-            File filee2;
-            File filee3;
-            File filee4;
 
 
             FileChannel inputChannel = null;

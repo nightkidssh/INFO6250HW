@@ -109,6 +109,7 @@
             <td>comments</td>
             <td>price</td>
             <td>Show Detail</td>
+            <td>Download PDF</td>
         </tr>
 
         <c:forEach var="record" items="${requestScope.resultSet}">
@@ -134,6 +135,7 @@
                     <td><input type="text" name= "price" value="${record.getListPrice()}" readonly=""/></td>
                 </c:if>
                 <td><button name= "emailbutton" onclick="openEmailWindow(${record.getListingID()}); return false;">Show Detail</button></td>
+                <td><button name= "pdfbutton" onclick="openPDFWindows(${record.getListingID()}); return false;">Download PDF</button></td>
             </tr>
         </c:forEach>
     </table>
@@ -154,6 +156,10 @@
 <script>
     function openEmailWindow(listingID) {
         window.open("sendEmail.do?listingID=" + listingID, "emailWindow", "width=1024,height=768");
+    }
+
+    function openPDFWindows(listingID) {
+        window.open("report.pdf?listingID=" + listingID, "pdfWindow", "width=1024,height=768");
     }
 </script>
 </body>

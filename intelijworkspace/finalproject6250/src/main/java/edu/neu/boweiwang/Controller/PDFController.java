@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +26,9 @@ import java.util.Map;
 public class PDFController {
     @Autowired
     ListingDao listingDao;
+
+    @Autowired
+    ServletContext servletContext;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView createPDF(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -46,6 +51,11 @@ public class PDFController {
 
         Map<String,Object> mapData = new HashMap<String,Object>();
         mapData.put("listing", listing);
+        String check = File.separator;
+        String rootPath = servletContext.getRealPath("").replace("build\\","");
+        String path2 = rootPath+ check + "uploadedphoto";
+
+        mapData.put("path2", path2);
 
         return new ModelAndView(view, "mapData", mapData);
     }
