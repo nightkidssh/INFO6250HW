@@ -1,5 +1,10 @@
 package edu.neu.boweiwang.Controller;
 
+import edu.neu.boweiwang.Dao.CombinedAccountDao;
+import edu.neu.boweiwang.proj.AccountPkg.AccountType;
+import edu.neu.boweiwang.proj.AccountPkg.CombinedAccount;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.InvalidAuthorizationException;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.User;
 import org.springframework.social.facebook.api.impl.FacebookTemplate;
@@ -10,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 /**
  * Created by kym-1992 on 4/24/16.
@@ -18,15 +25,47 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/facebook.do")
 public class FacebookController {
 
-    @RequestMapping(method= RequestMethod.GET)
+    @Autowired
+    CombinedAccountDao combinedAccountDao;
+
+    @RequestMapping(method= RequestMethod.POST)
     protected ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception{
-        String accessToken =
-                "CAAYMTvYiJtIBAOYHl92qlwhXbuObHJRYvOm6zk3U2Vx9PxEtXXwOhLTfK6ZBFjOOFGZBmjhVZA4JwflDOruyh7nwSLb1ZBW7iuuA6ANYUoGCIXKCEG6moOemqeYh3eqavB5XeK4E2WcctwbIR94XspFEzH8y1BYCU6WfvZBBRki6g8btDbyZA8sFKFwZAAW7TdCTKQ6LUw40AZDZD";
-        Facebook facebook = new FacebookTemplate(accessToken);
+        String accessToken = request.getParameter("token");
 
-        User profile = facebook.userOperations().getUserProfile();
+        if(accessToken!=null) {
+            try {
+                Facebook facebook = new FacebookTemplate(accessToken);
 
-        System.out.println(profile.getEmail());
+                User profile = facebook.userOperations().getUserProfile();
+                String facebookID = profile.getId();
+
+                CombinedAccount combinedAccount = combinedAccountDao.get(facebookID);
+
+                if (combinedAccount == null) {
+                    combinedAccount = combinedAccountDao.create(facebookID, accessToken, new Date(), AccountType.HomeBuyer, profile.getFirstName(), profile.getLastName(), profile.getGender(), null, profile.getEmail(), null, null);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("loggedInAccount", combinedAccount);
+                    response.sendRedirect("realIndex.do");
+                } else {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("loggedInAccount", combinedAccount);
+                    response.sendRedirect("realIndex.do");
+                }
+
+                System.out.println(profile.getEmail());
+            }
+            catch (InvalidAuthorizationException e){
+                request.setAttribute("Error", "Login Failed! Facebook Login Error!");
+                ModelAndView model = new ModelAndView("realIndex");
+                return model;
+            }
+        }
+
+        else{
+            request.setAttribute("Error", "Login Failed! Facebook Login Error: Invalid User!");
+            ModelAndView model = new ModelAndView("realIndex");
+            return model;
+        }
 
         return null;
     }

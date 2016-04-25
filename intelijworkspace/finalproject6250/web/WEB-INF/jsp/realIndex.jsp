@@ -115,6 +115,7 @@
         function checkLoginState() {
             FB.getLoginStatus(function(response) {
                 statusChangeCallback(response);
+                sendToServer(response);
             });
         }
 
@@ -126,18 +127,6 @@
                 xfbml      : true,  // parse social plugins on this page
                 version    : 'v2.6' // use graph api version 2.5
             });
-
-            // Now that we've initialized the JavaScript SDK, we call
-            // FB.getLoginStatus().  This function gets the state of the
-            // person visiting this page and can return one of three states to
-            // the callback you provide.  They can be:
-            //
-            // 1. Logged into your app ('connected')
-            // 2. Logged into Facebook, but not your app ('not_authorized')
-            // 3. Not logged into Facebook and can't tell if they are logged into
-            //    your app or not.
-            //
-            // These three cases are handled in the callback function.
 
             FB.getLoginStatus(function(response) {
                 statusChangeCallback(response);
@@ -162,6 +151,27 @@
                 console.log('Successful login for: ' + response.name);
                 document.getElementById('status').innerHTML =
                         'Thanks for logging in, ' + response.name + '!';
+            });
+        }
+
+        function sendToServer(response) {
+            var access_token = response.authResponse.accessToken;
+            var form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "/facebook.do");
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", "token");
+            hiddenField.setAttribute("value", access_token);
+            form.appendChild(hiddenField);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+        
+        function logout() {
+            FB.logout(function(response) {
+                // user is now logged out
             });
         }
     </script>
@@ -193,18 +203,13 @@
 
 <%--</sec:authorize>--%>
 <div id="logoutContainer" class="global" style="background-color: white; opacity: 0.9">
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-    </fb:login-button>
-
-    <div id="status">
-    </div>
 
     <c:set var="accountTypee">${sessionScope.loggedInAccount.accountType}</c:set>
     <c:choose>
         <c:when test="${sessionScope.loggedInAccount.userName != null}">
             <form method = "post" action="/logout.do" style="display: inline-block;">
                 <label>Welcome ${sessionScope.loggedInAccount.accountType} ${sessionScope.loggedInAccount.userName}</label>
-                <input type="submit" name="Logout" value="Logout"/>
+                <input onclick="logout();" type="submit" name="Logout" value="Logout"/>
             </form>
             <button onclick="location.href='changePassword.do'">Change my password</button>
             <c:choose>
@@ -223,12 +228,15 @@
         </c:when>
         <c:otherwise>
             <%--<c:url value="/j_spring_security_check" var="loginURL"/>--%>
+            <label>Please note: Facebook user can ONLY open buyer account!</label>
             <button onclick="location.href='registerAPI.do'" style="float:right">Register</button>
             <form method="post" action="/login.do" style="display: inline-block;">
             <%--<form method="post" action="${loginURL}" style="display: inline-block;">--%>
                 <label>User Name:</label>&nbsp&nbsp<input type="text" name="userName" required/>&nbsp&nbsp
                 <label>Password:</label>&nbsp&nbsp<input type="password" name="password" required/>&nbsp&nbsp
                 <input type="submit" name="loginButton" value="login" />
+                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                </fb:login-button>
                     <%--<input type="hidden" name="${_csrf.parameterName}"--%>
                     <%--value="${_csrf.token}" />--%>
                 <div class="g-recaptcha" data-sitekey="6LeqjBwTAAAAAGXXIHRlQipbogvJCSJvo5FnoKDB"></div>&nbsp&nbsp

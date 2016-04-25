@@ -33,9 +33,10 @@
     <h1>Change password for ${sessionScope.loggedInAccount.userName}</h1>
     <form action="changePassword.do" method="post">
         <div class="form-group">
-            <label for="oldPass">Old password</label>
+            <label style="color: red">Facebook login user: please change your password at facebook website!</label>
             <label>Password Requirement: #must contains one digit from 0-9 <br/>#must contains one lowercase characters <br/>#must contains one uppercase characters
                 <br/>#must contains one special symbols "@#$%" <br/>#length at least 6 characters and maximum of 20<br/></label><br/>
+            <label for="oldPass">Old password</label>
             <input type="password" class="form-control" id="oldPass" placeholder="old Password" name="oldPass" required/>
             <label style="color: red">${requestScope.oldPassError}</label>
         </div>

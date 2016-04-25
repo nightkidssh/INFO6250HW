@@ -11,8 +11,14 @@
 <head>
     <title>System Admin Panel</title>
     <link rel="stylesheet" href="/css/showResultCSS.css">
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
+<div class="container-fluid">
 <div id="logoutContainer" class="global" style="background-color: white; opacity: 0.9">
 <c:set var="accountTypee">${sessionScope.loggedInAccount.accountType}</c:set>
 <c:choose>
@@ -33,7 +39,7 @@
 
 <h1>List of your accounts:</h1>
 <form action="sysadminpanel.do" method="post">
-    <table border="1">
+    <table border="1" class="table">
         <tr>
             <td>accountID</td>
             <td>userName</td>
@@ -66,7 +72,8 @@
             </tr>
         </c:forEach>
     </table>
-
+</form>
+</div>
     <script>
         var xmlHttp;
         xmlHttp = GetXmlHttpObject();

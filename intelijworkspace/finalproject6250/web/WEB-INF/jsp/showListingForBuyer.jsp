@@ -71,6 +71,7 @@
 <body>
 
 <body onload="loadMap()">
+<div class="container-fluid">
 <div id="logoutContainer" class="global" style="background-color: white; opacity: 0.9">
     <c:set var="accountTypee">${sessionScope.loggedInAccount.accountType}</c:set>
     <c:choose>
@@ -137,7 +138,7 @@
 </form>
 
 <div id="map_container"></div>
-
+</div>
 <script>
     function openEmailWindow(listingID) {
         window.open("sendEmail.do?listingID=" + listingID, "emailWindow", "width=1024,height=768");
