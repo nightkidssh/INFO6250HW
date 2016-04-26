@@ -169,4 +169,23 @@ public class ListingDao extends DAO{
         }
         return listing;
     }
+
+    public List getDataWithRestriction(int bed){
+        List<SalesListing> result = null;
+        try {
+            begin();
+            Query q = getSession().createQuery("from Listing where numberOfBeds > :beds");
+            q.setInteger("beds", bed);
+            result = q.list();
+            commit();
+//            getSession().flush();
+            close();
+        } catch (HibernateException e) {
+            rollback();
+        } finally {
+            close();
+        }
+
+        return result;
+    }
 }

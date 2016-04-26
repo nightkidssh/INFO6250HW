@@ -193,6 +193,13 @@
                 // user is now logged out
             });
         }
+        
+        function filter() {
+            var e = document.getElementById("beds");
+            var beds = e.options[e.selectedIndex].value;
+            var theUrl = "/buyerlisting.do?beds=" + beds;
+            location.href=theUrl;
+        }
     </script>
 
 </head>
@@ -216,6 +223,22 @@
             </jsp:forward>
         </c:otherwise>
     </c:choose>
+</div>
+
+<div class="form-group">
+    <label>Number Of bedrooms greater than:</label>
+    <select id="beds">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+    <button type="submit" class="btn btn-default" onclick="filter();">Filter</button>
 </div>
 
 <h1>All our listing:</h1>

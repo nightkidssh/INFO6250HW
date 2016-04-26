@@ -31,7 +31,19 @@ public class ShowListingForBuyerController {
 
         int page = 0;
 
-        List resultSet = listingDao.getAllData();
+        List resultSet = null;
+        if(request.getParameter("beds") == null) {
+            resultSet = listingDao.getAllData();
+        }
+
+        else{
+            if(request.getParameter("beds").matches("[0-9]+")) {
+                resultSet = listingDao.getDataWithRestriction(Integer.parseInt(request.getParameter("beds")));
+            }
+            else{
+                resultSet = listingDao.getAllData();
+            }
+        }
 
         ModelAndView mv = new ModelAndView("showListingForBuyer");
         mv.addObject("resultSet", resultSet);
