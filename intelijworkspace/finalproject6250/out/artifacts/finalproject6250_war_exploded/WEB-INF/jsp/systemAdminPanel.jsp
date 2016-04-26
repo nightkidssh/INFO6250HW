@@ -39,7 +39,7 @@
 
 <h1>List of your accounts:</h1>
 <form action="sysadminpanel.do" method="post">
-    <table border="1" class="table">
+    <table border="1" class="table" width="100%">
         <tr>
             <td>accountID</td>
             <td>userName</td>

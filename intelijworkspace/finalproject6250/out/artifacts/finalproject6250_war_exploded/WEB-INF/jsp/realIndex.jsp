@@ -28,9 +28,36 @@
             width: 50%;
         }
 
+        .controls {
+            margin-top: 10px;
+            border: 1px solid transparent;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            height: 32px;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #pac-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
+        }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
     </style>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false"
-            type="text/javascript"></script>
+    <%--<script async defer src="https://maps.googleapis.com/maps/api/js?sensor=false"--%>
+            <%--type="text/javascript"></script>--%>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 
     <script type="text/javascript">
         function loadMap() {
@@ -81,6 +108,32 @@
                     }
                 })(marker));
             }
+
+            var input = /** @type {!HTMLInputElement} */(
+                    document.getElementById('pac-input'));
+
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+
+
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                }
+
+                // If the place has a geometry, then present it on a map.
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);  // Why 17? Because it looks good.
+                }
+            });
+
         }
     </script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -88,8 +141,8 @@
     <script>
         // This is called with the results from from FB.getLoginStatus().
         function statusChangeCallback(response) {
-            console.log('statusChangeCallback');
-            console.log(response);
+//            console.log('statusChangeCallback');
+//            console.log(response);
             // The response object is returned with a status field that lets the
             // app know the current login status of the person.
             // Full docs on the response object can be found in the documentation
@@ -174,34 +227,12 @@
                 // user is now logged out
             });
         }
+
+
+
     </script>
 </head>
 <body onload="loadMap()">
-<%--<h1>Title : ${title}</h1>--%>
-<%--<h1>Message : ${message}</h1>--%>
-
-<%--<sec:authorize access="hasRole('SystemAdmin')">--%>
-    <%--<!-- For login user -->--%>
-    <%--<c:url value="/j_spring_security_logout" var="logoutUrl" />--%>
-    <%--<form action="${logoutUrl}" method="post" id="logoutForm">--%>
-        <%--<input type="hidden" name="${_csrf.parameterName}"--%>
-               <%--value="${_csrf.token}" />--%>
-    <%--</form>--%>
-    <%--<script>--%>
-        <%--function formSubmit() {--%>
-            <%--document.getElementById("logoutForm").submit();--%>
-        <%--}--%>
-    <%--</script>--%>
-
-    <%--<c:if test="${pageContext.request.userPrincipal.name != null}">--%>
-        <%--<h2>--%>
-            <%--User : ${pageContext.request.userPrincipal.name} | <a--%>
-                <%--href="javascript:formSubmit()"> Logout</a>--%>
-        <%--</h2>--%>
-    <%--</c:if>--%>
-
-
-<%--</sec:authorize>--%>
 <div id="logoutContainer" class="global" style="background-color: white; opacity: 0.9">
 
     <c:set var="accountTypee">${sessionScope.loggedInAccount.accountType}</c:set>
@@ -248,6 +279,7 @@
     </c:choose>
 
 </div>
+<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
 <div id="map_container"></div>
 </body>
 </html5>
