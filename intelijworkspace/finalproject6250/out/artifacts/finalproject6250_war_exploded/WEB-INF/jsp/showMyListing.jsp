@@ -62,12 +62,20 @@
                 </c:forEach>
 
             ];
-
-            var myOptions = {
-                zoom: 15,
-                center: new google.maps.LatLng(dataArray[0][1], dataArray[0][2]),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
+            if(dataArray.length > 0) {
+                var myOptions = {
+                    zoom: 15,
+                    center: new google.maps.LatLng(dataArray[0][1], dataArray[0][2]),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+            }
+            else{
+                var myOptions = {
+                    zoom: 10,
+                    center: new google.maps.LatLng(42.3383292,-71.0886148),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+            }
             var map = new google.maps.Map(document.getElementById("map_container"), myOptions);
             var infowindow = new google.maps.InfoWindow();
 
@@ -144,7 +152,7 @@
 
 <h1>List of your listing:</h1>
 <form action="showmylisting.do" method="post">
-    <table border="1" class="table">
+    <table border="1" class="table" id="listTable">
         <tr>
             <td>listingID</td>
             <td>listingType</td>
